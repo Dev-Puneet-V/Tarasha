@@ -1,0 +1,14 @@
+.home-img, .background-img{
+    height: 83.75vh;
+    width: 100vw;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+}
+
+.img{
+    padding: 2rem;
+    box-sizing: border-box;
+    
+}

@@ -1,0 +1,9 @@
+#home-container{
+    height: 83.69vh;
+    overflow-y: scroll;
+}
+
+.home-main-body-text{
+    min-width: 250px;
+    width: 45%;
+}

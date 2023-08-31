@@ -56,9 +56,6 @@ const Work: React.FC = () => {
                         <p>{works[currWorkIndex]?.solution}</p>
                     </div>
                 </div>
-                <button className='button button-dark m-auto'>
-                    More Projects
-                </button>
             </div> 
         }
     </>

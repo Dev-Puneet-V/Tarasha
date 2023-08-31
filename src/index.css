@@ -159,6 +159,17 @@ button:hover{
   -webkit-text-fill-color: transparent;
 }
 
+.text-styled-2{
+  font-family: 'BlackMango';
+  font-size: 2rem;
+  font-weight: bolder !important;
+  line-height: 60px;
+  letter-spacing: 0.02em;
+  background: linear-gradient(90deg, #B87E1B 0%, #F0C660 17.81%, #B87E1B 42.29%, #F0C660 65.21%, #B87E1B 80.31%, #F0C660 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;;
+}
+
 /* padding */
 .p-1{
   padding: 5px;

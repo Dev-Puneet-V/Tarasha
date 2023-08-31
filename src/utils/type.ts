@@ -23,14 +23,23 @@ interface Faqinterface {
     ans: string;
 }
 
+interface Packageinterface{
+    _id?: number;
+    type: string;
+    features: string[];
+    price?: number | string;
+}
+
 interface SiteData {
     works?: Workinterface[];
     faq?: Faqinterface[];
+    packages?: Packageinterface[];
 }
 
 
 export type {
     GlobalProps,
     Faqinterface,
+    Packageinterface,
     SiteData
 }

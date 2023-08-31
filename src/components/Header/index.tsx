@@ -27,7 +27,11 @@ const Header: React.FC = () => {
               Our Works
             </NavLink>
           </li>
-          <li className='nav-item'>Packages</li>
+          <li className='nav-item'>
+            <NavLink to={'/packages'} className='link' style={isLinkActive('/packages') ? ACTIVE_LINK_STYLE : {}}>
+              Packages
+            </NavLink>
+          </li>
           <li className='nav-item'>Blog</li>
         </ul>
         <button id='auth-button'>Login/Signup</button>

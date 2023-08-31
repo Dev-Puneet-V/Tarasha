@@ -4,6 +4,7 @@ import Header from "./components/Header";
 import Footer from "./components/Footer";
 import Home from "./pages/Home";
 import OurWork from "./pages/OurWork";
+import Packages from "./pages/Packages";
 
 export default function Navigation() {
 
@@ -13,6 +14,7 @@ export default function Navigation() {
                 <Routes>
                     <Route path="" element={<Home />}/>
                     <Route path="our-works" element={<OurWork />} />
+                    <Route path="packages" element={<Packages />} />
                 </Routes>
             <Outlet />
             <Footer />

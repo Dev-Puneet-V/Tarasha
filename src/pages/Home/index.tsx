@@ -1,4 +1,5 @@
 import React from 'react';
+import {Link} from 'react-router-dom';
 import Image from '../../components/Image';
 import './style.css'
 import Element from '../../components/Element';
@@ -74,6 +75,11 @@ const Home: React.FC = () => {
       </div>
       <div className='mb-8'>
           <Work />
+          <Link className='link' to={'/our-works'}>
+                    <button className='button button-dark m-auto'>
+                        More Projects
+                    </button>
+                </Link>
       </div>
       <div className='mb-8'>
         <p className='center ml-8 mr-8 mb-8 pb-8 text-styled'>

@@ -49,10 +49,11 @@
 }
 
 .work-name{
-    max-width: 90%;
+    max-width: 85%;
     padding: 1rem 2rem 1rem 4rem;
     position: relative;
     width: 50rem;
+    margin: auto;
 }
 
 /* .work-container > div:nth-child(2){

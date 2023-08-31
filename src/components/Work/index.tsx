@@ -32,8 +32,8 @@ const Work: React.FC = () => {
     <>
         {   
             currWorkIndex >= 0 &&
-            <div id='work-container' className='pt-8 pt-8 pb-8'>
-                <p className='text-styled ml-8 mr-8 work-name'>{works[currWorkIndex]?.name}</p>
+            <div id='work-container' className='pt-8 pb-8'>
+                <p className='text-styled ml-8 work-name'>{works[currWorkIndex]?.name}</p>
                 <div className='flex gap-2 ml-8 work-name'>
                     <p className={`${currState === 0 ? 'active-nav' : ''}`} onClick={() => setCurrState(0)}>Before</p>
                     <p className={`${currState === 1 ? 'active-nav' : ''}`} onClick={() => setCurrState(1)}>After</p>

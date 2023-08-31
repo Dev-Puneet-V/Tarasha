@@ -1,14 +1,11 @@
 import './App.css'
-import Header from './components/Header'
-import { DataProvider } from './contexts/DataContext'
-import Home from './pages/Home'
+import Navigation from './Navigation';
+import { DataProvider } from './contexts/DataContext';
 
 function App() {
-
   return (
     <DataProvider>
-      <Header />
-      <Home />
+      <Navigation />
     </DataProvider>
   )
 }

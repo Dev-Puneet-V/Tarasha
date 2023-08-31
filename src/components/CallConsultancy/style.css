@@ -1,0 +1,13 @@
+.call-consultancy{
+    width: 100%;
+    background: #DFAE0029;
+}
+
+#call-consultancy-container{
+    max-width: 90%;
+    width: 40rem;
+}
+
+#call-consultancy-container div{
+    width: 100%;
+}

@@ -1,5 +1,5 @@
 .element-container{
-    width: 3rem;
+    width: 4rem;
     text-align: center;
     font-size: 0.6rem;
     align-items: center;
@@ -16,7 +16,7 @@
 
 .element-container p{
     text-align: center;
-    width: 100px;
+    width: 4rem;
 }
 
 .element-img {

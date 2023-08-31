@@ -1,12 +1,14 @@
 #header-container{
     background: linear-gradient(90deg, #000000 19.27%, #B87E1B 153.58%);
     height: 7.5rem;
-    width: 100vw;
+    width: 100%;
     display: flex;
     align-items: center;
     justify-content: space-between;
     padding: 1rem 2rem;
     box-sizing: border-box;
+    position: fixed;
+    z-index: 1;
 }
 
 #auth-button{

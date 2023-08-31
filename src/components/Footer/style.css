@@ -1,0 +1,20 @@
+.footer-container{
+    width: 100%;
+    background: linear-gradient(90deg, #000000 19.27%, #B87E1B 153.58%);
+    color: #ffffff;
+    box-sizing: border-box;
+    position: relative;
+    top: 7.5rem;
+}
+
+.info{
+    width:  55%;
+}
+
+@media (max-width: 799px) {
+    .info {
+        width: 100%;
+        margin: 0 !important;
+        padding: 0 !important;
+    }
+}

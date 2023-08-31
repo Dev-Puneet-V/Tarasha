@@ -1,20 +1,23 @@
 @font-face {
   font-family: 'BlackMango';
   src: url('./assets//black_mango_font//index.ttf') format('truetype');
+  font-weight: 1500;
 }
 
 *{
   margin: 0px;
   padding: 0px;
   font-family: Montserrat;
+  overflow-x: hidden;
 }
 
 *::-webkit-scrollbar { 
   display: none; 
 }
 
-html {
+html, body {
   scroll-behavior: smooth;
+  width: 100vw;
 }
 
 button{
@@ -24,6 +27,16 @@ button{
 button:hover{
   opacity: 0.8;
 }
+
+.link{
+  text-decoration: none;
+  color: #ffffff;
+}
+
+.button-secondary{
+  background: linear-gradient(90deg, #000000 19.27%, #B87E1B 153.58%) !important;
+}
+
 .flex{
   display: flex;
 }
@@ -87,6 +100,10 @@ button:hover{
   font-weight: bold;
 }
 
+.text-bolder{
+  font-weight: bolder;
+}
+
 .text-white{
   color: white;
 }
@@ -134,7 +151,7 @@ button:hover{
 .text-styled{
   font-family: 'BlackMango';
   font-size: 3rem;
-  font-weight: bold !important;
+  font-weight: bolder !important;
   line-height: 60px;
   letter-spacing: 0.02em;
   background: linear-gradient(90deg, #B87E1B 12.98%, #F0C660 95.64%);
@@ -381,7 +398,10 @@ button:hover{
   border-right: 2px solid rgb(245, 244, 244); 
 }
 
-
 .font-small{
   font-size: 0.8rem;
+}
+
+.font-large{
+  font-size: 1.3rem;
 }

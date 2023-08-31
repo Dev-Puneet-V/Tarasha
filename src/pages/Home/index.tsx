@@ -5,6 +5,7 @@ import Element from '../../components/Element';
 import ChairImage from '../../assets/chair.png';
 import Work from '../../components/Work';
 import FAQ from '../../components/FAQ';
+import CallConsultancy from '../../components/CallConsultancy';
 
 const Home: React.FC = () => {
   return (
@@ -22,14 +23,14 @@ const Home: React.FC = () => {
           </div>
         </Image>
       </div>
-      <div className='flex flex-col gap-2 items-center p-8 w-100'>
-        <p className='text-styled center pb-2'>About</p>
-        <p className='center pb-8'>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.  exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+      <div className='flex flex-col gap-2 items-center w-100'>
+        <p className='text-styled center pb-2 mt-8'>About</p>
+        <p className='center ml-8 mr-8 pb-8 mb-8'>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.  exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
         <Image src={'https://res.cloudinary.com/dpv6poha8/image/upload/v1693236016/HomeImage2_hdokpj.png'} className='home-img'>
         </Image>
       </div>
-      <div className='flex flex-col gap-2 items-center p-8 w-100'>
-        <p className='text-styled center text-break pb-4'>Work online with the finest interior designers</p>
+      <div className='flex flex-col gap-2 items-center w-100'>
+        <p className='text-styled center text-break mt-8 pb-4'>Work online with the finest interior designers</p>
        <div className='flex gap-5 mb-8 wrap justify-center items-center max-w-800'>
         <Element src={ChairImage} text={'One-On-One Consultation'} />
         <Element src={ChairImage} text={'One-On-One Consultation'} />
@@ -44,15 +45,15 @@ const Home: React.FC = () => {
         <Image src={'https://res.cloudinary.com/dpv6poha8/image/upload/v1693236016/HomeImage2_hdokpj.png'} className='home-img'>
         </Image>
       </div>
-      <div className='flex flex-col gap-2 items-center p-8 w-100'>
-        <p className='text-styled center pb-2'>Our Approach</p>
-        <p className='center pb-8'>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.  exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+      <div className='flex flex-col gap-2 items-center w-100'>
+        <p className='text-styled center pb-2 m-8'>Our Approach</p>
+        <p className='center pb-8 m-8'>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.  exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
         <Image src={'https://res.cloudinary.com/dpv6poha8/image/upload/v1693236016/HomeImage2_hdokpj.png'} className='home-img'>
         </Image>
       </div>
-      <div className='flex flex-col gap-2 items-center p-8 w-100'>
-        <p className='text-styled center pb-2'>Our Principles</p>
-        <p className='center pb-8'>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.  exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+      <div className='flex flex-col gap-2 items-center w-100 ml-8 mr-8'>
+        <p className='text-styled center pb-2 mt-8'>Our Principles</p>
+        <p className='center pb-8 mb-8'>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.  exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
       </div>
       <div>
       <div id='client-perspective' className='flex justify-center items-center'>
@@ -80,6 +81,7 @@ const Home: React.FC = () => {
         </p>
         <FAQ />
       </div>
+      <CallConsultancy />
       </div>
     </div>
   )

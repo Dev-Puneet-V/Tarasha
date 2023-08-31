@@ -7,3 +7,42 @@
     min-width: 250px;
     width: 45%;
 }
+
+#client-perspective{
+    width: 100vw;
+    height: 40vh;
+    background-color: rgba(222.74, 173.74, 0, 0.16);
+}
+
+#client-perspective-main-container{
+    max-width: 90%;
+    padding: 2rem 2rem 2rem 4rem;
+    position: relative;
+    width: 40rem;
+    height: 8rem;
+}
+
+#up-inverted-comma{
+    font-size: 6.5rem;
+    font-weight: 400;
+    position: absolute;
+    top: 0;
+    left: 0;
+    font-family: 'Uncut Sans VF';
+}
+
+#down-inverted-comma{
+    font-size: 6.5rem;
+    font-weight: 400;
+    transform: rotate(180deg);
+    position: absolute;
+    bottom: 3rem;
+    right: 0;
+    font-family: 'Uncut Sans VF';
+}
+
+#client-perspective-main-container img{
+    height: 2.8rem;
+    width: 2.8rem;
+    border-radius: 50%;
+}

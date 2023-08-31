@@ -1,0 +1,12 @@
+.accordion-container{
+    max-width: 90%;
+    
+}
+
+.down{
+    transform: rotate(90deg);
+}
+
+.up{
+    transform: rotate(-90deg);
+}

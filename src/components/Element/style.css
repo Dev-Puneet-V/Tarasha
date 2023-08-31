@@ -1,0 +1,28 @@
+.element-container{
+    width: 3rem;
+    text-align: center;
+    font-size: 0.6rem;
+    align-items: center;
+}
+
+.element-container div{
+    box-sizing: border-box;
+    height: 2.5rem;
+    width: 2.5rem;
+    border-radius: 50%;
+    background: linear-gradient(180deg, #B87E1B 0%, #F0C660 25%, #B87E1B 47.4%, #F0C660 77.08%, #B87E1B 94.79%);
+    padding: 0.1rem;
+}
+
+.element-container p{
+    text-align: center;
+    width: 100px;
+}
+
+.element-img {
+    border-radius: 50%;
+    height: 1.5rem;
+    width: 1.5rem;
+    background-color: #fff;
+    padding: 0.4rem;
+}

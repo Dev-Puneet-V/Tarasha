@@ -13,6 +13,10 @@
   display: none; 
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 button{
   cursor: pointer;
 }
@@ -38,6 +42,14 @@ button:hover{
 
 .flex-col{
   flex-direction: column;
+}
+
+.no-wrap{
+  flex-wrap: nowrap;
+}
+
+.wrap{
+  flex-wrap: wrap;
 }
 
 .gap-1{
@@ -120,14 +132,11 @@ button:hover{
 }
 
 .text-styled{
-  font-size: 2.1rem;
-  font-weight: 700;
   font-family: 'BlackMango';
   font-size: 3rem;
-  font-weight: 700;
+  font-weight: bold !important;
   line-height: 60px;
   letter-spacing: 0.02em;
-  text-align: left;
   background: linear-gradient(90deg, #B87E1B 12.98%, #F0C660 95.64%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -318,4 +327,61 @@ button:hover{
 
 .ml-8{
   margin-left: 40px;
+}
+
+.m-auto{
+  margin: auto;
+}
+
+/* width */
+
+.w-5{
+  width: 1rem;
+}
+
+.max-w-800{
+  max-width: 800px;
+}
+
+
+/* .w-100{
+  width: 100%;
+} */
+
+/* height */
+.h-5{
+  height: 1rem;
+}
+
+.cursor-pointer{
+  cursor: pointer;
+}
+
+
+/* border */
+.border{
+  border: 2px solid rgb(245, 244, 244); 
+}
+
+
+.border-bottom{
+  border-bottom: 2px solid rgb(245, 244, 244); 
+}
+
+.border-top{
+  border-top: 2px solid rgb(245, 244, 244); 
+}
+
+
+.border-left{
+  border-left: 2px solid rgb(245, 244, 244); 
+}
+
+.border-right{
+  border-right: 2px solid rgb(245, 244, 244); 
+}
+
+
+.font-small{
+  font-size: 0.8rem;
 }

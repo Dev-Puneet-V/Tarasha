@@ -42,6 +42,12 @@ interface SiteData {
     packages?: Packageinterface[];
 }
 
+export enum AuthState {
+    Register,
+    Login,
+    ForgetPass
+  }
+
 
 
 

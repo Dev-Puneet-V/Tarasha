@@ -270,6 +270,14 @@ button:hover{
   text-align: center;
 }
 
+.left{
+  text-align: left;
+}
+
+.right{
+  text-align: right;
+}
+
 .text-break{
   width: 70%;
   max-width: 800px;

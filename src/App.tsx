@@ -1,16 +1,13 @@
 import './App.css'
 import Navigation from './Navigation';
-import Modal from './components/Modal';
-import SignUpForm from './components/SignUp';
+import Auth from './components/Auth';
 import { DataProvider } from './contexts/DataContext';
 
 function App() {
   return (
     <DataProvider>
       <Navigation />
-      <Modal isOpen={true} onClose={() => {}}>
-        <SignUpForm />
-      </Modal>
+      <Auth />
     </DataProvider>
   )
 }

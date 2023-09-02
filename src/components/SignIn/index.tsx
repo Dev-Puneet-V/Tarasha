@@ -2,14 +2,14 @@ import React from 'react'
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import GoogleImageIcon from '../../assets/google.png';
-import './style.css';
 import { AuthState } from '../../utils/type';
+import './style.css';
 
-interface SignUpFormProps{
+interface SignInFormProps{
   handleAuthState: (authState: AuthState) => void;
 }
 
-const SignUpForm: React.FC<SignUpFormProps> = (props) => {
+const SignInForm: React.FC<SignInFormProps> = (props) => {
     const {
       handleAuthState
     } = props;
@@ -17,7 +17,6 @@ const SignUpForm: React.FC<SignUpFormProps> = (props) => {
         initialValues: {
             email: '',
             password: '',
-            confirmPassword: ''
         },
         validationSchema: Yup.object({
             email: Yup.string()
@@ -29,27 +28,17 @@ const SignUpForm: React.FC<SignUpFormProps> = (props) => {
                 'Password must meet the criteria'
                 )
                 .required('Password is required'),
-            
-            confirmPassword: Yup.string()
-                .matches(
-                /^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[\W_])[A-Za-z\d\W_]{8,}$/,
-                'Password must meet the criteria'
-                )
-                .required('Password is required'),
         }),
         onSubmit: async (values) => {
         },
   });
   return (
     <div >
-      <p className='text-styled auth-header-text pb-2'>Create your account</p>
+      <p className='text-styled auth-header-text pb-2'>Login to your account</p>
       <form
       onSubmit={formik.handleSubmit}
       className='auth-form rounded-[2px] border-black border-2 p-6 flex flex-col w-96 items-start'
     >
-      {/* <label htmlFor='email' className='font-bold'>
-        Email Address
-      </label> */}
       <input
         id='email'
         name='email'
@@ -63,9 +52,6 @@ const SignUpForm: React.FC<SignUpFormProps> = (props) => {
       {formik.touched.email && formik.errors.email ? (
         <div className='text-red-500 pb-2'>{formik.errors.email}</div>
       ) : null}
-      {/* <label htmlFor='password' className='font-bold mt-4'>
-        Password
-      </label> */}
       <input
         id='password'
         name='password'
@@ -79,24 +65,9 @@ const SignUpForm: React.FC<SignUpFormProps> = (props) => {
       {formik.touched.password && formik.errors.password ? (
         <div className='text-red-500 pb-2'>{formik.errors.password}</div>
       ) : null}
-      {/* <label htmlFor='confirmPassword' className='font-bold mt-4'>
-        Confirm Password
-      </label> */}
-      <input
-        id='confirmPassword'
-        name='confirmPassword'
-        type='password'
-        onChange={formik.handleChange}
-        onBlur={formik.handleBlur}
-        value={formik.values.confirmPassword}
-        className='border-2 h-10  p-2 w-full'
-        placeholder='Confirm Password'
-      />
-      {formik.touched.password && formik.errors.confirmPassword ? (
-        <div className='text-red-500 pb-2'>{formik.errors.confirmPassword}</div>
-      ) : null}
+      <p className='right mt-2 mb-4 cursor-pointer' onClick={() => handleAuthState(AuthState.ForgetPass)}>Forgot Password?</p>
       <button type='submit' className='flex justify-center items-center mt-2'>
-        Register
+        Login
     </button>
     <div className='flex gap-2 items-center mt-8 justify-between center'>
         <div  className='divider-auth'/>
@@ -106,10 +77,10 @@ const SignUpForm: React.FC<SignUpFormProps> = (props) => {
     <div className='flex social-icon-container items-center justify-center mt-4'>
         <img src={GoogleImageIcon}/>
     </div>
-    <p className='mt-4 center'>Already Have an Account? <b className='text-styled auth-fot-text' onClick={() => handleAuthState(AuthState.Login)}>Login Now</b></p>
+    <p className='mt-4 center'>Don’t Have an Account? <b className='text-styled auth-fot-text' onClick={() => handleAuthState(AuthState.Register)}>Register Now</b></p>
     </form>
     </div>
   )
 }
 
-export default SignUpForm;
+export default SignInForm;

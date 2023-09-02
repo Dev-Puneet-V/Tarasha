@@ -65,7 +65,7 @@ const SignInForm: React.FC<SignInFormProps> = (props) => {
       {formik.touched.password && formik.errors.password ? (
         <div className='text-red-500 pb-2'>{formik.errors.password}</div>
       ) : null}
-      <p className='right mt-2 mb-4 cursor-pointer' onClick={() => handleAuthState(AuthState.ForgetPass)}>Forgot Password?</p>
+      <p className='text-right mt-2 mb-4 cursor-pointer' onClick={() => handleAuthState(AuthState.ForgetPass)}>Forgot Password?</p>
       <button type='submit' className='flex justify-center items-center mt-2'>
         Login
     </button>

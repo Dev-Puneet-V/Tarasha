@@ -8,7 +8,6 @@ const Image: React.FC<ImageProps> = (props) => {
         children,
         className
     } = props;
-
     return (
         <div className={`relative ${className} home-img img`}>
             <img src={src} className='absolute background-img' />

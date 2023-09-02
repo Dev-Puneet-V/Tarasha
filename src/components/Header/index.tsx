@@ -3,10 +3,11 @@ import { NavLink, useLocation } from 'react-router-dom';
 import Icon from '../../assets/icon.png';
 import { ACTIVE_LINK_STYLE } from '../../utils/constant';
 import './style.css';
+import { useAuth } from '../../contexts/AuthContext';
 
 const Header: React.FC = () => {
   const location = useLocation();
-
+  const { openAuthModal } = useAuth();
   const isLinkActive = (path: string) => {
     return location.pathname === path;
   };  
@@ -38,7 +39,7 @@ const Header: React.FC = () => {
           </li>
           <li className='nav-item'>Blog</li>
         </ul>
-        <button id='auth-button'>Login/Signup</button>
+        <button id='auth-button' onClick={openAuthModal}>Login/Signup</button>
       </div>
     </div>
   );

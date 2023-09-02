@@ -13,7 +13,6 @@ const Modal: React.FC<ModalProps> = ({ isOpen, onClose, children }) => {
   };
 
   const handleOverlayClick = (e: React.MouseEvent<HTMLDivElement>) => {
-    // Prevent clicks on the modal content from closing the modal
     e.stopPropagation();
   };
 

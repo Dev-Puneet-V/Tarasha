@@ -1,14 +1,18 @@
 import './App.css'
 import Navigation from './Navigation';
 import Auth from './components/Auth';
-import { DataProvider } from './contexts/DataContext';
+import { useAuth } from './contexts/AuthContext';
 
 function App() {
+  const { isAuthModalOpen } = useAuth();
   return (
-    <DataProvider>
-      <Navigation />
-      <Auth />
-    </DataProvider>
+      <>
+        <Navigation />
+        {
+          isAuthModalOpen &&
+          <Auth />
+        }
+      </>
   )
 }
 

@@ -21,7 +21,11 @@ const Header: React.FC = () => {
               Home
             </NavLink>
           </li>
-          <li className='nav-item'>Services</li>
+          <li className='nav-item'>
+            <NavLink to={'/services'} className='link' style={isLinkActive('/services') ? ACTIVE_LINK_STYLE : {}}>
+              Services
+            </NavLink>
+          </li>
           <li className='nav-item'>
             <NavLink to={'/our-works'} className='link' style={isLinkActive('/our-works') ? ACTIVE_LINK_STYLE : {}}>
               Our Works

@@ -30,6 +30,12 @@ interface Packageinterface{
     price?: number | string;
 }
 
+interface Serviceinterface{
+    _id?: number;
+    src: string;
+    text: string;
+}
+
 interface SiteData {
     works?: Workinterface[];
     faq?: Faqinterface[];
@@ -37,9 +43,12 @@ interface SiteData {
 }
 
 
+
+
 export type {
     GlobalProps,
     Faqinterface,
     Packageinterface,
+    Serviceinterface,
     SiteData
 }

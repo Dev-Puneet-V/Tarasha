@@ -416,3 +416,8 @@ button:hover{
 .font-large{
   font-size: 1.3rem;
 }
+
+.text-red-500{
+  color: rgb(232, 79, 79);
+  font-size: 0.7rem;
+}

@@ -4,6 +4,8 @@ import { Packageinterface } from '../../utils/type';
 import Package from '../../components/Package';
 import Image from '../../components/Image';
 import CallConsultancy from '../../components/CallConsultancy';
+import Modal from '../../components/Modal';
+import ChoosePackagePlan from '../../components/ChoosePackagePlan';
 
 const Packages: React.FC = () => {
   const {data} = useSiteData();
@@ -34,6 +36,9 @@ const Packages: React.FC = () => {
             </div>
         </div>
         <CallConsultancy />
+        <Modal isOpen={true} onClose={() => {} }>
+            <ChoosePackagePlan />
+        </Modal>
     </div>
   )
 }

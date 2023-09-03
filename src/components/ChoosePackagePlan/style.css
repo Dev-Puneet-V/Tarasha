@@ -1,0 +1,23 @@
+.plan-price-range-container {
+    width: 100%;
+    max-width: 260px;
+    padding: 20px;
+}
+
+.plan-total-area {
+    font-family: 'BlackMango', sans-serif;
+    font-size: 1.5rem;
+    font-weight: 700;
+    line-height: 1.2;
+    letter-spacing: 0.02em;
+    text-align: left;
+}
+
+.plan-total-price {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 2.5rem; 
+    font-weight: 500;
+    line-height: 1.5;
+    letter-spacing: 0.02em;
+    text-align: left;
+}

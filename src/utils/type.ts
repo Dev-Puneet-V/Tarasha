@@ -28,6 +28,7 @@ interface Packageinterface{
     type: string;
     features: string[];
     price?: number | string;
+    handlePlanVisibilty?: () => void;
 }
 
 interface Serviceinterface{

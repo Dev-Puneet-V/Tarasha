@@ -9,6 +9,7 @@ import ChoosePackagePlan from '../../components/ChoosePackagePlan';
 
 const Packages: React.FC = () => {
   const {data} = useSiteData();
+  const [isPlanVisible, setPlanVisibilty] = React.useState(false);
   const packages = data?.packages || [];
   return (
     <div id='home-container'>
@@ -29,6 +30,7 @@ const Packages: React.FC = () => {
                             _id={currPackage?._id} 
                             type={currPackage?.type} 
                             features={currPackage?.features}
+                            handlePlanVisibilty={() => setPlanVisibilty(true)}
                         />
                     )
                 })
@@ -36,7 +38,7 @@ const Packages: React.FC = () => {
             </div>
         </div>
         <CallConsultancy />
-        <Modal isOpen={true} onClose={() => {} }>
+        <Modal isOpen={isPlanVisible} onClose={() => setPlanVisibilty(false) }>
             <ChoosePackagePlan />
         </Modal>
     </div>

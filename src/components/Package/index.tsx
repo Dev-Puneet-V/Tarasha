@@ -7,7 +7,8 @@ import './style.css';
 const Package: React.FC<Packageinterface> = (props) => {
     const {
         type,
-        features = []
+        features = [],
+        handlePlanVisibilty
     } = props;
 
   return (
@@ -26,7 +27,7 @@ const Package: React.FC<Packageinterface> = (props) => {
             })
         }
         </div>
-        <div className='flex items-center gap-2 absolute select-plan text-styled'>
+        <div className='flex items-center gap-2 absolute select-plan text-styled' onClick={handlePlanVisibilty}>
             <div>
                 <p>
                 {'Select ' + type}     

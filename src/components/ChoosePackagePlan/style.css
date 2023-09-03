@@ -21,3 +21,15 @@
     letter-spacing: 0.02em;
     text-align: left;
 }
+
+.plan{
+    cursor: pointer;
+}
+
+.plan:hover{
+    background-color: antiquewhite;
+}
+
+.selected-plan{
+    background-color: antiquewhite;
+}

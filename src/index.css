@@ -167,9 +167,9 @@ button:hover{
   font-weight: bolder !important;
   line-height: 60px;
   letter-spacing: 0.02em;
-  background: linear-gradient(90deg, #B87E1B 0%, #F0C660 17.81%, #B87E1B 42.29%, #F0C660 65.21%, #B87E1B 80.31%, #F0C660 100%);
+  background: linear-gradient(90deg, #000000 12.98%, #B87E1B 95.64%);
   -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;;
+  -webkit-text-fill-color: transparent;
 }
 
 /* padding */

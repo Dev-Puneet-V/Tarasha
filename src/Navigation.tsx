@@ -6,6 +6,7 @@ import Home from "./pages/Home";
 import OurWork from "./pages/OurWork";
 import Packages from "./pages/Packages";
 import Services from "./pages/Services";
+import Questionare from "./pages/Questionare";
 
 export default function Navigation() {
 
@@ -17,6 +18,7 @@ export default function Navigation() {
                     <Route path="our-works" element={<OurWork />} />
                     <Route path="packages" element={<Packages />} />
                     <Route path="services" element={<Services />} />
+                    <Route path="questionare" element={<Questionare />} />
                 </Routes>
             <Outlet />
             <Footer />

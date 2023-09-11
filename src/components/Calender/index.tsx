@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { displayRazorpay, generateCalendarDates, getFirstDayOfWeek } from '../../utils/helper';
+import {generateCalendarDates, getFirstDayOfWeek } from '../../utils/helper';
 import PrevImage from '../../assets/prev-1.png';
 import NextImage from '../../assets/black-next.jpg';
 import './style.css';
@@ -10,8 +10,6 @@ const Calendar: React.FC = () => {
   const [currentYear, setCurrentYear] = useState<number>(new Date().getFullYear());
   const [isTimeSelectionEnabled, setTimeSelection] = useState<boolean>(false);
 
-  // ... other code ...
-
   React.useEffect(() => {
     if (isTimeSelectionEnabled) {
       const paymentButton = document.getElementById('payment-button');
@@ -21,12 +19,10 @@ const Calendar: React.FC = () => {
       script.async = true;
 
       script.onload = () => {
-        // Script has loaded, you can use it here
       };
 
       paymentButton?.appendChild(script);
 
-      // Clean up the script when the component unmounts
       return () => {
         paymentButton?.removeChild(script);
       };

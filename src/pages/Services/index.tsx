@@ -6,6 +6,7 @@ import Element from '../../components/Element';
 import Chair from '../../assets/chair.png';
 import './style.css';
 import Service from '../../components/Service';
+import ScopeOfWork from '../../components/ScopeOfWork';
 
 const Services: React.FC = () => {
   return (
@@ -40,6 +41,7 @@ const Services: React.FC = () => {
                 </div>
             </div>
         </div>
+        <ScopeOfWork />
         <div className='m-8'>
             <p className='center ml-8 mr-8 mb-8 pb-8 text-styled'>
                 Frequently Asked Questions

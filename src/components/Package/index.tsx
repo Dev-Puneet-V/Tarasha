@@ -1,6 +1,5 @@
 import React from 'react';
 import { BsArrowUpRight } from 'react-icons/bs';
-import { FaBeer } from 'react-icons/fa';
 import TickIcon from '../../assets/tick.png';
 import { Packageinterface } from '../../utils/type';
 import './style.css';

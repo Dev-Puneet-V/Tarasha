@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { generateCalendarDates, getFirstDayOfWeek } from '../../utils/helper';
+import { displayRazorpay, generateCalendarDates, getFirstDayOfWeek } from '../../utils/helper';
 import PrevImage from '../../assets/prev-1.png';
 import NextImage from '../../assets/black-next.jpg';
 import './style.css';
@@ -10,6 +10,28 @@ const Calendar: React.FC = () => {
   const [currentYear, setCurrentYear] = useState<number>(new Date().getFullYear());
   const [isTimeSelectionEnabled, setTimeSelection] = useState<boolean>(false);
 
+  // ... other code ...
+
+  React.useEffect(() => {
+    if (isTimeSelectionEnabled) {
+      const paymentButton = document.getElementById('payment-button');
+      const script = document.createElement('script');
+      script.src = 'https://checkout.razorpay.com/v1/payment-button.js';
+      script.dataset.payment_button_id = 'pl_MawY7xfRYudvoj';
+      script.async = true;
+
+      script.onload = () => {
+        // Script has loaded, you can use it here
+      };
+
+      paymentButton?.appendChild(script);
+
+      // Clean up the script when the component unmounts
+      return () => {
+        paymentButton?.removeChild(script);
+      };
+    }
+  }, [isTimeSelectionEnabled]);
   const handleDateClick = (date: Date) => {
     setSelectedDate(date);
   };
@@ -135,10 +157,11 @@ const Calendar: React.FC = () => {
             <p className='button-calender text-bold'>Continue</p>
             <img src={NextImage} className='black-next' />
         </button>}
-        {isTimeSelectionEnabled && <button className='mt-4 flex button button-dark gap-1 items-center justify-center'>
-            <p className='button-calender text-bold'>Continue</p>
-            <img src={NextImage} className='black-next'/>
-        </button>}
+        {isTimeSelectionEnabled && 
+         <form className='payment-button' id='payment-button'>
+            </form>
+        
+        }
     </div>
     
   );

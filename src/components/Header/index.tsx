@@ -37,7 +37,11 @@ const Header: React.FC = () => {
               Packages
             </NavLink>
           </li>
-          <li className='nav-item'>Blog</li>
+          <li className='nav-item'>
+          <NavLink to={'/blog'} className='link' style={isLinkActive('/blog') ? ACTIVE_LINK_STYLE : {}}>
+              Blog
+            </NavLink>
+          </li>
         </ul>
         <button id='auth-button' onClick={openAuthModal}>Login/Signup</button>
       </div>

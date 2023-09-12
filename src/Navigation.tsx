@@ -8,11 +8,12 @@ import Packages from "./pages/Packages";
 import Services from "./pages/Services";
 import Questionare from "./pages/Questionare";
 import Dashboard from "./pages/Dashboard";
-
+import Blog from "./pages/Blog";
+import ScrollToTop from "./ScrollToTop";
 export default function Navigation() {
-
     return (
         <Router>
+            <ScrollToTop />
             <Header />
                 <Routes>
                     <Route path="" element={<Home />}/>
@@ -21,6 +22,7 @@ export default function Navigation() {
                     <Route path="services" element={<Services />} />
                     <Route path="questionare" element={<Questionare />} />
                     <Route path="dashboard" element={<Dashboard />} />
+                    <Route path="blog" element={<Blog />} />
                 </Routes>
             <Outlet />
             <Footer />

@@ -49,7 +49,13 @@ export enum AuthState {
     ForgetPass
   }
 
-
+interface BlogInfo {
+    _id: string;
+    name: string;
+    postedDate: string;
+    minsToRead: string;
+    imageUrl: string;
+}
 
 
 export type {

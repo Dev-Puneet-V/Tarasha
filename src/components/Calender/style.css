@@ -122,3 +122,27 @@
     height: 50vh;
     padding-bottom: 40px;
 }
+
+@media (max-width: 768px) {
+  .time-picker .text-styled{
+    text-align: center !important;
+  }
+  .time-picker table{
+    margin-bottom: 2rem !important;
+  }
+  .time-picker{
+    width: 95vw;
+    position: relative;
+    left: -0.7rem;
+  }
+  .calendar-container{
+    width: 99%;
+  }
+  .calendar-container td{
+    padding: 0px !important;
+  }
+  .time-picker .text-red-500{
+    text-align: center;
+    font-size: 1.5rem !important;
+  }
+}

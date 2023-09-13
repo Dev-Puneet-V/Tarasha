@@ -4,6 +4,7 @@ import * as Yup from 'yup';
 import GoogleImageIcon from '../../assets/google.png';
 import './style.css';
 import { AuthState } from '../../utils/type';
+import { API_ENDPOINT } from '../../utils/constant';
 
 interface SignUpFormProps{
   handleAuthState: (authState: AuthState) => void;
@@ -38,6 +39,15 @@ const SignUpForm: React.FC<SignUpFormProps> = (props) => {
                 .required('Password is required'),
         }),
         onSubmit: async (values) => {
+          const response = await fetch(API_ENDPOINT.REGISTER, {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json', // Specify that you're sending JSON data
+            },
+            body: JSON.stringify(values),
+          });
+          const data = await response.json();
+
         },
   });
   return (

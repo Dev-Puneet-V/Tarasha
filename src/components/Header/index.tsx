@@ -2,7 +2,7 @@ import React from 'react';
 import { NavLink, useLocation } from 'react-router-dom';
 import Icon from '../../assets/icon.png';
 import HamburgerImage from '../../assets/hamburger.png';
-import CollapseImage from '../../assets/collapse.png';
+import CollapseImage from '../../assets/back.jpg';
 import { ACTIVE_LINK_STYLE } from '../../utils/constant';
 import { useAuth } from '../../contexts/AuthContext';
 import useScreenSize from '../../hooks/useMediaQuery';
@@ -33,27 +33,43 @@ const Header: React.FC = () => {
             <img src={CollapseImage} height={35} onClick={handleSidebar}/>
           </li>
           <li className='nav-item'>
-            <NavLink to={'/'} className='link' style={isLinkActive('/') ? ACTIVE_LINK_STYLE : {}}>
+            <NavLink 
+              to={'/'} 
+              className='link'
+            >
               Home
             </NavLink>
           </li>
           <li className='nav-item'>
-            <NavLink to={'/services'} className='link' style={isLinkActive('/services') ? ACTIVE_LINK_STYLE : {}}>
+            <NavLink 
+              to={'/services'} 
+              className='link' 
+              // style={isLinkActive('/services') ? ACTIVE_LINK_STYLE : {}}
+            >
               Services
             </NavLink>
           </li>
           <li className='nav-item'>
-            <NavLink to={'/our-works'} className='link' style={isLinkActive('/our-works') ? ACTIVE_LINK_STYLE : {}}>
+            <NavLink 
+              to={'/our-works'} 
+              className='link'
+            >
               Our Works
             </NavLink>
           </li>
           <li className='nav-item'>
-            <NavLink to={'/packages'} className='link' style={isLinkActive('/packages') ? ACTIVE_LINK_STYLE : {}}>
+            <NavLink 
+              to={'/packages'} 
+              className='link' 
+              style={ACTIVE_LINK_STYLE}>
               Packages
             </NavLink>
           </li>
           <li className='nav-item'>
-          <NavLink to={'/blog'} className='link' style={isLinkActive('/blog') ? ACTIVE_LINK_STYLE : {}}>
+          <NavLink 
+            to={'/blog'} 
+            className='link'
+          >
               Blog
             </NavLink>
           </li>

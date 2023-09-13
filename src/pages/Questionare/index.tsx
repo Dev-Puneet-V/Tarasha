@@ -1,6 +1,8 @@
 import React, { useState, ChangeEvent, FormEvent } from 'react';
+import Cookies from 'js-cookie';
 import './style.css';
 import { BsArrowRight } from 'react-icons/bs';
+import { API_ENDPOINT } from '../../utils/constant';
 
 interface Question {
   que: string;
@@ -23,22 +25,37 @@ const questions: Question[] = [
 ];
 
 const Questionare: React.FC = () => {
-  const [answers, setAnswers] = useState<{ [key: string]: { question: string; answer: string } }>(
+  const [answers, setAnswers] = useState<{ [key: string]: { Question: string; Answer: string } }>(
     questions.reduce((acc, question) => {
-      acc[`ans-${question._id}`] = { question: question.que, answer: '' };
+      acc[`ans-${question._id}`] = { Question: question.que, Answer: '' };
       return acc;
     }, {})
   );
 
   const handleInputChange = (e: ChangeEvent<HTMLInputElement>, questionId: number) => {
     const updatedAnswers = { ...answers };
-    updatedAnswers[`ans-${questionId}`].answer = e.target.value;
+    updatedAnswers[`ans-${questionId}`].Answer = e.target.value;
     setAnswers(updatedAnswers);
   };
 
-  const handleSubmit = (e: FormEvent) => {
+  const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
     console.log('Answers submitted:', answers);
+    const response = await fetch(API_ENDPOINT.SAVE_QUESTIONARE, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${Cookies.get('token')}`
+      },
+      body: JSON.stringify({
+        'inquiryData': Object.values(answers),
+        'packageInfo': {
+          package_name: 'Silver',
+          package_option: 'Option 1'
+        }
+      }),
+    });
+    const data = await response.json();
   };
 
   return (

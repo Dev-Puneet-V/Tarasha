@@ -61,6 +61,7 @@
     background-color: #f9eac4;
     box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
     animation: slide 0.01s ease-in-out;
+    background: linear-gradient(90deg, #000000 19.27%, #B87E1B 153.58%);
 }
 
 @keyframes slide {
@@ -72,10 +73,6 @@
       transform: translateX(0);
     }
   }
-
-.sidebar *{
-    color: #000000 !important;
-}
 
 .sidebar > ul{
     display: flex;

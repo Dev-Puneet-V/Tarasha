@@ -1,9 +1,11 @@
 import React from 'react'
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
+import Cookies from 'js-cookie';
 import GoogleImageIcon from '../../assets/google.png';
 import { AuthState } from '../../utils/type';
 import './style.css';
+import { API_ENDPOINT } from '../../utils/constant';
 
 interface SignInFormProps{
   handleAuthState: (authState: AuthState) => void;
@@ -30,6 +32,15 @@ const SignInForm: React.FC<SignInFormProps> = (props) => {
                 .required('Password is required'),
         }),
         onSubmit: async (values) => {
+          const response = await fetch(API_ENDPOINT.LOGIN, {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(values),
+          });
+          const data = await response.json();
+          Cookies.set('token', data.data.token, { expires: 7 });
         },
   });
   return (

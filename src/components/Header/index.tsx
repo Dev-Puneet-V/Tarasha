@@ -1,22 +1,37 @@
 import React from 'react';
 import { NavLink, useLocation } from 'react-router-dom';
 import Icon from '../../assets/icon.png';
+import HamburgerImage from '../../assets/hamburger.png';
+import CollapseImage from '../../assets/collapse.png';
 import { ACTIVE_LINK_STYLE } from '../../utils/constant';
-import './style.css';
 import { useAuth } from '../../contexts/AuthContext';
+import useScreenSize from '../../hooks/useMediaQuery';
+import './style.css';
 
 const Header: React.FC = () => {
+  const [isSidebarVisibile, setSidebarVisibility] = React.useState<boolean>(false);
   const location = useLocation();
   const { openAuthModal } = useAuth();
+  const screenSize = useScreenSize();
+  React.useEffect(() => {
+    if(screenSize === 'lg'){
+      setSidebarVisibility(false);
+    }
+  }, [screenSize]);
   const isLinkActive = (path: string) => {
     return location.pathname === path;
   };  
-
+  const handleSidebar = () => {
+    setSidebarVisibility(!isSidebarVisibile);
+  }
   return (
     <div id='header-container'>
-      <img src={Icon} alt="Logo" />
-      <div className='flex gap-5'>
+      <img src={Icon} alt="Logo" className={`${screenSize === 'sm' && 'small-logo'}`}/>
+    { <div className={`flex gap-5 ${!isSidebarVisibile && screenSize !== 'lg' && 'hidden'} ${screenSize !== 'lg' && 'sidebar'}`}>
         <ul className='flex items-center text-white list-style-none gap-3'>
+          <li className={`${!isSidebarVisibile && screenSize === 'lg' && 'hidden'}`}>
+            <img src={CollapseImage} height={35} onClick={handleSidebar}/>
+          </li>
           <li className='nav-item'>
             <NavLink to={'/'} className='link' style={isLinkActive('/') ? ACTIVE_LINK_STYLE : {}}>
               Home
@@ -44,8 +59,11 @@ const Header: React.FC = () => {
           </li>
         </ul>
         <button id='auth-button' onClick={openAuthModal}>Login/Signup</button>
-      </div>
+      </div>}
+      {screenSize !== 'lg' &&
+      <img src={HamburgerImage} height={40} className={`mb-2 hamburger-icon ${isSidebarVisibile && 'hidden'}`} onClick={handleSidebar}/>}
     </div>
+    
   );
 };
 

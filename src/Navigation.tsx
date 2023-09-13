@@ -10,6 +10,7 @@ import Questionare from "./pages/Questionare";
 import Dashboard from "./pages/Dashboard";
 import Blog from "./pages/Blog";
 import ScrollToTop from "./ScrollToTop";
+
 export default function Navigation() {
     return (
         <Router>

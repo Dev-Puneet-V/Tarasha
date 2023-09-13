@@ -7,7 +7,7 @@
 
 .home-main-body-text{
     min-width: 250px;
-    width: 45%;
+    width: 60%;
 }
 
 #client-perspective{
@@ -47,4 +47,22 @@
     height: 2.8rem;
     width: 2.8rem;
     border-radius: 50%;
+}
+
+@media (max-width: 768px) {
+    .home-main-body-text{
+        width: 100%;
+        height: auto;
+    }
+    #client-perspective{
+        height: auto;
+    }
+    #client-perspective-main-container{
+        width: 100%;
+        height: auto;
+        margin: 1rem;
+    }
+    #client-perspective-main-container > div:nth-child(3){
+        height: auto;
+    }
 }

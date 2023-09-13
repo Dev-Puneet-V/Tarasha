@@ -46,7 +46,7 @@ const Work: React.FC = () => {
                         <img src={NextIcon}/>
                     </div>
                 </Image>
-                <div className='flex justify-between p-2 ml-8 mr-8 pr-8 pl-8 wrap mb-8'>
+                <div className='text-work flex justify-between p-2 ml-8 mr-8 pr-8 pl-8 wrap mb-8'>
                     <div className='gap-4 challenge'>
                         <p className='text-bold mb-2 mt-4 text-styled'>Challenges</p>
                         <p>{works[currWorkIndex]?.challange}</p>

@@ -1,7 +1,3 @@
-#work-container{
-    /* width: 80vw; */
-}
-
 .active-nav{
     border-bottom: 3px solid black;
     font-weight: bold;
@@ -67,4 +63,20 @@
 
 .challenge .text-styled, .solution .text-styled{
     font-size: 1.5rem;
+}
+
+@media (max-width: 768px) {
+    .work-name{
+        margin-left: 0rem !important;
+        position: relative;
+        left: -1.5rem;
+    }
+    .text-work{
+        padding: 2rem !important;
+        margin: 0rem !important;
+    }
+    .challenge, .solution{
+        max-width: 90vw;
+         width: 90vw;
+    }
 }

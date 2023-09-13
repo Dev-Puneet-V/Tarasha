@@ -16,7 +16,7 @@ const CallConsultancy: React.FC = () => {
         <p className='center'>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
         </p>
-        <div className='flex items-center justify-between gap-2 pl-8 pr-8 ml-8 mr-8 mb-8 mt-8'>
+        <div className={`'wrap flex items-center justify-between gap-2 pl-8 pr-8 ml-8 mr-8 mb-8 mt-8'`}>
           <p className='ml-8 pl-4 font-large text-bolder'>Rs 3000/ Per Hour</p>
           <button className='button button-secondary mr-8' onClick={handleBookingVisibility}>Book Now</button>
         </div>

@@ -82,7 +82,7 @@ const Home: React.FC = () => {
                 </Link>
       </div>
       <div className='mb-8'>
-        <p className='center ml-8 mr-8 mb-8 pb-8 text-styled'>
+        <p className='center ml-8 mr-8 pb-8 text-styled'>
             Frequently Asked Questions
         </p>
         <FAQ />

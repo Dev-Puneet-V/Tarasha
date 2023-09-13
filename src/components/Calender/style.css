@@ -114,3 +114,11 @@
     width: 130px;
   }
 
+.v-hidden{
+    visibility: hidden;
+}
+
+.payment-component{
+    height: 50vh;
+    padding-bottom: 40px;
+}

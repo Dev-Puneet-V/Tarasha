@@ -10,3 +10,16 @@
 .up{
     transform: rotate(-90deg);
 }
+
+@media (max-width: 768px) {
+    .accordion-container > div{
+        width: 90%;
+    }
+    .accordion-container svg{
+    width: 2rem !important;
+    height: 2rem !important;
+    }
+    .accordion-container{
+        padding: 0 !important;
+    }
+}

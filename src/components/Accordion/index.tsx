@@ -14,9 +14,9 @@ const Accordion: React.FC<AccordionProps> = (props) => {
     return (
         <div className='accordion-container ml-8 mr-8 pr-8 pl-8 mt-4'>
             <div
-            className="flex justify-between items-center bg-gray-200 p-2 cursor-pointer"
-            onClick={toggleAccordion}
-        >
+                className="flex justify-between items-center bg-gray-200 p-2 cursor-pointer"
+                onClick={toggleAccordion}
+            >
             <p className="text-bold">{title}</p>
             <svg
                 className={`w-5 h-5 ${!isOpen ? 'down' : 'up'}`}

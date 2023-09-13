@@ -9,7 +9,7 @@ const Calendar: React.FC = () => {
   const [currentMonth, setCurrentMonth] = useState<number>(new Date().getMonth());
   const [currentYear, setCurrentYear] = useState<number>(new Date().getFullYear());
   const [isTimeSelectionEnabled, setTimeSelection] = useState<boolean>(false);
-
+  const [selectedTime, setSelectedTime] = useState<boolean | undefined>();
   React.useEffect(() => {
     if (isTimeSelectionEnabled) {
       const paymentButton = document.getElementById('payment-button');
@@ -28,6 +28,9 @@ const Calendar: React.FC = () => {
       };
     }
   }, [isTimeSelectionEnabled]);
+  const handlePaymentProcession = () => {
+    setSelectedTime(true);
+  }
   const handleDateClick = (date: Date) => {
     setSelectedDate(date);
   };
@@ -144,19 +147,32 @@ const Calendar: React.FC = () => {
   };
 
   return (
-    <div className='flex flex-col justify-center items-center gap-1 time-picker'>
-        <p className='text-styled heading-calender'>{!isTimeSelectionEnabled ? "Select A Consultation Date" : "Select Time Slot"}</p>
-        <div className="calendar-container">
+    <div className='relative flex flex-col justify-center items-center gap-1 time-picker'>
+      
+      {!selectedTime &&  <p className='text-styled heading-calender'>{!isTimeSelectionEnabled ? "Select A Consultation Date" : "Select Time Slot"}</p>
+      }  
+      {selectedTime &&  <p className='text-styled heading-calender mt-2'>{`Click below for payment`}</p>
+      }  
+      {selectedTime &&  <p className='text-red-500 heading-calender'>{`Please do not refresh`}</p>
+      }  
+    {!selectedTime &&  <div className="calendar-container">
         {renderCalendar()}
-        </div>
+        </div>}
        {!isTimeSelectionEnabled && <button onClick={handleTimeSelectionEnable} className='mt-4 flex button button-dark gap-1 items-center justify-center'>
             <p className='button-calender text-bold'>Continue</p>
             <img src={NextImage} className='black-next' />
         </button>}
-        {isTimeSelectionEnabled && 
-         <form className='payment-button' id='payment-button'>
+        {isTimeSelectionEnabled &&
+        <div className={`payment-component flex justify-center items-center ${!selectedTime && 'v-hidden'} ${!selectedTime && 'absolute'}`}>
+            <form className={`'payment-button' ${!selectedTime && 'v-hidden'}`} id='payment-button'>
             </form>
-        
+        </div>
+        }
+        {isTimeSelectionEnabled && !selectedTime &&
+            <button onClick={handlePaymentProcession} className='mt-4 flex button button-dark gap-1 items-center justify-center'>
+                <p className='button-calender text-bold'>Continue</p>
+                <img src={NextImage} className='black-next' />
+            </button>
         }
     </div>
     

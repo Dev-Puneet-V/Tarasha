@@ -1,0 +1,16 @@
+.blog-items-container .bc-ch:nth-child(even){
+    display: flex;
+    flex-direction: column !important;
+    gap: 10px !important;
+}
+
+.prev-post{
+    font-size: 1rem !important;
+    line-height: 1.3rem !important;
+}
+
+.prev-posts-container{
+    border-left: 2px solid burlywood;
+    padding-left: 1rem;
+}
+

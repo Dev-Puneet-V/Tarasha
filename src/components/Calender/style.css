@@ -104,7 +104,7 @@
     margin: auto;
   }
 
-  .date-cell p:hover, .selected p{
+  .date-cell p:hover, .selected p, .selected-time{
     background: #B87E1B !important;
     color: white !important;
   }
@@ -121,6 +121,10 @@
 .payment-component{
     height: 50vh;
     padding-bottom: 40px;
+}
+
+.calender-time{
+  width: 200px !important;
 }
 
 @media (max-width: 768px) {

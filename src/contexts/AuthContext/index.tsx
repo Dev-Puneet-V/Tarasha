@@ -1,13 +1,20 @@
-import React, { createContext, useContext, useState } from 'react';
+import React, { createContext, useContext, useEffect, useState } from 'react';
+import Cookies from 'js-cookie';
 import { GlobalProps } from '../../utils/type';
 import { AuthContextType } from './type';
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
 export const AuthProvider: React.FC<GlobalProps> = ({ children }) => {
-  const [isAuthenticated, setIsAuthenticated] = useState<boolean>(false);
   const [isAuthModalOpen, setIsAuthModalOpen] = useState<boolean>(false);
-
+  const [isAuthenticated, setAuthenticated] = useState<boolean>(false);
+  
+  useEffect(() => {
+    setAuthenticated(!!Cookies.get('token'))
+  }, []);
+  useEffect(() => {
+    console.log(isAuthenticated, "isAuthenticated")
+  }, [isAuthenticated])
   const openAuthModal = () => {
     setIsAuthModalOpen(true);
   };
@@ -16,8 +23,12 @@ export const AuthProvider: React.FC<GlobalProps> = ({ children }) => {
     setIsAuthModalOpen(false);
   };
 
+  const handleAuthentication = () => {
+    setAuthenticated(!isAuthenticated);
+  }
+
   return (
-    <AuthContext.Provider value={{isAuthModalOpen, isAuthenticated, openAuthModal, closeAuthModal }}>
+    <AuthContext.Provider value={{isAuthModalOpen, openAuthModal, closeAuthModal, isAuthenticated, handleAuthentication }}>
       {children}
     </AuthContext.Provider>
   );

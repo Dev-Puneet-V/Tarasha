@@ -10,7 +10,7 @@ const Image: React.FC<ImageProps> = (props) => {
     } = props;
     return (
         <div className={`relative ${className} home-img img`}>
-            <img src={src} className='absolute background-img' />
+            <img src={src} className='absolute background-img' loading="lazy" />
             {children}
         </div>
     );

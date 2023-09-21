@@ -435,3 +435,13 @@ button:hover{
 .box-shadow{
   box-shadow: 0 0 4px rgba(0, 0, 0, 0.5);
 }
+
+.disable{
+  pointer-events: none;
+  opacity: 0.34;
+}
+
+.loader{
+  height: 80vh;
+  width: 100vw;
+}

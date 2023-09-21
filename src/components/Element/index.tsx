@@ -9,8 +9,8 @@ const Element: React.FC<ElementProps> = (props) => {
   } = props;
 
   return (
-    <div className='flex flex-col gap-1 element-container justify-center'>
-      <div className='flex justify-center items-center'>
+    <div className='flex flex-col gap-1 element-container justify-end'>
+      <div>
         <img className='element-img' src={src}/>
       </div>
       <p className='text-bold'>{text}</p>

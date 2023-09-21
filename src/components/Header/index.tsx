@@ -11,7 +11,7 @@ import './style.css';
 const Header: React.FC = () => {
   const [isSidebarVisibile, setSidebarVisibility] = React.useState<boolean>(false);
   const location = useLocation();
-  const { openAuthModal } = useAuth();
+  const { openAuthModal, isAuthenticated, handleAuthentication } = useAuth();
   const screenSize = useScreenSize();
   React.useEffect(() => {
     if(screenSize === 'lg'){
@@ -74,7 +74,8 @@ const Header: React.FC = () => {
             </NavLink>
           </li>
         </ul>
-        <button id='auth-button' onClick={openAuthModal}>Login/Signup</button>
+        {!isAuthenticated && <button id='auth-button' onClick={openAuthModal}>{`Login/Signup`}</button>}
+      {isAuthenticated && <button id='auth-button' onClick={handleAuthentication}>{`Logout`}</button>}
       </div>}
       {screenSize !== 'lg' &&
       <img src={HamburgerImage} height={40} className={`mb-2 hamburger-icon ${isSidebarVisibile && 'hidden'}`} onClick={handleSidebar}/>}

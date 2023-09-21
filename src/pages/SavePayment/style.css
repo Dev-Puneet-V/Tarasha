@@ -1,0 +1,8 @@
+.save-payment-data{
+    position: relative;
+    top: 7.5rem;
+}
+
+.payment-loader{
+    height: calc(100vh - 7.5rem) !important;
+}

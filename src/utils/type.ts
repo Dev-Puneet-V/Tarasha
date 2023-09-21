@@ -41,6 +41,7 @@ interface SiteData {
     works?: Workinterface[];
     faq?: Faqinterface[];
     packages?: Packageinterface[];
+    callConsultancyTagLine?: string;
 }
 
 export enum AuthState {

@@ -6,9 +6,7 @@ import { GlobalProps, SiteData } from '../../utils/type';
 
 const DataContext = createContext<DataContextType>({
   data: {},
-  setData: function (): void {
-    throw new Error('Function not implemented.');
-  }
+  setData: () => { }
 });
 
 export const DataProvider: React.FC<GlobalProps> = ({ children }) => {

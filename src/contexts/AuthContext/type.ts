@@ -1,8 +1,9 @@
 interface AuthContextType {
     isAuthModalOpen: boolean;
-    isAuthenticated: boolean;
+    isAuthenticated?: boolean;
     openAuthModal: () => void;
     closeAuthModal: () => void;
+    handleAuthentication: () => void;
 }
 
 export type {

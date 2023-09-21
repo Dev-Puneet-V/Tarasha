@@ -4,7 +4,7 @@ import { SiteData } from "../../utils/type";
 interface DataContextType {
     data: SiteData;
     setData: React.Dispatch<React.SetStateAction<SiteData>>;
-    children?: ReactNode
+    children?: ReactNode;
 }
 
 export type {

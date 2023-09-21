@@ -6,6 +6,7 @@ import GoogleImageIcon from '../../assets/google.png';
 import { AuthState } from '../../utils/type';
 import './style.css';
 import { API_ENDPOINT } from '../../utils/constant';
+import { useAuth } from '../../contexts/AuthContext';
 
 interface SignInFormProps{
   handleAuthState: (authState: AuthState) => void;
@@ -15,6 +16,7 @@ const SignInForm: React.FC<SignInFormProps> = (props) => {
     const {
       handleAuthState
     } = props;
+    const {handleAuthentication, closeAuthModal} = useAuth();
     const formik = useFormik({
         initialValues: {
             email: '',
@@ -32,6 +34,7 @@ const SignInForm: React.FC<SignInFormProps> = (props) => {
                 .required('Password is required'),
         }),
         onSubmit: async (values) => {
+          try{
           const response = await fetch(API_ENDPOINT.LOGIN, {
             method: 'POST',
             headers: {
@@ -40,7 +43,17 @@ const SignInForm: React.FC<SignInFormProps> = (props) => {
             body: JSON.stringify(values),
           });
           const data = await response.json();
-          Cookies.set('token', data.data.token, { expires: 7 });
+          if(data?.data?.token){
+            Cookies.set('token', data.data.token, { expires: 7 });
+            handleAuthentication();
+            closeAuthModal();
+          }
+          }catch(error){
+            //TODO:REMOVE BELOW CODE
+            handleAuthentication();
+            closeAuthModal();
+            console.log("Error", error)
+          }
         },
   });
   return (

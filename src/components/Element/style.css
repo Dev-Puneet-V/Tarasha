@@ -1,5 +1,5 @@
 .element-container{
-    width: 4rem;
+    width: 6rem;
     text-align: center;
     font-size: 0.6rem;
     align-items: center;
@@ -14,9 +14,13 @@
     padding: 0.1rem;
 }
 
+.element-container:nth-child(2){
+    margin-bottom: 0.7rem !important;
+}
+
 .element-container p{
     text-align: center;
-    width: 4rem;
+    width: 6rem !important;
 }
 
 .element-img {

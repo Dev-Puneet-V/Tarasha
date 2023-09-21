@@ -10,6 +10,8 @@ import Questionare from "./pages/Questionare";
 import Dashboard from "./pages/Dashboard";
 import Blog from "./pages/Blog";
 import ScrollToTop from "./ScrollToTop";
+import MainBlog from "./pages/MainBlog";
+import SavePayment from "./pages/SavePayment";
 
 export default function Navigation() {
     return (
@@ -23,7 +25,9 @@ export default function Navigation() {
                     <Route path="services" element={<Services />} />
                     <Route path="questionare" element={<Questionare />} />
                     <Route path="dashboard" element={<Dashboard />} />
+                    <Route path="save-payment" element={<SavePayment />} />
                     <Route path="blog" element={<Blog />} />
+                    <Route path="blog/:id" element={<MainBlog />} />
                 </Routes>
             <Outlet />
             <Footer />

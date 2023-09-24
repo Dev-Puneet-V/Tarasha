@@ -64,6 +64,11 @@ input:focus{
     outline: none;
 }
 
+.phone-no {
+  display: flex;
+  align-items: center;
+}
+
 .phone-no select{
   height: 57px;
   margin-bottom: 4px;
@@ -73,6 +78,7 @@ input:focus{
   font-weight: bold;
   cursor: pointer;
   width: 80px;
+  margin-top: 1.2rem;
 }
 .phone-no select:focus{
   outline: none;
@@ -82,4 +88,5 @@ input:focus{
   border-left: none;
   border-bottom-left-radius: 0px;
   border-top-left-radius: 0px;
+  width: 100%;
 }

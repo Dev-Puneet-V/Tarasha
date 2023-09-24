@@ -1,7 +1,8 @@
 export const BASE_URL_DATA = "https://res.cloudinary.com/dpv6poha8/raw/upload/v1695560956/data_icdvwg.json";
 export const BASE_URL = "https://tarashainteriors.onrender.com"
 export const API_ENDPOINT = {
-    "SITE_DATA" : BASE_URL_DATA + "/site-data",
+    // "SITE_DATA" : BASE_URL_DATA + "/site-data",
+    "SITE_DATA" : BASE_URL_DATA,
     "REGISTER": BASE_URL + "/user/users/signup",
     "LOGIN": BASE_URL + "/user/users/login",
     "SAVE_QUESTIONARE": BASE_URL + "/user/save-user-inquiry",

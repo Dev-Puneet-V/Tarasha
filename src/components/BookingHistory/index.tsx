@@ -44,7 +44,12 @@ const BookingHistory: React.FC = () => {
 
   const debouncedSearch = debounce((searchTerm: string) => {
     // Fetch data from your backend API with pagination and search
-    fetch(`${API_ENDPOINT.TRANSACTION_HISTORY}?search=${searchTerm}&limit=${limit}&page=${page}`)
+    fetch(`${API_ENDPOINT.TRANSACTION_HISTORY}?search=${searchTerm}&limit=${limit}&page=${page}`, {
+      method: "POST",
+        headers: {
+            'Authorization': `Bearer ${Cookies.get('token')}`
+        }
+    })
       .then((response) => response.json())
       .then((data) => {
         setBookings(data.transactions);

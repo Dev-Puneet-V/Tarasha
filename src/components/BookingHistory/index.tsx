@@ -22,7 +22,7 @@ const BookingHistory: React.FC = () => {
   useEffect(() => {
     // Fetch data from your backend API with pagination and search
     fetch(`${API_ENDPOINT.TRANSACTION_HISTORY}?search=${searchTerm}&limit=${limit}&page=${page}`, {
-      method: "GET",
+      method: "POST",
         headers: {
             'Authorization': `Bearer ${Cookies.get('token')}`
         },

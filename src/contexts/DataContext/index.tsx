@@ -18,7 +18,7 @@ export const DataProvider: React.FC<GlobalProps> = ({ children }) => {
         const response = await fetch(API_ENDPOINT.SITE_DATA);
         const data = await response.json();
         console.log(data)
-        setData(data);
+        setData(data[`site-data`]);
       } catch (error) {
         console.error('Error fetching work data:', error);
       }

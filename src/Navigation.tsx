@@ -12,6 +12,7 @@ import Blog from "./pages/Blog";
 import ScrollToTop from "./ScrollToTop";
 import MainBlog from "./pages/MainBlog";
 import SavePayment from "./pages/SavePayment";
+import DashboardUser from "./pages/DashboardUser";
 
 export default function Navigation() {
     return (
@@ -24,7 +25,7 @@ export default function Navigation() {
                     <Route path="packages" element={<Packages />} />
                     <Route path="services" element={<Services />} />
                     <Route path="questionare" element={<Questionare />} />
-                    <Route path="dashboard" element={<Dashboard />} />
+                    <Route path="dashboard" element={<DashboardUser />} />
                     <Route path="save-payment" element={<SavePayment />} />
                     <Route path="blog" element={<Blog />} />
                     <Route path="blog/:id" element={<MainBlog />} />

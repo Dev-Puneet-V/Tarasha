@@ -73,6 +73,14 @@ const Header: React.FC = () => {
               Blog
             </NavLink>
           </li>
+        {isAuthenticated &&  <li className='nav-item'>
+          <NavLink 
+            to={'/dashboard'} 
+            className='link'
+          >
+              Dashboard
+            </NavLink>
+          </li>}
         </ul>
         {!isAuthenticated && <button id='auth-button' onClick={openAuthModal}>{`Login/Signup`}</button>}
       {isAuthenticated && <button id='auth-button' onClick={handleAuthentication}>{`Logout`}</button>}

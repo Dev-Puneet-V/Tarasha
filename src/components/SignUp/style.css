@@ -63,3 +63,23 @@
 input:focus{
     outline: none;
 }
+
+.phone-no select{
+  height: 57px;
+  margin-bottom: 4px;
+  border: 1px solid #B87E1B;
+  background-color: lightgray;
+  border-radius: 10px 0px 0px 10px;
+  font-weight: bold;
+  cursor: pointer;
+  width: 80px;
+}
+.phone-no select:focus{
+  outline: none;
+}
+
+.phone-no input{
+  border-left: none;
+  border-bottom-left-radius: 0px;
+  border-top-left-radius: 0px;
+}

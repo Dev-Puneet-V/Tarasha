@@ -8,13 +8,11 @@ const AuthContext = createContext<AuthContextType | undefined>(undefined);
 export const AuthProvider: React.FC<GlobalProps> = ({ children }) => {
   const [isAuthModalOpen, setIsAuthModalOpen] = useState<boolean>(false);
   const [isAuthenticated, setAuthenticated] = useState<boolean>(false);
-  
-  useEffect(() => {
-    setAuthenticated(!!Cookies.get('token'))
-  }, []);
-  useEffect(() => {
-    console.log(isAuthenticated, "isAuthenticated")
-  }, [isAuthenticated])
+  const [user, setUser] = useState<{
+    _id?: string;
+    name?: string;
+    email?: string;
+  }>({})
   const openAuthModal = () => {
     setIsAuthModalOpen(true);
   };
@@ -24,11 +22,16 @@ export const AuthProvider: React.FC<GlobalProps> = ({ children }) => {
   };
 
   const handleAuthentication = () => {
-    setAuthenticated(!isAuthenticated);
+    if((isAuthenticated && Cookies.get('token')) || isAuthenticated){
+      Cookies.remove('token');
+      setAuthenticated(false);
+    }else if(Cookies.get('token')){
+      setAuthenticated(true);
+    }
   }
 
   return (
-    <AuthContext.Provider value={{isAuthModalOpen, openAuthModal, closeAuthModal, isAuthenticated, handleAuthentication }}>
+    <AuthContext.Provider value={{isAuthModalOpen, openAuthModal, closeAuthModal, isAuthenticated, handleAuthentication, user, setUser }}>
       {children}
     </AuthContext.Provider>
   );
@@ -41,3 +44,5 @@ export const useAuth = (): AuthContextType => {
   }
   return context;
 };
+
+

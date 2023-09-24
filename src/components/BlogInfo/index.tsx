@@ -42,7 +42,7 @@ const BlogInfo: React.FC<BlogProps> = (props) => {
         </div>
           </div>
           <div className='flex blog-main-content gap-3'>
-          <div dangerouslySetInnerHTML={{ __html: content.substring(1, 100) }} className='blog-item-content' />
+          <div dangerouslySetInnerHTML={{ __html: content.split('</p>')[0] + content.split('</p>')[1] }} className='blog-item-content' />
           </div>
           <div className='flex items-center gap-2 text-styled read-more-button'  onClick={() => {navigate(`/blog/${_id}`, {state: props})}}>
             <p className='read-more'>Read More</p>

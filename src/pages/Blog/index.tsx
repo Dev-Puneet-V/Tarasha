@@ -6,105 +6,66 @@ import BlogInfo from '../../components/BlogInfo';
 import useScreenSize from '../../hooks/useMediaQuery';
 import { useBlogContext } from '../../contexts/BlogContext';
 import './style.css';
+import { API_ENDPOINT } from '../../utils/constant';
 
 const Blog: React.FC = () => {
  const {blogData, setBlogData} = useBlogContext();
+ const [currentPage, setCurrentPage] = React.useState<number>(1);
   const screenSize = useScreenSize();
   const navigate = useNavigate();
   React.useEffect(() => {
-    if(!blogData){
-      setBlogData({
-        'blogs': [
-          
-          {
-            '_id': 1,
-            'tags': ['Interior'],
-            'title': 'Modern Coastal Living Room and Bedroom Makeover', 
-            'datePublished':'20 August 2023',
-            'imageUrl': 'https://res.cloudinary.com/dpv6poha8/image/upload/v1693236016/HomeImage2_hdokpj.png',
-            'content': `<p>This is a sample paragraph with at least 10 lines of text. It's often useful to have longer paragraphs to test how text flows within a layout Lorem ipsum dolor sit amet consectetur adipiscing elit. Vivamus aliquet, velit sed vehicula laoreet, est libero lacinia libero, non fringilla justo lorem sed lorem. Nulla facilisi. Sed in erat auctor, volutpat orci eu, laoreet velit. Nulla bibendum tincidunt velit, ut vestibulum turpis dapibus at. Suspendisse potenti. Maecenas vehicula in mi non hendrerit. Ut posuere facilisis nunc, eget dignissim libero. Nulla id ante orci. Donec ut rhoncus ex, ac congue eros. Cras semper odio quis nunc sollicitudin ultrices. Fusce ac facilisis libero. In hac habitasse platea dictumst. Quisque at erat non libero suscipit fringilla eu nec ex. Donec rhoncus mi non augue scelerisque mattis. Nulla facilisi</p>`,
-          },
-          {
-            '_id': 2,
-            'tags': ['Interior'],
-            'title': 'Modern Coastal Living Room and Bedroom Makeover', 
-            'datePublished':'20 August 2023',
-            'imageUrl': 'https://res.cloudinary.com/dpv6poha8/image/upload/v1693236016/HomeImage2_hdokpj.png',
-            'content': `<p>This is a sample paragraph with at least 10 lines of text. It's often useful to have longer paragraphs to test how text flows within a layout Lorem ipsum dolor sit amet consectetur adipiscing elit. Vivamus aliquet, velit sed vehicula laoreet, est libero lacinia libero, non fringilla justo lorem sed lorem. Nulla facilisi. Sed in erat auctor, volutpat orci eu, laoreet velit. Nulla bibendum tincidunt velit, ut vestibulum turpis dapibus at. Suspendisse potenti. Maecenas vehicula in mi non hendrerit. Ut posuere facilisis nunc, eget dignissim libero. Nulla id ante orci. Donec ut rhoncus ex, ac congue eros. Cras semper odio quis nunc sollicitudin ultrices. Fusce ac facilisis libero. In hac habitasse platea dictumst. Quisque at erat non libero suscipit fringilla eu nec ex. Donec rhoncus mi non augue scelerisque mattis. Nulla facilisi</p>`,
-          },
-          {
-            '_id': 3,
-            'tags': ['Interior'],
-            'title': 'Modern Coastal Living Room and Bedroom Makeover', 
-            'datePublished':'20 August 2023',
-            'imageUrl': 'https://res.cloudinary.com/dpv6poha8/image/upload/v1693236016/HomeImage2_hdokpj.png',
-            'content': `<p>This is a sample paragraph with at least 10 lines of text. It's often useful to have longer paragraphs to test how text flows within a layout Lorem ipsum dolor sit amet consectetur adipiscing elit. Vivamus aliquet, velit sed vehicula laoreet, est libero lacinia libero, non fringilla justo lorem sed lorem. Nulla facilisi. Sed in erat auctor, volutpat orci eu, laoreet velit. Nulla bibendum tincidunt velit, ut vestibulum turpis dapibus at. Suspendisse potenti. Maecenas vehicula in mi non hendrerit. Ut posuere facilisis nunc, eget dignissim libero. Nulla id ante orci. Donec ut rhoncus ex, ac congue eros. Cras semper odio quis nunc sollicitudin ultrices. Fusce ac facilisis libero. In hac habitasse platea dictumst. Quisque at erat non libero suscipit fringilla eu nec ex. Donec rhoncus mi non augue scelerisque mattis. Nulla facilisi</p>`,
-          },
-          {
-            '_id': 4,
-            'tags': ['Interior'],
-            'title': 'Modern Coastal Living Room and Bedroom Makeover', 
-            'datePublished':'20 August 2023',
-            'imageUrl': 'https://res.cloudinary.com/dpv6poha8/image/upload/v1693236016/HomeImage2_hdokpj.png',
-            'content': `<p>This is a sample paragraph with at least 10 lines of text. It's often useful to have longer paragraphs to test how text flows within a layout Lorem ipsum dolor sit amet consectetur adipiscing elit. Vivamus aliquet, velit sed vehicula laoreet, est libero lacinia libero, non fringilla justo lorem sed lorem. Nulla facilisi. Sed in erat auctor, volutpat orci eu, laoreet velit. Nulla bibendum tincidunt velit, ut vestibulum turpis dapibus at. Suspendisse potenti. Maecenas vehicula in mi non hendrerit. Ut posuere facilisis nunc, eget dignissim libero. Nulla id ante orci. Donec ut rhoncus ex, ac congue eros. Cras semper odio quis nunc sollicitudin ultrices. Fusce ac facilisis libero. In hac habitasse platea dictumst. Quisque at erat non libero suscipit fringilla eu nec ex. Donec rhoncus mi non augue scelerisque mattis. Nulla facilisi</p>`,
-          },
-          {
-            '_id': 5,
-            'tags': ['Interior'],
-            'title': 'Modern Coastal Living Room and Bedroom Makeover', 
-            'datePublished':'20 August 2023',
-            'imageUrl': 'https://res.cloudinary.com/dpv6poha8/image/upload/v1693236016/HomeImage2_hdokpj.png',
-            'content': `<p>This is a sample paragraph with at least 10 lines of text. It's often useful to have longer paragraphs to test how text flows within a layout Lorem ipsum dolor sit amet consectetur adipiscing elit. Vivamus aliquet, velit sed vehicula laoreet, est libero lacinia libero, non fringilla justo lorem sed lorem. Nulla facilisi. Sed in erat auctor, volutpat orci eu, laoreet velit. Nulla bibendum tincidunt velit, ut vestibulum turpis dapibus at. Suspendisse potenti. Maecenas vehicula in mi non hendrerit. Ut posuere facilisis nunc, eget dignissim libero. Nulla id ante orci. Donec ut rhoncus ex, ac congue eros. Cras semper odio quis nunc sollicitudin ultrices. Fusce ac facilisis libero. In hac habitasse platea dictumst. Quisque at erat non libero suscipit fringilla eu nec ex. Donec rhoncus mi non augue scelerisque mattis. Nulla facilisi</p>`,
-          }
-        
-      ],
-        'prevblogs': [
-          
-            {
-              '_id': 1,
-              'tags': ['Interior'],
-              'title': 'Modern Coastal Living Room and Bedroom Makeover', 
-              'datePublished':'20 August 2023',
-              'imageUrl': 'https://res.cloudinary.com/dpv6poha8/image/upload/v1693236016/HomeImage2_hdokpj.png',
-              'content': `<p>This is a sample paragraph with at least 10 lines of text. It's often useful to have longer paragraphs to test how text flows within a layout Lorem ipsum dolor sit amet consectetur adipiscing elit. Vivamus aliquet, velit sed vehicula laoreet, est libero lacinia libero, non fringilla justo lorem sed lorem. Nulla facilisi. Sed in erat auctor, volutpat orci eu, laoreet velit. Nulla bibendum tincidunt velit, ut vestibulum turpis dapibus at. Suspendisse potenti. Maecenas vehicula in mi non hendrerit. Ut posuere facilisis nunc, eget dignissim libero. Nulla id ante orci. Donec ut rhoncus ex, ac congue eros. Cras semper odio quis nunc sollicitudin ultrices. Fusce ac facilisis libero. In hac habitasse platea dictumst. Quisque at erat non libero suscipit fringilla eu nec ex. Donec rhoncus mi non augue scelerisque mattis. Nulla facilisi</p>`,
-            },
-            {
-              '_id': 2,
-              'tags': ['Interior'],
-              'title': 'Modern Coastal Living Room and Bedroom Makeover', 
-              'datePublished':'20 August 2023',
-              'imageUrl': 'https://res.cloudinary.com/dpv6poha8/image/upload/v1693236016/HomeImage2_hdokpj.png',
-              'content': `<p>This is a sample paragraph with at least 10 lines of text. It's often useful to have longer paragraphs to test how text flows within a layout Lorem ipsum dolor sit amet consectetur adipiscing elit. Vivamus aliquet, velit sed vehicula laoreet, est libero lacinia libero, non fringilla justo lorem sed lorem. Nulla facilisi. Sed in erat auctor, volutpat orci eu, laoreet velit. Nulla bibendum tincidunt velit, ut vestibulum turpis dapibus at. Suspendisse potenti. Maecenas vehicula in mi non hendrerit. Ut posuere facilisis nunc, eget dignissim libero. Nulla id ante orci. Donec ut rhoncus ex, ac congue eros. Cras semper odio quis nunc sollicitudin ultrices. Fusce ac facilisis libero. In hac habitasse platea dictumst. Quisque at erat non libero suscipit fringilla eu nec ex. Donec rhoncus mi non augue scelerisque mattis. Nulla facilisi</p>`,
-            },
-            {
-              '_id': 3,
-              'tags': ['Interior'],
-              'title': 'Modern Coastal Living Room and Bedroom Makeover', 
-              'datePublished':'20 August 2023',
-              'imageUrl': 'https://res.cloudinary.com/dpv6poha8/image/upload/v1693236016/HomeImage2_hdokpj.png',
-              'content': `<p>This is a sample paragraph with at least 10 lines of text. It's often useful to have longer paragraphs to test how text flows within a layout Lorem ipsum dolor sit amet consectetur adipiscing elit. Vivamus aliquet, velit sed vehicula laoreet, est libero lacinia libero, non fringilla justo lorem sed lorem. Nulla facilisi. Sed in erat auctor, volutpat orci eu, laoreet velit. Nulla bibendum tincidunt velit, ut vestibulum turpis dapibus at. Suspendisse potenti. Maecenas vehicula in mi non hendrerit. Ut posuere facilisis nunc, eget dignissim libero. Nulla id ante orci. Donec ut rhoncus ex, ac congue eros. Cras semper odio quis nunc sollicitudin ultrices. Fusce ac facilisis libero. In hac habitasse platea dictumst. Quisque at erat non libero suscipit fringilla eu nec ex. Donec rhoncus mi non augue scelerisque mattis. Nulla facilisi</p>`,
-            },
-            {
-              '_id': 4,
-              'tags': ['Interior'],
-              'title': 'Modern Coastal Living Room and Bedroom Makeover', 
-              'datePublished':'20 August 2023',
-              'imageUrl': 'https://res.cloudinary.com/dpv6poha8/image/upload/v1693236016/HomeImage2_hdokpj.png',
-              'content': `<p>This is a sample paragraph with at least 10 lines of text. It's often useful to have longer paragraphs to test how text flows within a layout Lorem ipsum dolor sit amet consectetur adipiscing elit. Vivamus aliquet, velit sed vehicula laoreet, est libero lacinia libero, non fringilla justo lorem sed lorem. Nulla facilisi. Sed in erat auctor, volutpat orci eu, laoreet velit. Nulla bibendum tincidunt velit, ut vestibulum turpis dapibus at. Suspendisse potenti. Maecenas vehicula in mi non hendrerit. Ut posuere facilisis nunc, eget dignissim libero. Nulla id ante orci. Donec ut rhoncus ex, ac congue eros. Cras semper odio quis nunc sollicitudin ultrices. Fusce ac facilisis libero. In hac habitasse platea dictumst. Quisque at erat non libero suscipit fringilla eu nec ex. Donec rhoncus mi non augue scelerisque mattis. Nulla facilisi</p>`,
-            },
-            {
-              '_id': 5,
-              'tags': ['Interior'],
-              'title': 'Modern Coastal Living Room and Bedroom Makeover', 
-              'datePublished':'20 August 2023',
-              'imageUrl': 'https://res.cloudinary.com/dpv6poha8/image/upload/v1693236016/HomeImage2_hdokpj.png',
-              'content': `<p>This is a sample paragraph with at least 10 lines of text. It's often useful to have longer paragraphs to test how text flows within a layout Lorem ipsum dolor sit amet consectetur adipiscing elit. Vivamus aliquet, velit sed vehicula laoreet, est libero lacinia libero, non fringilla justo lorem sed lorem. Nulla facilisi. Sed in erat auctor, volutpat orci eu, laoreet velit. Nulla bibendum tincidunt velit, ut vestibulum turpis dapibus at. Suspendisse potenti. Maecenas vehicula in mi non hendrerit. Ut posuere facilisis nunc, eget dignissim libero. Nulla id ante orci. Donec ut rhoncus ex, ac congue eros. Cras semper odio quis nunc sollicitudin ultrices. Fusce ac facilisis libero. In hac habitasse platea dictumst. Quisque at erat non libero suscipit fringilla eu nec ex. Donec rhoncus mi non augue scelerisque mattis. Nulla facilisi</p>`,
-            }
-          
-        ]
-      })
-    }
+    console.log(blogData)
+    // if(blogData || blogData?.blogs || blogData?.blogs?.length === 0){
+      getBlogData(currentPage);
+    // }
   }, []);
+  const handleNav = async (next : boolean) => {
+    if(next){
+      await getBlogData(currentPage + 1);
+      setCurrentPage(currentPage + 1);
+    }else if(!next && currentPage > 1){
+      await getBlogData(currentPage - 1);
+      setCurrentPage(currentPage - 1);
+    }
+  }
+  const getBlogData = async (page: number) => {
+    const response = await fetch(API_ENDPOINT.GET_BLOG_DATA, {
+      method: "POST",
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        "page": page,
+        "maxcount": 5
+      })
+    })
+    let data = await response.json();
+    if(data.success){
+      let updatedData = {
+        ...data,
+      "blogs": data.current?.map((blog: any) => {
+        return {
+          ...blog,
+          tags: blog.topics,
+          content: blog.html,
+          imageUrl: blog.title_img_url,
+          datePublished: new Date(blog.updatedAt).getFullYear()
+        }
+      }),
+      "prevblogs": data.previous?.map((blog: any) => {
+        return {
+          ...blog,
+          tags: blog.topics,
+          content: blog.html,
+          imageUrl: blog.title_img_url,
+          datePublished: new Date(blog.updatedAt).getFullYear()
+        }
+      }),
+    }
+    console.log(updatedData)
+      setBlogData((prevBlogData: any) => (updatedData))
+    }
+  }
   return (
     <div id='home-container'>
         <div>
@@ -116,11 +77,17 @@ const Blog: React.FC = () => {
                 </div>
             </Image>
             <div className={`mb-8 p-8 m-8 flex gap-1 ${screenSize !== 'lg' && 'flex-col'}`}>
-                <div className='flex flex-col gap-3 blog-items-container'>
+                <div className='flex flex-col gap-5'>
+                  <div className='flex flex-col gap-3 blog-items-container'>
                   { blogData?.blogs?.map((blog: any) => {
                   return <BlogInfo {...blog} key={blog._id}/>
                 })
                 }
+                <div className='flex gap-3'>
+                  <p onClick={() => handleNav(false)} className={currentPage === 1 ? 'disable' : ''}>Prev</p>
+                  <p onClick={() => handleNav(true)}>Next</p>
+                </div>
+                </div>
                 </div>
                 <div className='blog-item-container flex flex-col gap-3 prev-posts-container'>
                   <p className='text-styled'>Previous Posts</p>

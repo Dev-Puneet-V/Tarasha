@@ -7,8 +7,8 @@ export const useBlogContext = () => {
 };
 
 export const BlogProvider = ({ children }) => {
-  const [blogData, setBlogData] = useState();
-
+  const [blogData, setBlogData] = useState({blogs: [], prevblogs: []});
+  
   return (
     <BlogContext.Provider value={{ blogData, setBlogData }}>
       {children}

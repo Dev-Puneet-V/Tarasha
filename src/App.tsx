@@ -1,10 +1,14 @@
+import React from 'react';
 import './App.css'
 import Navigation from './Navigation';
 import Auth from './components/Auth';
 import { useAuth } from './contexts/AuthContext';
 
 function App() {
-  const { isAuthModalOpen } = useAuth();
+  const {handleAuthentication, isAuthModalOpen } = useAuth();
+  React.useEffect(() => {
+    handleAuthentication();
+  }, [])
   return (
       <>
         <Navigation />

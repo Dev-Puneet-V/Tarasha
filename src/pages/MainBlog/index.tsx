@@ -14,7 +14,7 @@ const MainBlog: React.FC = () => {
 
   return (
     <div className='flex flex-col gap-3'>
-      <img src={imageUrl}/>
+      <img src={imageUrl} className='blog-main-image'/>
       <div className='p-8 m-8 flex flex-col gap-1'>
       <p className='text-styled'>{title}</p>
       

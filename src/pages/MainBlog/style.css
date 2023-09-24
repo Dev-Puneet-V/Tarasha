@@ -1,3 +1,18 @@
 .blog-item-content-main{
     line-height: 2rem;
 }
+
+.blog-main-image{
+    position: relative;
+    top: 7.5rem;
+    width: 94vw;
+    margin: auto;
+    padding-top: 1rem;
+    max-height: 75vh;
+    margin-bottom: 4rem;
+}
+
+.blog-item-content-main{
+    font-size: 1.4rem;
+    text-align: justify;
+}

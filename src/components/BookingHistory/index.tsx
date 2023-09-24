@@ -5,11 +5,15 @@ import './style.css';
 import { API_ENDPOINT } from '../../utils/constant';
 
 interface Booking {
-  bookingId: string;
-  paymentId: string;
-  scheduledDate: string;
-  status: string;
-  bookingTime: string;
+  bookingId?: string;
+  paymentId?: string;
+  scheduledDate?: string;
+  status?: string;
+  bookingTime?: string;
+  booking_remarks?: string;
+  booking_date?: string;
+  _id?: string;
+  razorpay_payment_id?: string;
 }
 
 const BookingHistory: React.FC = () => {
@@ -43,8 +47,8 @@ const BookingHistory: React.FC = () => {
     fetch(`${API_ENDPOINT.TRANSACTION_HISTORY}?search=${searchTerm}&limit=${limit}&page=${page}`)
       .then((response) => response.json())
       .then((data) => {
-        setBookings(data);
-        setFilteredBookings(data);
+        setBookings(data.transactions);
+        setFilteredBookings(data.transactions);
       })
       .catch((error) => {
         console.error('Error fetching data:', error);
@@ -100,13 +104,14 @@ const BookingHistory: React.FC = () => {
         </thead>
         <tbody>
           {filteredBookings.map((booking) => (
-            <tr key={booking.bookingId}>
-              <td>{booking.bookingId}</td>
-              <td>{booking.paymentId}</td>
-              <td>{booking.scheduledDate}</td>
+            <tr key={booking._id}>
+              <td>{booking._id}</td>
+              <td>{booking.razorpay_payment_id}</td>
+              <td>{booking.booking_date}</td>
               <td className='flex gap-1 items-center justify-center status'>
-                <div className={`${booking.status === 'active' ? 'status-booking-pending' : 'status-booking-over'}`}></div>
-                <p>{booking.status}</p>
+                {booking.booking_remarks?.split("  ")[1]}
+                {/* <div className={`${booking.status === 'active' ? 'status-booking-pending' : 'status-booking-over'}`}></div>
+                <p>{booking.status}</p> */}
               </td>
               <td>{booking.bookingTime}</td>
             </tr>

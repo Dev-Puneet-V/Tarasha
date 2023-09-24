@@ -16,7 +16,7 @@
     const [isTimeSelectionEnabled, setTimeSelection] = useState<boolean>(false);
     const [selectedTime, setSelectedTime] = useState<boolean | undefined | string | number>();
     const [isPaymentStep, setPaymentStep] = useState<boolean>(false);
-    const {isAuthenticated} = useAuth();
+    const {isAuthenticated,  openAuthModal} = useAuth();
     const [availableSlots, setAvailableSlots] = React.useState<[{
       "start": string,
       "end": string,
@@ -111,6 +111,7 @@
         if(!isAuthenticated){
           // handleGoogleSignIn();
           // useGoogleAuth();
+          openAuthModal();
         }else{
           setPaymentStep(true);
         }
@@ -254,7 +255,7 @@
       {(!selectedTime || (selectedTime && !isPaymentStep)) &&  <div className="calendar-container">
           {renderCalendar()}
           </div>}
-        {!isPaymentStep && <button onClick={isAuthenticated ? handleTimeSelectionEnable : useGoogleAuth}  className={`relative mt-4 flex button button-dark gap-1 items-center justify-center ${!selectedDate && 'disable'}`}>
+        {!isPaymentStep && <button onClick={handleTimeSelectionEnable}  className={`relative mt-4 flex button button-dark gap-1 items-center justify-center ${!selectedDate && 'disable'}`}>
               <p className={`button-calender text-bold ${(!selectedDate || (selectedDate && !selectedTime)) ?  'disable' : ''}`}>Continue</p>
               <img src={NextImage} className='black-next' />
         </button>}

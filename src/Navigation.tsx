@@ -16,7 +16,7 @@ import DashboardUser from "./pages/DashboardUser";
 
 export default function Navigation() {
     return (
-        <Router>
+        <Router basename="/">
             <ScrollToTop />
             <Header />
                 <Routes>

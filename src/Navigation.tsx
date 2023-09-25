@@ -21,14 +21,14 @@ export default function Navigation() {
             <Header />
                 <Routes>
                     <Route path="" element={<Home />}/>
-                    <Route path="our-works" key="our-works" children={<OurWork />} element={<OurWork />} />
-                    <Route path="packages" key={"packages"} children={<Packages />} element={<Packages />} />
-                    <Route path="services" key="services"  children={<Services />} element={<Services />} />
-                    <Route path="questionare" key="questionare" children={<Questionare />} element={<Questionare />} />
-                    <Route path="dashboard" key="dashboard" children={<DashboardUser />} element={<DashboardUser />} />
-                    <Route path="save-payment" key="save-payment" children={<SavePayment />} element={<SavePayment />} />
-                    <Route path="blog" key="blog" children={<Blog />} element={<Blog />} />
-                    <Route path="blog/:id" key="blog/:id" children={<MainBlog />} element={<MainBlog />} />
+                    <Route path="our-works" element={<OurWork />} />
+                    <Route path="packages" element={<Packages />} />
+                    <Route path="services" element={<Services />} />
+                    <Route path="questionare" element={<Questionare />} />
+                    <Route path="dashboard" element={<DashboardUser />} />
+                    <Route path="save-payment" element={<SavePayment />} />
+                    <Route path="blog" element={<Blog />} />
+                    <Route path="blog/:id" element={<MainBlog />} />
                 </Routes>
             <Outlet />
             <Footer />

@@ -21,8 +21,8 @@ export default function Navigation() {
             <Header />
                 <Routes>
                     <Route path="" element={<Home />}/>
-                    <Route path="our-works" element={<OurWork />} />
-                    <Route path="packages" element={<Packages />} />
+                    <Route path="/our-works" element={<OurWork />} />
+                    <Route path="/packages" element={<Packages />} />
                     <Route path="services" element={<Services />} />
                     <Route path="questionare" element={<Questionare />} />
                     <Route path="dashboard" element={<DashboardUser />} />

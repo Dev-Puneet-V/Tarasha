@@ -34,11 +34,11 @@
 }
 
 #scope-of-work .element-img {
-    border-radius: 50%;
-    height: 2rem;
-    width: 2rem;
+    height: 4.5rem;
+    width: 4.5em;
     background-color: #fff;
-    padding: 0.4rem;
+    position: relative;
+    left: -7px;
 }
 
 .scope{
@@ -169,3 +169,60 @@
     width: 33.33%; /* 100% divided by 3 columns */
   }
   
+.joiner{
+    width: 10rem;
+    height: 1.5rem;
+    margin-top: 3rem;
+    position: relative;
+    left: -6rem;
+}
+
+.l-r-t-b-joiner{
+    transform: rotateY(180deg);
+}
+
+.l-r-b-t-joiner{
+    transform: rotate(180deg);
+}
+
+.r-l-b-t-joiner{
+    transform: rotateX(180deg);
+}
+
+.t-b-r-l-joiner{
+    transform: rotateY(180deg) rotateZ(270deg) ;
+    width: 8rem;
+    position: relative;
+    left: -2rem;
+    perspective: 10px;
+}
+
+.w-75{
+    width: 75%;
+}
+
+
+.row-12-joiner{
+    justify-content: flex-end;
+    height:12rem;
+    overflow-y: scroll;
+}
+
+.row-23-joiner{
+    justify-content: flex-start;
+    height:12rem;
+    width: 90%;
+}
+
+.t-b-l-r-joiner{
+    transform: rotateZ(270deg) ;
+    width: 8rem;
+    position: relative;
+    left: -2rem;
+    perspective: 10px;
+    overflow: visible;
+}
+
+.w-full{
+    width: 100%;;
+}

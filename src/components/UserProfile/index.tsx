@@ -1,28 +1,55 @@
 import React from 'react';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
-import './style.css';
+import Cookies from 'js-cookie';
 import { useAuth } from '../../contexts/AuthContext';
+import { API_ENDPOINT } from '../../utils/constant';
+import './style.css';
+import eventBus from '../../utils/eventBus';
+import { Ring } from '@uiball/loaders';
 
 const UserProfile: React.FC = () => {
-  const {user} = useAuth();
-  console.log(user)
+  const {user, setUser} = useAuth();
+  const [loading, setLoading] = React.useState(false);
   const formik = useFormik({
     initialValues: {
       name: user?.name,
-      email: user?.email,
-      phoneNumber: '123-456-7890'
+      // email: user?.email,
+      phoneNumber: user?.number,
+      // countryCode: user?.countryCode || '+91',
     },
     validationSchema: Yup.object({
       name: Yup.string().required('Name is required'),
-      email: Yup.string().email('Invalid email format').required('Email is required'),
       phoneNumber: Yup.string()
       .matches(/^\d{10}$/, 'Phone number must be a 10-digit number')
       .required('Phone number is required')
     }),
-    onSubmit: (values) => {
-      // You can send a request to update the user's profile data to the server here
-      console.log('User data submitted:', values);
+    onSubmit: async (values) => {
+      try {
+        const formattedNumber = [{"countrycode": user?.countryCode || '+91', "mobile": values?.phoneNumber}];
+        
+        setLoading(true);
+        const response = await fetch(API_ENDPOINT.UPDATE_USER, {
+          method: 'PATCH',
+          headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${Cookies.get('token')}`
+          },
+          body: JSON.stringify({ ...values,mobiles: formattedNumber, phoneNumber: undefined, countryCode: undefined }),
+        });
+        const userInfo = await response.json();
+        if (response.ok) {
+          setUser(prev => setUser(prev => ({_id: userInfo?._id,countrycode: user?.countryCode || '+91',  name:  userInfo?.name, email: userInfo?.email, number: userInfo?.mobiles[0]?.mobile, countryCode: userInfo?.mobiles[0]?.countrycode})))
+          eventBus.emit("toast:success", "User Updated!");
+          
+        }else{
+          throw new Error('Updation failed');
+        }
+      } catch (error) {
+        eventBus.emit("toast:error", "Updation Failed!!")
+      }finally{
+        setLoading(false);
+      }
     },
   });
 
@@ -44,7 +71,7 @@ const UserProfile: React.FC = () => {
             <div className="error">{formik.errors.name}</div>
           ) : null}
         </div>
-        <div className="form-group">
+        {/* <div className="form-group">
           <label htmlFor="email">Email:</label>
           <input
             type="email"
@@ -57,7 +84,7 @@ const UserProfile: React.FC = () => {
           {formik.touched.email && formik.errors.email ? (
             <div className="error">{formik.errors.email}</div>
           ) : null}
-        </div>
+        </div> */}
         <div className="form-group">
           <label htmlFor="phoneNumber">Phone Number:</label>
           <input
@@ -72,7 +99,8 @@ const UserProfile: React.FC = () => {
             <div className="error">{formik.errors.phoneNumber}</div>
           ) : null}
         </div>
-        <button type="submit">Save Changes</button>
+       {!loading && <button type="submit">Save Changes</button>}
+       {loading && <button type="submit"><Ring color='#000000'/></button>}
       </form>
     </div>
   );

@@ -77,3 +77,8 @@
         height: 35px !important;
     }
   }
+
+
+  .modal input{
+    width: 93.5%;
+  }

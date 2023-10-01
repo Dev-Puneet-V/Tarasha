@@ -9,11 +9,11 @@ const Element: React.FC<ElementProps> = (props) => {
   } = props;
 
   return (
-    <div className='flex flex-col gap-1 element-container justify-end'>
+    <div className='flex flex-col gap-1 element-container items-center'>
       <div>
-        <img className='element-img' src={src}/>
+        <img  className='element-img' src={src}/>
       </div>
-      <p className='text-bold'>{text}</p>
+      <p className='text-bold font-bold'>{text}</p>
     </div>
   )
 }

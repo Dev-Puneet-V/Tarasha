@@ -19,7 +19,7 @@ const Package: React.FC<Packageinterface> = (props) => {
             features?.map((feature: string) => {
                 return (
                     <div className='flex items-center gap-1'>
-                        <img src={TickIcon} />
+                        <img  src={TickIcon} />
                         <p>{feature}</p>
                     </div>
                 )

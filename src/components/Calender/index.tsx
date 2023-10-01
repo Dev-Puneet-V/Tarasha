@@ -8,6 +8,8 @@
   import { API_ENDPOINT } from '../../utils/constant';
   import { useBookingContext } from '../../contexts/Booking';
   import { useAuth } from '../../contexts/AuthContext';
+import eventBus from '../../utils/eventBus';
+import { Waveform } from '@uiball/loaders';
 
   const Calendar: React.FC = () => {
     const [selectedDate, setSelectedDate] = useState<Date | null | undefined>(null);
@@ -17,6 +19,7 @@
     const [selectedTime, setSelectedTime] = useState<boolean | undefined | string | number>();
     const [isPaymentStep, setPaymentStep] = useState<boolean>(false);
     const {isAuthenticated,  openAuthModal} = useAuth();
+    const [loadingSlots, setLoadingSlots] = useState(false);
     const [availableSlots, setAvailableSlots] = React.useState<[{
       "start": string,
       "end": string,
@@ -66,7 +69,9 @@
     }, [selectedTime])
 
     const fetchAvailableSlots = async () => {
+      try{
       if(!selectedDate) return;
+      setLoadingSlots(true);
       const response = await fetch(API_ENDPOINT.AVAILABLE_SLOTS, {
         method: 'POST',
         headers: {
@@ -81,7 +86,14 @@
       const data = await response.json();
       if(data.success){
           setAvailableSlots(data?.slotAvailable);
+      }else{
+        throw new Error('Unable to fetch slots')
       }
+    }catch(error){
+      eventBus.emit('toast:error', 'Unable to fetch slots')
+    }finally{
+      setLoadingSlots(false)
+    }
     }
     React.useEffect(() => {
       if(selectedDate){
@@ -130,7 +142,9 @@
       }
       return (
         <td
-          className={`${new Date(date).getDate() <= new Date().getDate() &&  currentMonth <= new Date().getMonth() + 1 && currentYear <= new Date().getFullYear() && currentYear <= new Date().getFullYear() + 1 && 'disable'} date-cell ${new Date(date).getTime() == new Date(selectedDate || Date.now()).getTime() ? 'selected' : ''}`}
+          className={`${new Date(date).getDate() < new Date().getDate() &&  currentMonth <= new Date().getMonth() && currentYear <= new Date().getFullYear() && currentYear <= new Date().getFullYear() + 1 && 'disable'} date-cell ${new Date(date).getTime() == new Date(selectedDate || Date.now()).getTime() ? 'selected' : ''}`}
+          
+          // className={`date-cell ${new Date(date).getTime() == new Date(selectedDate || Date.now()).getTime() ? 'selected' : ''}`}
           onClick={() => handleDateClick(date)}
           key={date.toString()}
         >
@@ -141,7 +155,7 @@
     };
 
     const goToPreviousMonth = () => {
-      if(currentMonth <= new Date().getMonth() + 1 && currentYear <= new Date().getFullYear()){
+      if(currentMonth <= new Date().getMonth() && currentYear <= new Date().getFullYear()){
         return;
       }
       if (currentMonth === 0) {
@@ -194,9 +208,9 @@
       return (
         <div className="calendar">
           <div className="calendar-header flex items-center mt-2 p-4 justify-between">
-            <img  src={PrevImage} onClick={goToPreviousMonth} className={`${currentMonth <= new Date().getMonth() + 1  && currentYear <= new Date().getFullYear() && 'disable'}`}/>
+            <img  src={PrevImage} onClick={goToPreviousMonth} className={`${currentMonth <= new Date().getMonth()  && currentYear <= new Date().getFullYear() && 'disable'}`}/>
             <p className='text-bold'>{`${new Date(currentYear, currentMonth).toLocaleDateString('default', { month: 'long' })} ${currentYear}`}</p>
-            <img  src={PrevImage} onClick={goToNextMonth} className={`${isTimeSelectionEnabled && 'disable'}`}/>
+            <img   src={PrevImage} onClick={goToNextMonth} className={`${isTimeSelectionEnabled && 'disable'}`}/>
           </div>
         {
           !isTimeSelectionEnabled &&  
@@ -225,9 +239,7 @@
         }
         {
           isTimeSelectionEnabled && !isPaymentStep && <div className='m-8 flex wrap gap-3 justify-center items-center time-selector'>
-                  <>{
-                    console.log(availableSlots?.length)
-                  }</>
+                  
                   {
                     availableSlots?.length > 0 &&  availableSlots?.map((curr, index: number) =>{
                           return (
@@ -236,7 +248,13 @@
                       })
                   }
                   {
-                    availableSlots?.length === 0 && <p>No Slots available</p>
+                    availableSlots?.length === 0 && !loadingSlots && <p>No Slots available</p>
+                  }
+                  {
+                    loadingSlots && 
+                    <div className='flex justify-center items-center'>
+                      <Waveform />
+                    </div>
                   }
           </div>
         }
@@ -257,7 +275,7 @@
           </div>}
         {!isPaymentStep && <button onClick={handleTimeSelectionEnable}  className={`relative mt-4 flex button button-dark gap-1 items-center justify-center ${!selectedDate && 'disable'}`}>
               <p className={`button-calender text-bold ${(!selectedDate || (selectedDate && !selectedTime)) ?  'disable' : ''}`}>Continue</p>
-              <img src={NextImage} className='black-next' />
+              <img  src={NextImage} className='black-next' />
         </button>}
         {isPaymentStep &&
         <div className={`payment-component flex justify-center items-center ${!selectedTime && 'v-hidden'} ${!selectedTime ? 'absolute' : ''}`}>

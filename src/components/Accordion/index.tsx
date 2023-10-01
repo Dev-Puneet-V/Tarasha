@@ -1,23 +1,25 @@
 import React, { useState } from 'react'
 import { AccordionProps } from './type';
+import useScreenSize from '../../hooks/useMediaQuery';
 import './style.css';
 
 
 const Accordion: React.FC<AccordionProps> = (props) => {
     const { title, children } = props;
     const [isOpen, setIsOpen] = useState(false);
+    const screenSize = useScreenSize();
 
     const toggleAccordion = () => {
       setIsOpen(!isOpen);
     };
     
     return (
-        <div className='accordion-container ml-8 mr-8 pr-8 pl-8 mt-4'>
+        <div className={`accordion-container ${screenSize === 'sm' ? 'ml-4 mr-4 mt-4' : 'ml-8 mr-8 pr-8 pl-8 mt-4'}`}>
             <div
                 className="flex justify-between items-center bg-gray-200 p-2 cursor-pointer"
                 onClick={toggleAccordion}
             >
-            <p className="text-bold">{title}</p>
+            <p className="text-bold pr-2">{title}</p>
             <svg
                 className={`w-5 h-5 ${!isOpen ? 'down' : 'up'}`}
                 xmlns="http://www.w3.org/2000/svg"
@@ -32,7 +34,7 @@ const Accordion: React.FC<AccordionProps> = (props) => {
             </svg>
         </div>
         {isOpen && (
-            <div className=" font-small">{children}</div>
+            <div className="font-small">{children}</div>
         )}
         <div className='ml-2 mr-2 border-bottom'/>
         </div>

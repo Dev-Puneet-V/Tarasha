@@ -1,16 +1,17 @@
 import React from 'react';
 import { ImageProps } from './type';
 import './style.css';
+import ImageLoader from '../ImageLoaderComponent';
 
 const Image: React.FC<ImageProps> = (props) => {
     const {
-        src,
+        src = '',
         children,
         className
     } = props;
     return (
         <div className={`relative ${className} home-img img`}>
-            <img src={src} className='absolute background-img' loading="lazy" />
+            <ImageLoader src={src} className='absolute background-img' />
             {children}
         </div>
     );

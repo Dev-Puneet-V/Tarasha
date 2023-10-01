@@ -11,7 +11,7 @@
     border-radius: 50%;
     border: 3px solid #ffffff;
     padding: 1rem;
-    top: 50%;
+    top: 40%;
     height: 2rem;
     width: 2rem;
     position: relative;
@@ -80,3 +80,8 @@
          width: 90vw;
     }
 }
+
+#work-container .text-work .text-styled, #work-container > p{
+    text-align: left !important;
+}
+

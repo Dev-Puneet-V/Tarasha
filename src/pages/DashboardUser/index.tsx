@@ -1,19 +1,23 @@
 import React, { useState } from 'react';
+import { useLocation } from 'react-router-dom';
 import UserProfile from '../../components/UserProfile';
 import BookingHistory from '../../components/BookingHistory';
-import './style.css';
+import useScreenSize from '../../hooks/useMediaQuery';
 import BlogWriting from '../../components/BlogWriting';
-
+import './style.css';
+import Modal from '../../components/Modal';
 const DashboardUser: React.FC = () => {
-  const [activeComponent, setActiveComponent] = useState<string>(''); // Initially, no active component
-
+  const location = useLocation();
+  const data = location.state;
+  const [activeComponent, setActiveComponent] = useState<string>(data?.s ? 'profile' : 'bookingHistory'); // Initially, no active component
+  const screenSize = useScreenSize();
   const handleComponentChange = (component: string) => {
     setActiveComponent(component);
   };
 
   return (
     <div id="dashboard-user" className="flex">
-      <div className={`dashboard-sidebar`}>
+      <div className={`dashboard-sidebar ${screenSize === 'sm' ? 'w-full' : ''}`}>
         {/* Sidebar buttons */}
         <div className="sidebar-buttons">
           <button
@@ -28,21 +32,33 @@ const DashboardUser: React.FC = () => {
           >
             Booking History
           </button>
-          <button
+          {/* <button
             className={activeComponent === 'blogEditor' ? 'active' : ''}
             onClick={() => handleComponentChange('blogEditor')}
           >
             Blog Editor
-          </button>
+          </button> */}
           {/* Add more buttons as needed */}
         </div>
       </div>
-      <div className="dashboard-main-content">
-        {/* Render components based on the active component */}
-        {activeComponent === 'profile' && <UserProfile />}
-        {activeComponent === 'bookingHistory' && <BookingHistory />}
-        {activeComponent === 'blogEditor' && <BlogWriting />}
-      </div>
+      {
+          screenSize !== 'sm' && <div className="dashboard-main-content">
+          {activeComponent === 'profile' && <UserProfile />}
+          {activeComponent === 'bookingHistory' && <BookingHistory />}
+          {activeComponent === 'blogEditor' && <BlogWriting />}
+        </div>
+      }
+      {
+          screenSize === 'sm' && 
+          <Modal isOpen={activeComponent !== ''} onClose={() => handleComponentChange('') }> 
+            <div className="dashboard-main-content">
+              {activeComponent === 'profile' && <UserProfile />}
+              {activeComponent === 'bookingHistory' && <BookingHistory />}
+              {/* {activeComponent === 'blogEditor' && <BlogWriting />} */}
+          </div>
+        </Modal>
+      }
+      
     </div>
   );
 };

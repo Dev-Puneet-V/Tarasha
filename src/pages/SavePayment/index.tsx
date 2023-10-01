@@ -22,18 +22,39 @@ const SavePayment: React.FC = () => {
   }, []);
 
   const processPaymentData = async () => {
-    // await new Promise((resolve) => {
-    //     setTimeout(resolve, 2000);
-    // });
-    // swal({
-    //     title: "Payment information saved successfully",
-    //     // text: "Click Ok to view the published blog",
-    //     icon: "success",
-    //     dangerMode: false,
-    //     timer: 5000, // Automatically close the modal after 5 seconds (5000 milliseconds)
-    //   })
-    await savePaymentDetail(paymentId, bookingData);
-    localStorage.removeItem('booking-details');
+    try{
+      const paymentRespnse = await savePaymentDetail(paymentId, bookingData);
+      
+      if(paymentRespnse?.success){
+        swal({
+          title: "Payment information saved successfully",
+          text: "Click Ok to proceed further",
+          icon: "success",
+          dangerMode: false,
+          // timer: 10000
+        }).then((result) => {
+          if (result) {
+            navigate('/dashboard')
+          } 
+        });
+      }else{
+        throw new Error('Payment saving unsuccessfull');
+      }
+    }catch(error){
+      swal({
+        title: "Payment unsuccessfull",
+        text: "Click Ok to proceed further",
+        icon: "error",
+        dangerMode: true,
+        // timer: 10000
+      }).then((result) => {
+        if (result) {
+          navigate('/')
+        } 
+      });
+    }finally{
+      localStorage.removeItem('booking-details');
+    }
   }
 
   React.useEffect(() => {

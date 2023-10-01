@@ -14,3 +14,17 @@
     padding-left: 1rem;
 }
 
+
+.blogss .text-styled{
+    line-height: 45px;
+    font-size: 2rem;
+}
+
+.blog-mini-image{
+    width: max(30%, 450px);
+    object-fit: contain;
+}
+
+.prev-posts-container{
+    min-width: 300px;
+}

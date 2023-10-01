@@ -40,3 +40,8 @@
     text-align: left;
     margin-top: 1rem;
 }
+
+.questionare-header p{
+ text-align: center !important;
+ line-height: 3rem;
+}

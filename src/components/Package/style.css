@@ -52,3 +52,19 @@
 .select-plan:hover .select-package-divider, .select-package-divider:hover{
     width: 50%;
 }
+
+@media (max-width: 900px) {
+    .package-container{
+        height: auto !important;
+        min-height: auto !important;
+        width: 95% !important;
+        max-width: auto !important;
+        min-width: none !important;
+    }
+    .package-container p{
+        font-size: 0.8rem !important;
+    }
+    .package-container .text-styled-2{
+        font-size: 2rem !important;
+    }
+}

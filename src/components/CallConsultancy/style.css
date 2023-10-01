@@ -12,3 +12,11 @@
 #call-consultancy-container div{
     width: 100%;
 }
+
+.rs-text{
+    text-align: left !important;
+}
+
+.book-now-button .button{
+    width: 8rem;
+}

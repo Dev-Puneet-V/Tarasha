@@ -1,5 +1,5 @@
 
-  .modal-header {
+.modal-header {
     display: flex;
     justify-content: flex-end;
   }
@@ -103,6 +103,11 @@ input:focus{
   overflow-x: visible;
 }
 
-.modal{
-  overflow-y: scroll !important;
+.reset-pass{
+    position: relative;
+    top: 7.5rem;
+    height: 83vh;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
 }

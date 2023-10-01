@@ -2,7 +2,7 @@
     /* height: 250px; */
     
 }
-.blog-item-container img{
+.blog-item-container > img{
     max-width: 371px;
     max-height: 100%;
 }
@@ -38,7 +38,7 @@
 }
 
 .blog-main-content div{
-    width: 80%;
+    width: 100%;
     height: auto;
     align-items: flex-end;
 }
@@ -60,7 +60,7 @@
 }
 
 .blog-item-image{
-    width: 300px;
+    width: max(30%, 400px);
 }
 
 
@@ -101,3 +101,32 @@
     flex-direction: row-reverse !important;
     gap: 10px !important;
 }
+
+.left-mini-blog{
+    width: 65%;
+}
+
+.blog-item-container .text-styled{
+    font-size: 1.4rem;
+    line-height: 30px;
+}
+
+.w-100{
+    width: 100%;
+}
+.h-25{
+    height: 25vh;
+}
+
+.h-25 > *{
+    object-fit: contain !important;
+}
+
+@media (max-width: 900px){
+    .blog-item-container .text-styled{
+     font-size: 1rem;
+    }
+    .text-image-background .text-styled, .blog-item-container .text-styled{
+        text-align: left !important;
+    }
+  }

@@ -2,6 +2,7 @@ import React from 'react';
 import {BsArrowRight} from 'react-icons/bs';
 import './style.css';
 import { Link } from 'react-router-dom';
+import eventBus from '../../utils/eventBus';
 
 const ChoosePackagePlan: React.FC = () => {
  const [selected, setSelected] = React.useState(-1);
@@ -28,12 +29,20 @@ const ChoosePackagePlan: React.FC = () => {
             })
         }
       </div>
-      <Link className='link' to={'/questionare'}>
+      {selected > -1 && <Link className='link' to={'/questionare'}>
         <button className='button button-dark flex gap-1 ml-2 mb-4'>
             <p>Continue</p>
             <BsArrowRight />
         </button>
-      </Link>
+      </Link>}
+      {selected === -1 && 
+        <button className='button button-dark flex gap-1 ml-2 mb-4 disable' onClick={ () => {
+          eventBus.emit("toast:error", "Please select a package!!")
+        }}>
+            <p>Continue</p>
+            <BsArrowRight />
+        </button>
+      }
     </div>
   )
 }

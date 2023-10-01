@@ -33,3 +33,10 @@
 .selected-plan{
     background-color: antiquewhite;
 }
+
+@media (max-width: 768px) {
+    .plan-price-range-container {
+        max-width: 75%;
+        padding: 20px;
+    }
+}

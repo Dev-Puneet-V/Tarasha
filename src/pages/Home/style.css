@@ -21,7 +21,7 @@
     padding: 2rem 2rem 2rem 4rem;
     position: relative;
     width: 40rem;
-    height: 8rem;
+    height: auto;
 }
 
 #up-inverted-comma{
@@ -30,7 +30,7 @@
     position: absolute;
     top: 0;
     left: 0;
-    font-family: 'Uncut Sans VF';
+    font-family: Uncut Sans VF !important;
 }
 
 #down-inverted-comma{
@@ -40,7 +40,7 @@
     position: absolute;
     bottom: 3rem;
     right: 0;
-    font-family: 'Uncut Sans VF';
+    font-family: Uncut Sans VF !important;
 }
 
 #client-perspective-main-container img{

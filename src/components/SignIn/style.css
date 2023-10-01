@@ -63,3 +63,7 @@
 input:focus{
     outline: none;
 }
+
+.center{
+  text-align: center !important;
+}

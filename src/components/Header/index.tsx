@@ -24,18 +24,22 @@ const Header: React.FC = () => {
   const handleSidebar = () => {
     setSidebarVisibility(!isSidebarVisibile);
   }
+  const handleNavLinkClick = () => {
+    setSidebarVisibility(false)
+  };
   return (
     <div id='header-container'>
-      <img src={Icon} alt="Logo" className={`${screenSize === 'sm' && 'small-logo'}`}/>
+      <img   src={Icon} alt="Logo" className={`${screenSize === 'sm' && 'small-logo'}`}/>
     { <div className={`flex gap-5 ${!isSidebarVisibile && screenSize !== 'lg' && 'hidden'} ${screenSize !== 'lg' && 'sidebar'}`}>
         <ul className='flex items-center text-white list-style-none gap-3'>
           <li className={`${!isSidebarVisibile && screenSize === 'lg' && 'hidden'}`}>
-            <img src={CollapseImage} height={35} onClick={handleSidebar}/>
+            <img  src={CollapseImage} height={35} onClick={handleSidebar}/>
           </li>
           <li className='nav-item'>
             <NavLink 
               to={'/'} 
               className='link'
+              onClick={handleNavLinkClick}
             >
               Home
             </NavLink>
@@ -44,6 +48,8 @@ const Header: React.FC = () => {
             <NavLink 
               to={'/services'} 
               className='link' 
+              
+              onClick={handleNavLinkClick}
               // style={isLinkActive('/services') ? ACTIVE_LINK_STYLE : {}}
             >
               Services
@@ -53,6 +59,8 @@ const Header: React.FC = () => {
             <NavLink 
               to={'/our-works'} 
               className='link'
+              
+              onClick={handleNavLinkClick}
             >
               Our Works
             </NavLink>
@@ -61,6 +69,8 @@ const Header: React.FC = () => {
             <NavLink 
               to={'/packages'} 
               className='link' 
+              
+              onClick={handleNavLinkClick}
               style={ACTIVE_LINK_STYLE}>
               Packages
             </NavLink>
@@ -69,6 +79,8 @@ const Header: React.FC = () => {
           <NavLink 
             to={'/blog'} 
             className='link'
+            
+              onClick={handleNavLinkClick}
           >
               Blog
             </NavLink>
@@ -77,6 +89,8 @@ const Header: React.FC = () => {
           <NavLink 
             to={'/dashboard'} 
             className='link'
+            
+            onClick={handleNavLinkClick}
           >
               Dashboard
             </NavLink>
@@ -86,7 +100,7 @@ const Header: React.FC = () => {
       {isAuthenticated && <button id='auth-button' onClick={handleAuthentication}>{`Logout`}</button>}
       </div>}
       {screenSize !== 'lg' &&
-      <img src={HamburgerImage} height={40} className={`mb-2 hamburger-icon ${isSidebarVisibile && 'hidden'}`} onClick={handleSidebar}/>}
+      <img  src={HamburgerImage} height={40} className={`mb-2 hamburger-icon ${isSidebarVisibile && 'hidden'}`} onClick={handleSidebar}/>}
     </div>
     
   );

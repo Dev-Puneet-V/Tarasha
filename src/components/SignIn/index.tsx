@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import Cookies from 'js-cookie';
@@ -8,6 +8,8 @@ import './style.css';
 import { API_ENDPOINT } from '../../utils/constant';
 import { useAuth, useGoogleAuth } from '../../contexts/AuthContext';
 import { useGoogleLogin } from '@react-oauth/google';
+import { Ring } from '@uiball/loaders';
+import eventBus from '../../utils/eventBus';
 
 interface SignInFormProps{
   handleAuthState: (authState: AuthState) => void;
@@ -18,6 +20,8 @@ const SignInForm: React.FC<SignInFormProps> = (props) => {
       handleAuthState
     } = props;
     const {handleAuthentication, closeAuthModal, setUser} = useAuth();
+    const [loading, setLoading] = useState(false);
+    const [googleLoading, setGoogleLoading] = useState(false);
     const formik = useFormik({
         initialValues: {
             email: '',
@@ -36,6 +40,7 @@ const SignInForm: React.FC<SignInFormProps> = (props) => {
         }),
         onSubmit: async (values) => {
           try{
+            setLoading(true);
           const response = await fetch(API_ENDPOINT.LOGIN, {
             method: 'POST',
             headers: {
@@ -48,19 +53,24 @@ const SignInForm: React.FC<SignInFormProps> = (props) => {
             Cookies.set('token', data.data.token, { expires: 7 });
             handleAuthentication();
             closeAuthModal();
-          }
-          }catch(error){
-            //TODO:REMOVE BELOW CODE
-            handleAuthentication();
-            closeAuthModal();
-            console.log("Error", error)
-          }
-        },
+            eventBus.emit("toast:success", "Login Success!")
+            const userInfo = data?.data?.user;
+            setUser(prev => ({_id: userInfo?._id, name:  userInfo?.name, email: userInfo?.email, number: userInfo?.mobiles[0]?.mobile, countryCode: userInfo?.mobiles[0]?.countrycode}))
+          }else{
+            throw new Error('Login Failed!!')
+;          }
+        }catch(error){
+          eventBus.emit("toast:error", "Login Failed!!")
+        }finally{
+          setLoading(false);
+        }
+      }
   });
   const useGoogleAuth =
         useGoogleLogin({
           onSuccess: async (tokenResponse) => {
             try{
+              setGoogleLoading(true)
             const response = await fetch(API_ENDPOINT.GOOGLE_SIGNIN, {
               method: 'POST',
               body: JSON.stringify({
@@ -81,11 +91,14 @@ const SignInForm: React.FC<SignInFormProps> = (props) => {
               Cookies.set('token', profileData?.userData?.token, { expires: 7 });
               handleAuthentication();
               closeAuthModal();
+              eventBus.emit("toast:success", "Login Success!")
+            }else{
+              throw new Error('Login Failed!');
             }
           }catch(error){
-            handleAuthentication();
-            closeAuthModal();
-            console.log("Error", error)
+            eventBus.emit("toast:error", "Login Failed!!")
+          }finally{
+            setGoogleLoading(false);
           }
           }
     });
@@ -123,18 +136,30 @@ const SignInForm: React.FC<SignInFormProps> = (props) => {
         <div className='text-red-500 pb-2'>{formik.errors.password}</div>
       ) : null}
       <p className='text-right mt-2 mb-4 cursor-pointer' onClick={() => handleAuthState(AuthState.ForgetPass)}>Forgot Password?</p>
-      <button type='submit' className='flex justify-center items-center mt-2'>
+     {!loading && <button type='submit' className='flex justify-center items-center mt-2'>
         Login
-    </button>
+    </button>}
+    {
+      loading && <button className='flex justify-center items-center mt-2'>
+      <Ring color='#ffffff'/>
+  </button>
+    }
     <div className='flex gap-2 items-center mt-8 justify-between center'>
         <div  className='divider-auth'/>
         <p>Or Continue With</p>
         <div className='divider-auth'/>
     </div>
-    <div className='flex social-icon-container items-center justify-center mt-4 cursor-pointer' onClick={useGoogleAuth}>
-        <img src={GoogleImageIcon}/>
-    </div>
-    <p className='mt-4 center'>Don’t Have an Account? <b className='text-styled auth-fot-text' onClick={() => handleAuthState(AuthState.Register)}>Register Now</b></p>
+  {!googleLoading && <div className='flex social-icon-container items-center justify-center mt-4 cursor-pointer' onClick={useGoogleAuth}>
+      <img src={GoogleImageIcon}/>
+  </div>}
+  {googleLoading && <div className='flex social-icon-container items-center justify-center mt-4 cursor-pointer'>
+      <div className='flex gap-1'><Ring color='#0000000'/><img src={GoogleImageIcon}/></div>
+      
+  </div>}
+  <div className='flex justify-center'>
+  <p className='mt-4 center'>Don’t Have an Account? <b className='text-styled auth-fot-text' onClick={() => handleAuthState(AuthState.Register)}>Register Now</b></p>
+    
+  </div>
     </form>
     </div>
   )

@@ -3,6 +3,10 @@ import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import { AuthState } from '../../utils/type';
 import '../SignIn/style.css';
+import { API_ENDPOINT } from '../../utils/constant';
+import eventBus from '../../utils/eventBus';
+import { useNavigate } from 'react-router-dom';
+import { Ring } from '@uiball/loaders';
 
 interface SignUpFormProps{
   handleAuthState: (authState: AuthState) => void;
@@ -12,6 +16,8 @@ const ForgetPasswordForm: React.FC<SignUpFormProps> = (props) => {
     const {
       handleAuthState
     } = props;
+    const [loading, setLoading] = React.useState(false);
+    // const navigate = useNavigate();
     const formik = useFormik({
         initialValues: {
             email: ''
@@ -22,6 +28,27 @@ const ForgetPasswordForm: React.FC<SignUpFormProps> = (props) => {
                 .required('Email is required')
         }),
         onSubmit: async (values) => {
+          try{
+            setLoading(true);
+          const response = await fetch(API_ENDPOINT.FORGET_PASSWORD, {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(values),
+          });
+          await response.json();
+          if(response.ok){
+            eventBus.emit("toast:success", "Reset password link sent to your mail")
+            // navigate('/');
+          }else{
+          throw new Error('Login Failed!!')
+          }
+        }catch(error){
+          eventBus.emit("toast:error", "Failed!!")
+        }finally{
+          setLoading(false);
+        }
         },
   });
   return (
@@ -45,7 +72,7 @@ const ForgetPasswordForm: React.FC<SignUpFormProps> = (props) => {
         <div className='text-red-500 pb-2'>{formik.errors.email}</div>
       ) : null}
       <button type='submit' className='flex justify-center items-center mt-2'>
-        Send Password Retrival Link
+        {!loading ? 'Send Password Retrival Link' : <Ring color="#ffffff"/>}
     </button>
     <p className='mt-4 center'>Remember password? <b className='text-styled auth-fot-text' onClick={() => handleAuthState(AuthState.Login)}>Login Now</b></p>
     </form>

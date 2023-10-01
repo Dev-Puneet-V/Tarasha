@@ -1,7 +1,9 @@
 interface User {
     _id?: string;
-    email?: string;
     name?: string;
+    email?: string;
+    number?: string;
+    countryCode?: string;
 }
 
 

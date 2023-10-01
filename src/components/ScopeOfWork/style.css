@@ -1,8 +1,9 @@
 
 #scope-of-work {
-    max-width: 2000px;
+    /* max-width: 2000px; */
     margin: auto;
-    gap: 5;
+    gap: 3;
+    width: auto;
 }
 
 #scope-of-work .element-container{
@@ -10,7 +11,6 @@
     text-align: center;
     font-size: 0.6rem;
     align-items: center;
-
 }
 
 #scope-of-work .element-container > div{
@@ -42,7 +42,7 @@
 }
 
 .scope{
-    max-width: 300px;
+    max-width: 20vw;
 }
 
 .scope-container{
@@ -70,7 +70,7 @@
         margin: auto;
     }
     .scope{
-        margin-left: 5rem !important;
+        margin:1rem  3rem !important;
     }
 }
 
@@ -170,7 +170,7 @@
   }
   
 .joiner{
-    width: 10rem;
+    width: 12rem;
     height: 1.5rem;
     margin-top: 3rem;
     position: relative;
@@ -193,8 +193,9 @@
     transform: rotateY(180deg) rotateZ(270deg) ;
     width: 8rem;
     position: relative;
-    left: -2rem;
+    left: -4rem;
     perspective: 10px;
+    margin-top: 0rem;
 }
 
 .w-75{
@@ -218,11 +219,89 @@
     transform: rotateZ(270deg) ;
     width: 8rem;
     position: relative;
-    left: -2rem;
+    left: 2rem;
     perspective: 10px;
     overflow: visible;
+    margin-top: 0rem;
 }
 
 .w-full{
     width: 100%;;
 }
+
+/* Slider Container */
+.slider-container-scope {
+    position: relative;
+    /* overflow: hidden; */
+    width: 100%;
+    /* max-width: 800px; */
+    margin: 0 auto;
+    background-color: #B87E1B;
+  }
+  
+  /* Slider */
+  .slider-container-scope .slider {
+    display: flex;
+    transition: transform 0.3s ease-in-out;
+  }
+  
+  /* Individual Slide */
+  .scope-of-work  {
+    box-sizing: border-box;
+}
+  
+.slider-container-scope .scope-of-work img{
+    height: 3rem !important;
+    width: 3rem !important;
+  }
+
+  
+  .prev-button {
+    left: 0;
+  }
+  
+  .next-button {
+    right: 0;
+  }
+  
+  /* .scope{
+    max-width: 300px;
+} */
+  @media (max-width: 900px) {
+    .scope{
+        max-width: 250px;
+    }
+  }
+
+  .white{
+    color: lightgray;
+  }
+
+  .slider-container-scope{
+    background-color: #fbeedb !important;
+  }
+
+  .slider-container-scope *{
+    text-align: left !important;
+    line-height: 1.5rem;
+  }
+
+  .slider-container-scope .text-bold{
+    font-size: 1rem !important;
+  }
+
+  .scope p:nth-child(3) {
+    font-size: 0.6rem !important;
+  }
+
+  .w-100{
+    width: 100%;
+  }
+
+  #scope-of-work *{
+    overflow-x: unset;
+  }
+
+  .r{
+    margin-left: 20rem !important;
+  }

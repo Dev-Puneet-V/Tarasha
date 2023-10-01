@@ -54,47 +54,49 @@ export const displayRazorpay = async () => {
 
 export const savePaymentDetail = async (paymentId: string | null, bookingData: BookingType, ) => {
     try{
-    if(!paymentId){
-        throw new Error('Invalid payment Id');
-    }
-    const paymentResponse = await fetch(API_ENDPOINT.PAYMENT_INFO, {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-            paymentId: paymentId
-        })
-    })
-    const paymentData = await paymentResponse.json();
-    console.log(paymentData)
-    if(paymentData.success){
-        const selectedDate = new Date(paymentData?.paymentDetails?.created_at * 1000);
-        const bookingData = JSON.parse(localStorage.getItem('booking-details') || '{}');
-        const savedPaymentResponse = await fetch(API_ENDPOINT.SAVE_PAYMENT_INFO, {
+        if(!paymentId){
+            throw new Error('Invalid payment Id');
+        }
+        const paymentResponse = await fetch(API_ENDPOINT.PAYMENT_INFO, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
-                'Authorization': `Bearer ${Cookies.get('token')}`
             },
             body: JSON.stringify({
-                payment_details: {
-                    number: paymentData?.paymentDetails?.notes?.phone,
-                    payment_id: paymentId,
-                    amount: paymentData?.paymentDetails?.amount / 100,
-                    isPaymentSuccess: true,
-                    payment_method: paymentData?.paymentDetails?.method,
-                    slot: `${bookingData?.slot?.start} - ${bookingData?.slot?.end}`,
-                    booking_date: bookingData?.booking_date,
-                    payment_date: ((selectedDate.getMonth() + 1).toString().length === 1 ? "0"+(selectedDate.getMonth() + 1) : selectedDate.getMonth() + 1)+ '-' +selectedDate.toDateString().split(" ")[2]+'-'+selectedDate.getFullYear() ,                   
-                },
-                eventId: bookingData?.slot?.eventId
+                paymentId: paymentId
             })
         })
-        return savedPaymentResponse.json();
-    }
-    }catch(error){
-        
+        const paymentData = await paymentResponse.json();
+        console.log(paymentData)
+        if(paymentData.success){
+            const selectedDate = new Date(paymentData?.paymentDetails?.created_at * 1000);
+            const bookingData = JSON.parse(localStorage.getItem('booking-details') || '{}');
+            const savedPaymentResponse = await fetch(API_ENDPOINT.SAVE_PAYMENT_INFO, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${Cookies.get('token')}`
+                },
+                body: JSON.stringify({
+                    payment_details: {
+                        number: paymentData?.paymentDetails?.notes?.phone,
+                        payment_id: paymentId,
+                        amount: paymentData?.paymentDetails?.amount / 100,
+                        isPaymentSuccess: true,
+                        payment_method: paymentData?.paymentDetails?.method,
+                        slot: `${bookingData?.slot?.start} - ${bookingData?.slot?.end}`,
+                        booking_date: bookingData?.booking_date,
+                        payment_date: ((selectedDate.getMonth() + 1).toString().length === 1 ? "0"+(selectedDate.getMonth() + 1) : selectedDate.getMonth() + 1)+ '-' +selectedDate.toDateString().split(" ")[2]+'-'+selectedDate.getFullYear() ,                   
+                    },
+                    eventId: bookingData?.slot?.eventId
+                })
+            })
+            return savedPaymentResponse.json();
+        }else{
+            throw new Error('Payment unsuccessfull');
+        }
+    }catch(error: any){
+        throw new Error(error.message);
     }
 }
 

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react'
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import Cookies from 'js-cookie';
@@ -8,6 +8,8 @@ import { AuthState } from '../../utils/type';
 import { API_ENDPOINT, countryCodes } from '../../utils/constant';
 import { useGoogleLogin } from '@react-oauth/google';
 import { useAuth } from '../../contexts/AuthContext';
+import eventBus from '../../utils/eventBus';
+import { Ring } from '@uiball/loaders';
 
 interface SignUpFormProps {
   handleAuthState: (authState: AuthState) => void;
@@ -16,6 +18,8 @@ interface SignUpFormProps {
 const SignUpForm: React.FC<SignUpFormProps> = (props) => {
   const { handleAuthState } = props;
   const { handleAuthentication, closeAuthModal, setUser } = useAuth();
+  const [loading, setLoading] = useState(false);
+    const [googleLoading, setGoogleLoading] = useState(false);
   const formik = useFormik({
     initialValues: {
       name: '',
@@ -49,25 +53,31 @@ const SignUpForm: React.FC<SignUpFormProps> = (props) => {
     }),
     onSubmit: async (values) => {
       try {
-        const formattedNumber = `${values.countryCode}${values.number}`;
-
+        const formattedNumber = [{"countrycode": values.countryCode, "mobile": values.number}];
+        
+        setLoading(true);
         const response = await fetch(API_ENDPOINT.REGISTER, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
           },
-          body: JSON.stringify({ ...values, number: formattedNumber }),
+          body: JSON.stringify({ ...values, mobiles: formattedNumber }),
         });
         const data = await response.json();
         if (data?.data?.token) {
           Cookies.set('token', data.data.token, { expires: 7 });
           handleAuthentication();
           closeAuthModal();
+          eventBus.emit("toast:success", "Registration Success!");
+          const userInfo = data?.data?.user;
+          setUser(prev => ({_id: userInfo?._id, name:  userInfo?.name, email: userInfo?.email, number: userInfo?.mobiles[0]?.mobile, countryCode: userInfo?.mobiles[0]?.countrycode}))
+        }else{
+          throw new Error('Registration failed');
         }
       } catch (error) {
-        handleAuthentication();
-        closeAuthModal();
-        console.log('Error', error);
+        eventBus.emit("toast:error", "Registration Failed!!")
+      }finally{
+        setLoading(false);
       }
     },
   });
@@ -75,6 +85,7 @@ const SignUpForm: React.FC<SignUpFormProps> = (props) => {
   const useGoogleAuth = useGoogleLogin({
     onSuccess: async (tokenResponse) => {
       try {
+        setGoogleLoading(true);
         const response = await fetch(API_ENDPOINT.GOOGLE_SIGNIN, {
           method: 'POST',
           body: JSON.stringify({
@@ -94,17 +105,20 @@ const SignUpForm: React.FC<SignUpFormProps> = (props) => {
           Cookies.set('token', profileData?.userData?.token, { expires: 7 });
           handleAuthentication();
           closeAuthModal();
+          eventBus.emit("toast:success", "Registration Success!");
+        }else{
+          throw new Error('Registration failed');
         }
       } catch (error) {
-        handleAuthentication();
-        closeAuthModal();
-        console.log('Error', error);
+        eventBus.emit("toast:error", "Registration Failed!!")
+      }finally{
+        setGoogleLoading(false);
       }
     },
   });
 
   return (
-    <div>
+    <div className='auth-container'>
       <p className='text-styled auth-header-text pb-2'>Create your account</p>
       <form
         onSubmit={formik.handleSubmit}
@@ -197,9 +211,14 @@ const SignUpForm: React.FC<SignUpFormProps> = (props) => {
           <div className='text-red-500 pb-2'>{formik.errors.confirmPassword}</div>
         ) : null}
 
-        <button type='submit' className='flex justify-center items-center mt-2'>
-          Register
-        </button>
+{!loading && <button type='submit' className='flex justify-center items-center mt-2'>
+        Register
+    </button>}
+    {
+      loading && <button className='flex justify-center items-center mt-2'>
+      <Ring color='#ffffff'/>
+  </button>
+    }
 
         <div className='flex gap-2 items-center mt-8 justify-between center'>
           <div className='divider-auth' />
@@ -207,11 +226,16 @@ const SignUpForm: React.FC<SignUpFormProps> = (props) => {
           <div className='divider-auth' />
         </div>
 
-        <div className='flex social-icon-container items-center justify-center mt-4 cursor-pointer' onClick={useGoogleAuth}>
-          <img src={GoogleImageIcon} alt="Google" />
-        </div>
-
+        {!googleLoading && <div className='flex social-icon-container items-center justify-center mt-4 cursor-pointer' onClick={useGoogleAuth}>
+      <img src={GoogleImageIcon}/>
+  </div>}
+  {googleLoading && <div className='flex social-icon-container items-center justify-center mt-4 cursor-pointer'>
+      <div className='flex gap-1'><Ring color='#0000000'/><img src={GoogleImageIcon}/></div>
+      
+  </div>}
+  <div className='flex justify-center'>
         <p className='mt-4 center'>Already Have an Account? <b className='text-styled auth-fot-text' onClick={() => handleAuthState(AuthState.Login)}>Login Now</b></p>
+      </div>
       </form>
     </div>
   );

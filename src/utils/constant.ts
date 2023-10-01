@@ -1,5 +1,7 @@
-export const BASE_URL_DATA = "https://res.cloudinary.com/dpv6poha8/raw/upload/v1695560956/data_icdvwg.json";
-export const BASE_URL = "https://tarashainteriors.onrender.com"
+export const BASE_URL_DATA = "https://res.cloudinary.com/dfoggertn/raw/upload/v1696096778/TarashaWebsiteContent/Images/blogimages/data_eyhpqe.json";
+// export const BASE_URL_DATA = "../../"
+export const BASE_URL = "http://ec2-13-232-58-124.ap-south-1.compute.amazonaws.com/api"
+// export const BASE_URL = "https://tarashainteriors.onrender.com/api"
 export const API_ENDPOINT = {
     // "SITE_DATA" : BASE_URL_DATA + "/site-data",
     "SITE_DATA" : BASE_URL_DATA,
@@ -13,7 +15,11 @@ export const API_ENDPOINT = {
     "IMAGE_UPLOAD": BASE_URL + "/blogs/uploadImage",
     "CREATE_BLOG": BASE_URL + "/blogs/create",
     "GET_BLOG_DATA": BASE_URL + "/blogs/allBlogs",
-    "TRANSACTION_HISTORY": BASE_URL + "/user/transactions"
+    "TRANSACTION_HISTORY": BASE_URL + "/user/transactions",
+    "ME": BASE_URL + "/user/users/me",
+    "UPDATE_USER": BASE_URL + "/user/users/me",
+    "FORGET_PASSWORD": BASE_URL + "/user/users/forget-password",
+    "RESET_PASSWORD": BASE_URL + "/user/users/reset-password"
 }
 export const ACTIVE_LINK_STYLE = {
     'background': 'linear-gradient(90deg, #F0C660 20.75%, #FFFFFF 79.25%)',
@@ -30,7 +36,6 @@ export const countryCodes = [
     { code: '+1', name: 'United States' },
     { code: '+91', name: 'India' },
     { code: '+44', name: 'United Kingdom' },
-    { code: '+1', name: 'Canada' },
     { code: '+61', name: 'Australia' },
     { code: '+33', name: 'France' },
     { code: '+49', name: 'Germany' },

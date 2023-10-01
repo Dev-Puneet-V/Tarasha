@@ -3,27 +3,32 @@ import React, { createContext, useContext, useEffect, useState } from 'react';
 import { API_ENDPOINT } from '../../utils/constant';
 import { DataContextType} from './type';
 import { GlobalProps, SiteData } from '../../utils/type';
-
+import dataloaded from '../../assets/data.json';
 const DataContext = createContext<DataContextType>({
   data: {},
   setData: () => { }
 });
 
 export const DataProvider: React.FC<GlobalProps> = ({ children }) => {
-  const [data, setData] = useState<SiteData>({});
+  const [data, setData] = useState<SiteData>(dataloaded["site-data"]);
 
   useEffect(() => {
-    const updateData = async () => {
-      try {
-        const response = await fetch(API_ENDPOINT.SITE_DATA);
-        const data = await response.json();
-        console.log(data)
-        setData(data[`site-data`]);
-      } catch (error) {
-        console.error('Error fetching work data:', error);
-      }
-    };
-    updateData();
+    // const updateData = async () => {
+    //   try {
+    //     // const response = await fetch(API_ENDPOINT.SITE_DATA);
+    //     // const response = await fetch(data_endpoint);
+    //     // console.log(response)
+    //     // const data = await response.json();
+    //     //  console.log(response, data)
+    //     // console.log(data)
+    //     // setData(data[`site-data`]);
+    //     setData(data);
+    //   } catch (error) {
+    //     console.error('Error fetching work data:', error);
+    //   }
+    // };
+    // updateData();
+    // setData(data);
   }, []);
 
   return (

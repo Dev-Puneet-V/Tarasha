@@ -1,8 +1,8 @@
 .element-container{
-    width: 6rem;
-    text-align: center;
+    width: 8rem;
+    text-align: center !important;
     font-size: 0.6rem;
-    align-items: center;
+    align-items: center !important;
 }
 
 .element-container div{
@@ -19,8 +19,10 @@
 }
 
 .element-container p{
-    text-align: center;
-    width: 6rem !important;
+    text-align: center !important;
+    /* width: 6rem !important; */
+    font-weight: bold !important;
+    font-size: 0.8rem;
 }
 
 .element-img {

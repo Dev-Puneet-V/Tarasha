@@ -3,6 +3,11 @@ import Cookies from 'js-cookie';
 import './style.css';
 import { BsArrowRight } from 'react-icons/bs';
 import { API_ENDPOINT } from '../../utils/constant';
+import { useAuth } from '../../contexts/AuthContext';
+import eventBus from '../../utils/eventBus';
+import swal from 'sweetalert';
+import { useNavigate } from 'react-router-dom';
+import { Ring } from '@uiball/loaders';
 
 interface Question {
   que: string;
@@ -25,6 +30,16 @@ const questions: Question[] = [
 ];
 
 const Questionare: React.FC = () => {
+  const {isAuthenticated,  openAuthModal} = useAuth();
+  const [loading, setLoading] = useState(false);
+  const navigate = useNavigate();
+  const {user} = useAuth();
+  React.useEffect(() => {
+    if(!user?.number){
+      eventBus.emit("toast:error","Phone number required");
+      navigate('/dashboard', { state: {"s": 1} })
+    }
+  }, [])
   const [answers, setAnswers] = useState<{ [key: string]: { Question: string; Answer: string } }>(
     questions.reduce((acc, question) => {
       acc[`ans-${question._id}`] = { Question: question.que, Answer: '' };
@@ -40,29 +55,55 @@ const Questionare: React.FC = () => {
 
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
-    console.log('Answers submitted:', answers);
-    const response = await fetch(API_ENDPOINT.SAVE_QUESTIONARE, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'Authorization': `Bearer ${Cookies.get('token')}`
-      },
-      body: JSON.stringify({
-        'inquiryData': Object.values(answers),
-        'packageInfo': {
-          package_name: 'Silver',
-          package_option: 'Option 1'
-        }
-      }),
-    });
-    const data = await response.json();
+    if(!isAuthenticated){
+      openAuthModal();
+      return;
+    }
+    
+    setLoading(true);
+    try{
+      const response = await fetch(API_ENDPOINT.SAVE_QUESTIONARE, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${Cookies.get('token')}`
+        },
+        body: JSON.stringify({
+          'inquiryData': Object.values(answers),
+          'packageInfo': {
+            package_name: 'Silver',
+            package_option: 'Option 1'
+          }
+        }),
+      });
+      const data = await response.json();
+      if(data.success){
+        swal({
+          title: "Questins submitted successfully!!",
+          text: "Thank you! for reaching us out. We will respond you back within 2 business days",
+          icon: "success",
+          dangerMode: false,
+          // timer: 10000
+        }).then((result) => {
+          if (result) {
+            navigate('/')
+          } 
+        });
+      }else{
+        throw new Error('Unable to submit question')
+      }
+    }catch(error){
+      eventBus.emit('toast:error', 'Questions submission failed!!')
+    }finally{
+      setLoading(false);
+    }
   };
 
   return (
     <div id='questionare-container'>
         <div className='questionare-header flex flex-col justify-center items-center gap-3'>
-            <p className='text-styled-2'>Thank You For Your Booking</p>
-            <p>Let’s get started by filling out this questionnaire.</p>
+            <p className='text-styled-2'>Thank You For Your Interest</p>
+            <p>Let’s get started by filling out this questionaire.</p>
         </div>
         <form onSubmit={handleSubmit} className='p-8 mt-8'>
             <div className='flex flex-col gap-3'>
@@ -72,6 +113,7 @@ const Questionare: React.FC = () => {
                     {index + 1}. {question.que}
                 </p>
                 <input
+                    required={true}
                     name={`ans-${question._id}`}
                     onChange={(e) => handleInputChange(e, question._id)}
                     value={answers[`ans-${question._id}`].answer}
@@ -79,10 +121,13 @@ const Questionare: React.FC = () => {
                 </div>
             ))}
             </div>
-            <button type="submit" className='button button-dark flex flex-row gap-1 mt-8 mb-8'>
+            {!loading && <button type="submit" className='button button-dark flex flex-row gap-1 mt-8 mb-8'>
                 <p>Send</p>
                 <BsArrowRight />
-            </button>
+            </button>}
+            {loading && <button className='button button-dark flex flex-row gap-1 mt-8 mb-8'>
+                <Ring color='#ffffff'/>
+            </button>}
         </form>
     </div>
   );

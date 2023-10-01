@@ -12,10 +12,11 @@ const Work: React.FC = () => {
     const [currState, setCurrState] = useState<number>(0);
 
     useEffect(() => {
-        if(!data?.works){
+        console.log("data", data)
+        if(data && !data?.works){
             data.works = [];
         }
-        if (data?.works?.length > 0) {
+        else if (data?.works?.length > 0) {
             setCurrWorkIndex(0);
         }
     }, [data]);
@@ -32,7 +33,7 @@ const Work: React.FC = () => {
     <>
         {   
             currWorkIndex >= 0 &&
-            <div id='work-container' className='pt-8 pb-8'>
+            <div id='work-container' className='pt-4 pb-8'>
                 <p className='text-styled ml-8 work-name'>{works[currWorkIndex]?.name}</p>
                 <div className='flex gap-2 ml-8 work-name'>
                     <p className={`${currState === 0 ? 'active-nav' : ''}`} onClick={() => setCurrState(0)}>Before</p>

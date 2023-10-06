@@ -13,11 +13,9 @@ import MainBlog from "./pages/MainBlog";
 import SavePayment from "./pages/SavePayment";
 import DashboardUser from "./pages/DashboardUser";
 import ResetPassword from "./components/ResetPassword";
-import { useAuth } from "./contexts/AuthContext";
 import PrivateRoute from "./PrivateRoute";
 
 export default function Navigation() {
-    const {isAuthenticated} = useAuth();
     return (
         <Router basename="/">
             <ScrollToTop />
@@ -32,10 +30,7 @@ export default function Navigation() {
                         path="dashboard"
                         element={<PrivateRoute element={<DashboardUser />} />}
                     />
-                    <Route
-                        path="save-payment"
-                        element={<PrivateRoute element={<SavePayment />} />}
-                    />
+                    <Route path="save-payment" element={<SavePayment />} />
                     <Route path="dashboard" element={<DashboardUser />} />
                     <Route path="save-payment" element={<SavePayment />} />
                     <Route path="blog" element={<Blog />} />
@@ -43,11 +38,7 @@ export default function Navigation() {
                     <Route path="reset-password/:token" element={<ResetPassword />} />
                 </Routes>
             <Outlet />
-            {/* <div className="mt-8 pt-8">
-            <div className="mt-8 pt-8"> */}
-                <Footer />
-            {/* </div> */}
-            {/* </div> */}
+            <Footer />
         </Router>
     );
 }

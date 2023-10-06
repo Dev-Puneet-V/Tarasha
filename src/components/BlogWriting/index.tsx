@@ -42,7 +42,6 @@ const imageUploader = (file : any) => {
       )
         .then((response) => response.json())
         .then((result) => {
-          console.log(result);
           resolve(result.url);
         })
         .catch((error) => {

@@ -12,7 +12,6 @@ const Work: React.FC = () => {
     const [currState, setCurrState] = useState<number>(0);
 
     useEffect(() => {
-        console.log("data", data)
         if(data && !data?.works){
             data.works = [];
         }
@@ -39,14 +38,15 @@ const Work: React.FC = () => {
                     <p className={`${currState === 0 ? 'active-nav' : ''}`} onClick={() => setCurrState(0)}>Before</p>
                     <p className={`${currState === 1 ? 'active-nav' : ''}`} onClick={() => setCurrState(1)}>After</p>
                 </div>
-                <Image src={currState === 0 ? works[currWorkIndex]?.prev : works[currWorkIndex]?.next}>
-                    <div className={`absolute ${currWorkIndex === 0 ? 'disabled' : ''} prev-button`} onClick={handlePrev}>
-                        <img src={PrevIcon}/>
-                    </div>
-                    <div className={`absolute ${currWorkIndex === works.length - 1 ? 'disabled' : ''} next-button`} onClick={handleNext}>
-                        <img src={NextIcon}/>
-                    </div>
-                </Image>
+                <div className="background-image relative" style={{ backgroundImage: `url(${currState === 0 ? works[currWorkIndex]?.prev : works[currWorkIndex]?.next})` }}>
+                <div className={`absolute ${currWorkIndex === 0 ? 'disabled' : ''} prev-button`} onClick={handlePrev}>
+                    <img src={PrevIcon} alt="Previous Icon" />
+                </div>
+
+                <div className={`absolute ${currWorkIndex === works.length - 1 ? 'disabled' : ''} next-button`} onClick={handleNext}>
+                    <img src={NextIcon} alt="Next Icon" />
+                </div>
+                </div>
                 <div className='text-work flex justify-between p-2 ml-8 mr-8 pr-8 pl-8 wrap mb-8'>
                     <div className='gap-4 challenge'>
                         <p className='text-bold mb-2 mt-4 text-styled'>Challenges</p>

@@ -67,7 +67,6 @@ export const savePaymentDetail = async (paymentId: string | null, bookingData: B
             })
         })
         const paymentData = await paymentResponse.json();
-        console.log(paymentData)
         if(paymentData.success){
             const selectedDate = new Date(paymentData?.paymentDetails?.created_at * 1000);
             const bookingData = JSON.parse(localStorage.getItem('booking-details') || '{}');
@@ -99,31 +98,3 @@ export const savePaymentDetail = async (paymentId: string | null, bookingData: B
         throw new Error(error.message);
     }
 }
-
-
-export const handleGoogleSignIn = () => {
-    const redirectUri = 'https://e716-2402-3a80-11cb-6177-ecd4-3abb-321d-75a3.ngrok-free.app';
-    const clientId = '889450406403-hs3iqsnkds6k0oajrclnsva09i0jilil.apps.googleusercontent.com'; 
-    const scope = 'profile email';
-
-    const authUrl = `https://accounts.google.com/o/oauth2/v2/auth?client_id=${clientId}&redirect_uri=${redirectUri}&scope=${scope}&response_type=token`;
-
-    // Open the Google Sign-In popup
-    const popup = window.open(authUrl, 'google-sign-in', 'width=600,height=400');
-
-    // Handle the response from the popup when the user signs in
-    window.addEventListener('message', (event) => {
-    // if (event.origin === window.location.origin) {
-        // Process the response data
-        const response = JSON.parse(event.data);
-        console.log('Google Sign-In Response:', response);
-
-        // Close the popup
-        popup?.close();
-
-        // Handle the response data as needed (e.g., send it to your server)
-    // }
-    });
-};
-  
-  

@@ -35,7 +35,6 @@ export const AuthProvider: React.FC<GlobalProps> = ({ children }) => {
           })
         const userInfo = await userResponse.json();
         if(userInfo.success){
-          console.log("userInfo", userInfo)
           eventBus.emit("toast:success", "Welcome Back " + userInfo?.data?.name + "!")
           setUser(prev => ({_id: userInfo?.data?._id, name:  userInfo?.data?.name, email: userInfo?.data?.email, number: userInfo?.data?.mobiles[0]?.mobile, countryCode: userInfo?.data?.mobiles[0]?.countrycode}))
         }else{

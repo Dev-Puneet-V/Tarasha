@@ -82,7 +82,6 @@ const SignInForm: React.FC<SignInFormProps> = (props) => {
             });
             const profileData = await response.json();
             if(profileData?.success && profileData?.userData?.token){
-              console.log(profileData?.userData)
               setUser({
                   _id: profileData?.userData?.user?._id,
                   name: profileData?.userData?.user?.name,

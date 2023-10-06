@@ -121,8 +121,6 @@ import { Waveform } from '@uiball/loaders';
       
       if(selectedTime){
         if(!isAuthenticated){
-          // handleGoogleSignIn();
-          // useGoogleAuth();
           openAuthModal();
         }else{
           setPaymentStep(true);
@@ -130,7 +128,6 @@ import { Waveform } from '@uiball/loaders';
       }
     }
     const handleTime = (curr: number) => {
-      console.log(curr)
       if(selectedDate){
         setSelectedTime(curr + 1);
       }

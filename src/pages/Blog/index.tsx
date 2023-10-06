@@ -14,7 +14,6 @@ const Blog: React.FC = () => {
   const screenSize = useScreenSize();
   const navigate = useNavigate();
   React.useEffect(() => {
-    console.log(blogData)
     // if(blogData || blogData?.blogs || blogData?.blogs?.length === 0){
       getBlogData(currentPage);
     // }
@@ -62,7 +61,6 @@ const Blog: React.FC = () => {
         }
       }),
     }
-    console.log(updatedData)
       setBlogData((prevBlogData: any) => (updatedData))
     }
   }

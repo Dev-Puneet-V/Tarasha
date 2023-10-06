@@ -40,7 +40,6 @@ const BookingHistory: React.FC = () => {
     })
       .then((response) => response.json())
       .then((data) => {
-        console.log(data)
         setBookings(data.transactions);
         setFilteredBookings(data.transactions);
       })

@@ -14,7 +14,6 @@ const ImageLoaderComponent: React.FC<ImageLoaderComponentProps> = ({ src, childr
     const workerBlob = new Blob([`
       self.addEventListener('message', (event) => {
         const { src } = event.data;
-        console.log(src)
         fetch(src)
           .then((response) => response.blob())
           .then((blob) => {

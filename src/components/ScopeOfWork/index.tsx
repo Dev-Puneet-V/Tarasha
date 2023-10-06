@@ -119,96 +119,96 @@ const ScopeOfWork: React.FC = () => {
  const screenSize = useScreenSize();
   return (
     <>
-       {screenSize === 'lg' && <div className='w-75 flex flex-col gap-3 items-center' id='scope-of-work'>
-            <p className='text-styled'>Scope Of Work</p>
-            <div className='flex wrap justify-center gap-3 scope-container relative'>
+       {screenSize === 'lg' && <div className='w-75 flex flex-col gap-3 items-center scope-of-work-lg' id='scope-of-work'>
+            <p className='text-styled pb-8'>Scope Of Work</p>
+            <div className='flex wrap justify-center gap-3 scope-container relative w-100'>
                 <div className='flex flex-wrap'>
                     {
                         slides[0].content
                     }
-                    <img src={JoinerImage} className='joiner l-r-t-b-joiner'/>
+                    <div className='joiner l-r-t-b-joiner'/>
                     {
                         slides[1].content
                     }
-                    <img src={JoinerImage} className='joiner l-r-b-t-joiner'/>
+                    <div className='joiner l-r-b-t-joiner'/>
                     {
                         slides[2].content
                     }
                 </div>
             </div>
-            <div className='w-100 row-12-joiner flex items-center gap-3'>
-                <img src={JoinerImage} className='joiner t-b-r-l-joiner '/>
+            <div className='w-100 row-12-joiner flex items-center gap-3 flex justify-end items-center'>
+                <div className='joiner t-b-r-l-joiner '/>
             </div>
-            <div className='flex wrap justify-center gap-3 scope-container relative'>
+            <div className='flex wrap justify-center gap-3 scope-container relative pl-4'>
                 <div className='flex flex-wrap'>
                     {
                         slides[3].content
                     }
-                    <img src={JoinerImage} className='joiner r-l-t-b-joiner'/>
+                    <div className='joiner r-l-t-b-joiner'/>
                     {
                         slides[4].content
                     }
-                    <img src={JoinerImage} className='joiner r-l-b-t-joiner'/>
+                    <div className='joiner r-l-b-t-joiner'/>
                     {
                         slides[5].content
                     }
                 </div>
             </div>
-            <div className='w-100 row-23-joiner flex items-center gap-3'>
-                <img src={JoinerImage} className='joiner t-b-l-r-joiner '/>
+            <div className='w-100 row-23-joiner flex items-center gap-3 flex-start'>
+                <div className='joiner t-b-l-r-joiner '/>
             </div>
-            <div className='flex wrap justify-center gap-3 scope-container relative'>
+            <div className='flex wrap justify-center gap-3 scope-container relative pl-8'>
                 <div className='flex flex-wrap'>
                     {
                         slides[6].content
                     }
-                    <img src={JoinerImage} className='joiner l-r-t-b-joiner'/>
+                    <div className='joiner l-r-t-b-joiner'/>
                     {
                         slides[7].content
                     }
-                    <img src={JoinerImage} className='joiner l-r-b-t-joiner'/>
+                    <div className='joiner l-r-b-t-joiner'/>
                     {
                         slides[8].content
                     }
                 </div>
             </div>
         </div>}
-        {screenSize === 'md' && <div className='flex flex-col gap-3 items-center' id='scope-of-work'>
-            <p className='text-styled'>Scope Of Work</p>
+        {screenSize === 'md' && <div className='pl-8 flex flex-col gap-1 items-center justify-center' id='scope-of-work'>
+            <p className='text-styled mb-8'>Scope Of Work</p>
             <div className='flex wrap justify-center gap-3 scope-container relative'>
                 <div className='flex flex-wrap'>
                 {
                         slides[0].content
                     }
-                    <img src={JoinerImage} className='joiner l-r-t-b-joiner'/>
+                    <div className='joiner l-r-t-b-joiner'/>
                     {
                         slides[1].content
                     }
                 </div>
             </div>
             <div className='w-75 row-12-joiner flex items-center gap-3'>
-                <img src={JoinerImage} className='joiner t-b-r-l-joiner '/>
+                <div className='joiner t-b-r-l-joiner '/>
             </div>
-            <div className='flex wrap justify-center gap-3 scope-container relative'>
+            <div className='flex wrap justify-center gap-3 scope-container relative pl-4'>
                 <div className='flex flex-wrap'>
                 {
                         slides[2].content
                     }
-                    <img src={JoinerImage} className='joiner r-l-t-b-joiner'/>
+                    <div className='joiner r-l-t-b-joiner'/>
                     {
                         slides[3].content
                     }
                 </div>
             </div>
             <div className='w-75 row-23-joiner flex items-center gap-3'>
-                <img src={JoinerImage} className='joiner t-b-l-r-joiner '/>
+                <div className='joiner t-b-l-r-joiner '/>
             </div>
             <div className='flex wrap justify-center gap-3 scope-container relative'>
                 <div className='flex flex-wrap'>
                 {
                         slides[4].content
                     }
-                    <img src={JoinerImage} className='joiner l-r-t-b-joiner'/>
+                    <div className='joiner l-r-t-b-joiner'/>
                     {
                         slides[5].content
                     }
@@ -216,21 +216,21 @@ const ScopeOfWork: React.FC = () => {
             </div>
             
             <div className='w-75 row-12-joiner flex items-center gap-3'>
-                <img src={JoinerImage} className='joiner t-b-r-l-joiner '/>
+                <div className='joiner t-b-r-l-joiner '/>
             </div>
             <div className='flex wrap justify-center gap-3 scope-container relative'>
                 <div className='flex flex-wrap'>
                 {
                         slides[6].content
                     }
-                    <img src={JoinerImage} className='joiner r-l-t-b-joiner'/>
+                    <div className='joiner r-l-t-b-joiner'/>
                     {
                         slides[7].content
                     }
                 </div>
             </div>
             <div className='w-75 row-23-joiner flex items-center gap-3'>
-                <img src={JoinerImage} className='joiner t-b-l-r-joiner '/>
+                <div className='joiner t-b-l-r-joiner '/>
             </div>
             <div className='flex flex-wrap w-full justify-start ml-8 pl-8 r'>
             {

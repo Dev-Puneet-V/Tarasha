@@ -39,7 +39,7 @@ const UserProfile: React.FC = () => {
         });
         const userInfo = await response.json();
         if (response.ok) {
-          setUser(prev => setUser(prev => ({_id: userInfo?._id,countrycode: user?.countryCode || '+91',  name:  userInfo?.name, email: userInfo?.email, number: userInfo?.mobiles[0]?.mobile, countryCode: userInfo?.mobiles[0]?.countrycode})))
+          setUser(prev => ({_id: userInfo?._id,countrycode: user?.countryCode || '+91',  name:  userInfo?.name, email: userInfo?.email, number: userInfo?.mobiles[0]?.mobile, countryCode: userInfo?.mobiles[0]?.countrycode}))
           eventBus.emit("toast:success", "User Updated!");
           
         }else{

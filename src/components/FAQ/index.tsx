@@ -7,7 +7,7 @@ const FAQ: React.FC = () => {
     const {data} = useSiteData();
     const faqs = data?.faq || [];
     return (
-        <div>
+        <div id="faq">
             {
                 faqs.map((faq: Faqinterface) => {
                     return (

@@ -104,7 +104,7 @@ import { Waveform } from '@uiball/loaders';
     }, [selectedDate]);
 
     const handleDateClick = (date: Date) => {
-      if(new Date(date).getDate() <= new Date().getDate() && currentMonth <= new Date().getMonth() + 1 && currentYear <= new Date().getFullYear()){
+      if(new Date(date).getDate() < new Date().getDate() && currentMonth <= new Date().getMonth() + 1 && currentYear <= new Date().getFullYear()){
         return;
       }
       if(new Date(date).getTime() == new Date(selectedDate || Date.now()).getTime()){

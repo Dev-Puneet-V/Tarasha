@@ -32,8 +32,8 @@ const Work: React.FC = () => {
     <>
         {   
             currWorkIndex >= 0 &&
-            <div id='work-container' className='pt-4 pb-8'>
-                <p className='text-styled ml-8 work-name'>{works[currWorkIndex]?.name}</p>
+            <div id='work-container' className=''>
+                <p className='text-styled ml-8 work-name w-90'>{works[currWorkIndex]?.name}</p>
                 <div className='flex gap-2 ml-8 work-name'>
                     <p className={`${currState === 0 ? 'active-nav' : ''}`} onClick={() => setCurrState(0)}>Before</p>
                     <p className={`${currState === 1 ? 'active-nav' : ''}`} onClick={() => setCurrState(1)}>After</p>
@@ -47,13 +47,13 @@ const Work: React.FC = () => {
                     <img src={NextIcon} alt="Next Icon" />
                 </div>
                 </div>
-                <div className='text-work flex justify-between p-2 ml-8 mr-8 pr-8 pl-8 wrap mb-8'>
-                    <div className='gap-4 challenge'>
-                        <p className='text-bold mb-2 mt-4 text-styled'>Challenges</p>
+                <div className='text-work flex justify-between p-2 ml-8 mr-8 pr-8 pl-8 wrap mb-4'>
+                    <div className='challenge'>
+                        <p className='text-bold text-styled'>Challenges</p>
                         <p>{works[currWorkIndex]?.challange}</p>
                     </div>
-                    <div className='gap-2 solution'>
-                        <p className='text-bold mb-2 mt-4 text-styled'>Solution</p>
+                    <div className='solution'>
+                        <p className='text-bold text-styled'>Solution</p>
                         <p>{works[currWorkIndex]?.solution}</p>
                     </div>
                 </div>

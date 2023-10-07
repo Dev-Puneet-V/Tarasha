@@ -15,13 +15,13 @@ const CallConsultancy: React.FC = () => {
   return (
     <>
     <div className='call-consultancy flex flex-col justify-center items-center gap-1'>
-      <section id='call-consultancy-container' className='flex flex-col justify-center items-center gap-1 mt-8'>
+      <section id='call-consultancy-container' className='flex flex-col justify-center items-center'>
         <p className='text-styled'>Call Consultancy</p>
-        <p className='center'>
+        <p className='justify'>
           {data?.callConsultancyTagLine}
         </p>
         <div className={`flex items-center justify-between gap-2 pl-8 pr-8 ml-8 mr-8 mb-8 mt-4 ${screenSize === 'sm' ? 'book-now-button': 'wrap'}`}>
-          <p className={` pl-4 text-bolder ${screenSize === 'sm' ? 'rs-text ml-4' : 'font-large ml-8'}`}>Rs 3000/ Per Hour</p>
+          <p className={` pl-4 text-bolder ${screenSize === 'sm' ? 'rs-text ml-4' : 'font-large ml-8'}`}>Rs 699/- Onwards</p>
           <button className='button button-secondary mr-8' onClick={handleBookingVisibility}>Book Now</button>
         </div>
       </section>

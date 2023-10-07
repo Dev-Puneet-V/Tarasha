@@ -1,6 +1,6 @@
 .elements > div{
     max-width: 90%;
-    width: 35rem;
+    /* width: 35rem; */
 }
 
 .elements-container{
@@ -14,4 +14,8 @@
 #services-container > div{
     max-width: 90%;
     width: 60rem;
+}
+
+.wh-100{
+    width: 100vw;
 }

@@ -14,6 +14,15 @@
   -webkit-transition: all 0.2s ease;
 }
 
+p{
+  font-size: min(3vw, 1.3rem);
+  /* text-align: left; */
+    font-weight: 400;
+    font-size: 17px;
+    line-height: 26px;
+    letter-spacing: .01em
+}
+
 *::-webkit-scrollbar { 
   display: none; 
 }
@@ -24,12 +33,11 @@ html, body {
 }
 
 *{
-  overflow-y: hidden !important;
+  overflow-y:hidden !important;
 }
 html, body{
   overflow-y: scroll !important;
 }
-
 button{
   cursor: pointer;
 }
@@ -160,9 +168,9 @@ button:hover{
 
 .text-styled{
   font-family: 'BlackMango';
-  font-size: 3rem;
+  font-size: 2rem;
   font-weight: bolder !important;
-  line-height: 55px;
+  line-height: 40px;
   letter-spacing: 0.02em;
   background: linear-gradient(90deg, #B87E1B 12.98%, #F0C660 95.64%);
   -webkit-background-clip: text;
@@ -394,6 +402,9 @@ button:hover{
   width: 100%;
 } */
 
+.w-90{
+  width: 90%;
+}
 /* height */
 .h-5{
   height: 1rem;
@@ -488,4 +499,25 @@ button:hover{
 
 *{
   font-family: -apple-system,BlinkMacSystemFont,Segoe UI,PingFang SC,Hiragino Sans GB,Microsoft YaHei,Helvetica Neue,Helvetica,Arial,sans-serif !important;
+}
+.space-between{
+  justify-content: space-between;
+}
+
+.justify{
+  text-align: justify;
+}
+
+.client-img{
+  height: 5rem !important;
+  width: 5rem !important;
+}
+
+
+
+@media (max-width: 768px) {
+  .text-image-background{
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.4) 10.35%, rgba(0, 0, 0, 0.6) 30.35%, #000000 100%);
+  }
+  
 }

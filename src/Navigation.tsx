@@ -1,3 +1,4 @@
+import React from 'react';
 import { BrowserRouter as Router, Route, Routes, Outlet } from "react-router-dom";
 import "./App.css";
 import Header from "./components/Header";
@@ -15,6 +16,7 @@ import DashboardUser from "./pages/DashboardUser";
 import ResetPassword from "./components/ResetPassword";
 import PrivateRoute from "./PrivateRoute";
 import NotFoundPage from "./pages/NotFoundPage";
+import TermsAndConditions from "./pages/Terms&Conditions";
 
 export default function Navigation() {
   return (
@@ -45,6 +47,7 @@ export default function Navigation() {
           <Route path="blog" element={<Blog />} />
           <Route path="blog/:id" element={<MainBlog />} />
           <Route path="reset-password/:token" element={<ResetPassword />} />
+          <Route path="terms-and-conditions" element={<TermsAndConditions />} />
         </Route>
 
         {/* Define a route without layout for the "Not Found" page */}

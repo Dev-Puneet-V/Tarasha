@@ -18,14 +18,14 @@ const Packages: React.FC = () => {
   }
   return (
     <div id='home-container' className='packages-container'>
-        <Image src={'https://res.cloudinary.com/dfoggertn/image/upload/v1696077777/TarashaWebsiteContent/Images/blogimages/banner/banner-test-3_qysaxp.jpg'} className='home-img first-image'>
-                <div className='text-image-background flex justify-between items-center absolute bottom p-8 right left sizing-border'>
+        <Image src={'https://res.cloudinary.com/dfoggertn/image/upload/v1696688104/test-1_yxjd2q.jpg'} className='home-img first-image'>
+                <div className='text-image-background flex justify-between items-center absolute bottom pl-8 pr-8 right left sizing-border'>
                     <div className='flex flex-col home-main-body-text'>
                         <p className='text-styled'>Our Packages</p>
                     </div>
                 </div>
         </Image>
-        <div className='flex flex-col gap-5 m-2 mt-8 mb-8 p-8'>
+        <div className='flex flex-col m-2 pl-4 pr-4'>
             <p className='text-styled'>Select A Package</p>
             <div className='flex flex-row wrap justify-between'>
             {
@@ -39,7 +39,7 @@ const Packages: React.FC = () => {
                             handlePlanVisibilty={(index: number) => {
                                 setPlanVisibilty(true);
                                 packageSelectionHandler(index + 1);
-                            } }                />
+                            } } ranges={[]}                />
                     )
                 })
             }

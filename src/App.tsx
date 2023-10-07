@@ -6,11 +6,16 @@ import Navigation from './Navigation';
 import Auth from './components/Auth';
 import { useAuth } from './contexts/AuthContext';
 import 'react-toastify/dist/ReactToastify.css'; 
+import ReactGA from 'react-ga';
+const TRACKING_ID = "G-Z89HC5EJMQ";
+ReactGA.initialize(TRACKING_ID);
 function App() {
   const {handleAuthentication, isAuthModalOpen } = useAuth();
   React.useEffect(() => {
+    ReactGA.pageview(window.location.pathname + window.location.search);
     handleAuthentication();
   }, [])
+  
   React.useEffect(() => {
      eventBus.on("toast:success", (message: string) => {
       toast.success(message, {

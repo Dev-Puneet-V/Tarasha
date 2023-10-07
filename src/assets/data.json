@@ -91,40 +91,91 @@
       "packages": [
           {
             "_id": 1,
-            "type": "Basic",
+            "type": "Bronze",
             "features": [
-              "1 Room Design",
-              "Color Consultation",
-              "Furniture Selection",
-              "Limited Revisions"
+              "Concept Board / Mood Board",
+              "Civil Layout",
+              "Furniture Layout",
+              "Furniture Layout with measurements",
+              "3D Views",
+              "One time Design revision"
             ],
-            "price": "$499"
+            "price": "$499",
+            "ranges": [
+              {
+                "range": "Upto 500 SFT",
+                "price": "21,000/-"
+              },
+              {
+                "range": "500 SFT - 1000 SFT",
+                "price": "42,000/-"
+              },
+              {
+                "range": "> 1000SFT",
+                "price": "45/- Per SFT"
+              }
+            ]
           },
           {
             "_id": 2,
-            "type": "Standard",
+            "type": "Silver",
             "features": [
-              "2-3 Room Designs",
-              "Color Consultation",
-              "Furniture Selection",
-              "Custom Mood Board",
-              "3D Renderings"
+              "Concept Board / Mood Board",
+              "Civil Layout",
+              "Furniture Layout",
+              "Furniture Layout with measurements",
+              "False Ceiling Layout",
+              "Electrical Layout",
+              "Plumbing, Civil, Flooring, Layouts",
+              "3D Views",
+              "Two time Design revision"
             ],
-            "price": "$899"
+            "price": "$899",
+            "ranges": [
+              {
+                "range": "Upto 500 SFT",
+                "price": "30,000/-"
+              },
+              {
+                "range": "500 SFT - 1000 SFT",
+                "price": "60,000/-"
+              },
+              {
+                "range": "> 1000 SFT",
+                "price": "63/- Per SFT"
+              }
+            ]
           },
           {
             "_id": 3,
-            "type": "Premium",
+            "type": "Gold",
             "features": [
-              "Full Home Design",
-              "Color Consultation",
-              "Furniture Selection",
-              "Custom Mood Board",
-              "3D Renderings",
-              "Unlimited Revisions",
-              "In-Person Consultation"
+              "Concept Board / Mood Board",
+              "Civil Layout",
+              "Furniture Layout",
+              "Furniture Layout with measurements",
+              "False Ceiling Layout",
+              "Electrical Layout",
+              "Plumbing, Civil, Flooring, Layouts",
+              "Elevations",
+              "3D Views",
+              "Two time Design revision"
             ],
-            "price": "$1999"
+            "price": "$1999",
+            "ranges": [
+              {
+                "range": "Upto 500 SFT",
+                "price": "39,000/-"
+              },
+              {
+                "range": "500 SFT - 1000 SFT",
+                "price": "78,000/-"
+              },
+              {
+                "range": "> 1000 SFT",
+                "price": "81/- Per SFT"
+              }
+            ]
           }
         ],
         "callConsultancyTagLine": "With years of experience and a passion for design, we offer hourly consultation services that put you in direct contact with our expert designers. "

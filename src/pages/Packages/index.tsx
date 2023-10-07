@@ -11,7 +11,11 @@ import './style.css';
 const Packages: React.FC = () => {
   const {data} = useSiteData();
   const [isPlanVisible, setPlanVisibilty] = React.useState(false);
+  const [selectedPackage, setSelectedPackage] = React.useState<number>(1);
   const packages = data?.packages || [];
+  const packageSelectionHandler = (index: number) => {
+    setSelectedPackage(index);
+  }
   return (
     <div id='home-container' className='packages-container'>
         <Image src={'https://res.cloudinary.com/dfoggertn/image/upload/v1696077777/TarashaWebsiteContent/Images/blogimages/banner/banner-test-3_qysaxp.jpg'} className='home-img first-image'>
@@ -25,14 +29,17 @@ const Packages: React.FC = () => {
             <p className='text-styled'>Select A Package</p>
             <div className='flex flex-row wrap justify-between'>
             {
-                packages?.map((currPackage: Packageinterface) => {
+                packages?.map((currPackage: Packageinterface, index: number) => {
                     return (
                         <Package 
-                            _id={currPackage?._id} 
-                            type={currPackage?.type} 
+                            key={index}
+                            _id={index}
+                            type={currPackage?.type}
                             features={currPackage?.features}
-                            handlePlanVisibilty={() => setPlanVisibilty(true)}
-                        />
+                            handlePlanVisibilty={(index: number) => {
+                                setPlanVisibilty(true);
+                                packageSelectionHandler(index + 1);
+                            } }                />
                     )
                 })
             }
@@ -40,7 +47,7 @@ const Packages: React.FC = () => {
         </div>
         <CallConsultancy />
         <Modal isOpen={isPlanVisible} onClose={() => setPlanVisibilty(false) }>
-            <ChoosePackagePlan />
+            <ChoosePackagePlan selectedPackage={selectedPackage}/>
         </Modal>
     </div>
   )

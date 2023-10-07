@@ -5,6 +5,7 @@ import { Packageinterface } from '../../utils/type';
 import './style.css';
 const Package: React.FC<Packageinterface> = (props) => {
     const {
+        _id,
         type,
         features = [],
         handlePlanVisibilty
@@ -26,7 +27,7 @@ const Package: React.FC<Packageinterface> = (props) => {
             })
         }
         </div>
-        <div className='flex items-center gap-2 absolute select-plan text-styled' onClick={handlePlanVisibilty}>
+        <div className='flex items-center gap-2 absolute select-plan text-styled' onClick={() => handlePlanVisibilty(_id)}>
             <div>
                 <p>
                 {'Select ' + type}     

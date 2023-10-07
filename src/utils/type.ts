@@ -24,11 +24,15 @@ interface Faqinterface {
 }
 
 interface Packageinterface{
-    _id?: number;
+    _id: number;
     type: string;
     features: string[];
+    ranges: {
+        range: string,
+        price: string
+    }[],
     price?: number | string;
-    handlePlanVisibilty?: () => void;
+    handlePlanVisibilty: (index: number) => void;
 }
 
 interface Serviceinterface{

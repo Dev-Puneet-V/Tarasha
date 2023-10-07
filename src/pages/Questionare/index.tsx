@@ -15,18 +15,21 @@ interface Question {
 }
 
 const questions: Question[] = [
-  { que: 'What inspired you to become an interior designer?', _id: 1 },
-  { que: 'How do you approach creating a functional and aesthetically pleasing interior space?', _id: 2 },
-  { que: 'Can you share an interior design project that you are particularly proud of? What made it special?', _id: 3 },
-  { que: 'What color trends do you think will dominate interior design this year?', _id: 4 },
-  { que: 'How do you balance your clients personal style preferences with your design expertise?', _id: 5 },
-  { que: 'What are some common mistakes people make when decorating their homes, and how can they avoid them?', _id: 6 },
-  { que: 'Tell us about your favorite interior design materials or finishes and why you love them.', _id: 7 },
-  { que: 'What role does sustainability play in your interior design projects?', _id: 8 },
-  { que: 'How do you stay updated with the latest interior design trends and innovations?', _id: 9 },
-  { que: 'Can you share some tips for maximizing space in small apartments or rooms?', _id: 10 },
-  { que: 'What challenges do you often face in interior design, and how do you overcome them?', _id: 11 },
-  { que: 'Describe your ideal interior design project. What would it involve?', _id: 12 },
+  { que: 'Each family member’s name, age, & occupation? (in order) ', _id: 1 },
+  { que: 'Which area to re-design and why?', _id: 2 },
+  { que: 'Any Pets?', _id: 3 },
+  { que: 'Preferred Design Style (Modern, Neo classical, European, contemprory, traditional, Rustic, Bohemian etc)?', _id: 4 },
+  { que: 'Budget, if any?', _id: 5 },
+  { que: 'Preference in color (Like & Dislike)?', _id: 6 },
+  { que: 'Time Frame?', _id: 7 },
+  { que: 'Best time to contact you?', _id: 8 },
+  { que: 'Anything special to consider during the design process?', _id: 9 },
+  { que: 'Design Reference or Inspirational images, if any?', _id: 10 },
+  { que: 'Is it a renovation or revamp work?', _id: 11 },
+  { que: 'Location of the site?', _id: 12 },
+  { que: 'Vastu compliant or non-vastu compliant layouts & design?', _id: 13 },
+  { que: 'Which religin do you follow?', _id: 14 },
+  { que: 'Have you worked with an interior designer before? & who will be taking all the decisions during our design process?', _id: 15 },
 ];
 
 const Questionare: React.FC = () => {

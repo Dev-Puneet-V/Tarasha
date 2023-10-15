@@ -1,6 +1,6 @@
 import React from 'react';
 import { BsArrowUpRight } from 'react-icons/bs';
-import TickIcon from '../../assets/tick.png';
+import TickIcon from '../../assets/tick-icon.svg';
 import { Packageinterface } from '../../utils/type';
 import './style.css';
 const Package: React.FC<Packageinterface> = (props) => {
@@ -20,8 +20,8 @@ const Package: React.FC<Packageinterface> = (props) => {
             features?.map((feature: string) => {
                 return (
                     <div className='flex items-center gap-1'>
-                        <img  src={TickIcon} />
-                        <p>{feature}</p>
+                        <img  src={TickIcon} height={18} width={18}/>
+                        <p style={{fontSize: '17px'}} className='left'>{feature}</p>
                     </div>
                 )
             })
@@ -29,7 +29,7 @@ const Package: React.FC<Packageinterface> = (props) => {
         </div>
         <div className='flex items-center gap-2 absolute select-plan text-styled' onClick={() => handlePlanVisibilty(_id)}>
             <div>
-                <p>
+                <p style={{opacity: '1', paddingBottom: '5px', color: 'brown !important'}}>
                 {'Select ' + type}     
                 </p>
                 <div className='package-divider select-package-divider'/>

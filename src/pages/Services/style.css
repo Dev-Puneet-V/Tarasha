@@ -13,9 +13,9 @@
 
 #services-container > div{
     max-width: 90%;
-    width: 60rem;
+    width: 100% !important;
 }
 
 .wh-100{
-    width: 100vw;
+    width: 100%;
 }

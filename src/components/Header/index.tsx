@@ -1,11 +1,12 @@
 import React from 'react';
 import { NavLink, useLocation } from 'react-router-dom';
 import Icon from '../../assets/icon.png';
-import HamburgerImage from '../../assets/hamburger.png';
-import CollapseImage from '../../assets/back.jpg';
 import { ACTIVE_LINK_STYLE } from '../../utils/constant';
 import { useAuth } from '../../contexts/AuthContext';
 import useScreenSize from '../../hooks/useMediaQuery';
+import { IoArrowBackOutline } from 'react-icons/io5';
+import { GiHamburgerMenu } from 'react-icons/gi';
+import HamburgerIcon from '../../assets/hamburger_icon.svg';
 import './style.css';
 
 const Header: React.FC = () => {
@@ -29,11 +30,13 @@ const Header: React.FC = () => {
   };
   return (
     <div id='header-container'>
-      <img   src={Icon} alt="Logo" className={`${screenSize === 'sm' && 'small-logo'}`}/>
+      <div id='header-container-2'>
+      <img   src={Icon} height={screenSize === 'sm' ? 55 : 60} alt="Logo" className={`${screenSize === 'sm' && 'small-logo'}`}/>
     { <div className={`flex gap-5 ${!isSidebarVisibile && screenSize !== 'lg' && 'hidden'} ${screenSize !== 'lg' && 'sidebar'}`}>
         <ul className='flex items-center text-white list-style-none gap-3'>
           <li className={`${!isSidebarVisibile && screenSize === 'lg' && 'hidden'}`}>
-            <img  src={CollapseImage} height={35} onClick={handleSidebar}/>
+            <IoArrowBackOutline size={35} onClick={handleSidebar}/>
+            
           </li>
           <li className='nav-item'>
             <NavLink 
@@ -71,7 +74,7 @@ const Header: React.FC = () => {
               className='link' 
               
               onClick={handleNavLinkClick}
-              style={ACTIVE_LINK_STYLE}>
+              style={screenSize === 'lg' ?  ACTIVE_LINK_STYLE : {}}>
               Packages
             </NavLink>
           </li>
@@ -96,12 +99,15 @@ const Header: React.FC = () => {
             </NavLink>
           </li>}
         </ul>
-        {!isAuthenticated && <button id='auth-button' onClick={openAuthModal}>{`Login/Signup`}</button>}
-      {isAuthenticated && <button id='auth-button' onClick={handleAuthentication}>{`Logout`}</button>}
+        {!isAuthenticated && <button id='auth-button' className='normal-button-text' onClick={openAuthModal}>{`Login/Signup`}</button>}
+      {isAuthenticated && <button id='auth-button' className='normal-button-text' onClick={handleAuthentication}>{`Logout`}</button>}
       </div>}
       {screenSize !== 'lg' &&
-      <img  src={HamburgerImage} height={40} className={`mb-2 hamburger-icon ${isSidebarVisibile && 'hidden'}`} onClick={handleSidebar}/>}
-    </div>
+      // <GiHamburgerMenu size={40} style={{color: 'white'}} className={`mb-2 hamburger-icon ${isSidebarVisibile && 'hidden'}`} onClick={handleSidebar}/>}
+      <img src={HamburgerIcon} height={35} width={35} onClick={handleSidebar}/>
+  }
+  </div>
+      </div>
     
   );
 };

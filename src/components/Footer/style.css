@@ -3,9 +3,19 @@
     background: linear-gradient(90deg, #000000 19.27%, #B87E1B 153.58%);
     color: #ffffff;
     box-sizing: border-box;
-    position: relative;
-    top: 7.5rem;
-    height: 25rem;
+    /* position: relative;
+    top: 5.5rem;
+    height: 25rem; */
+    margin-top: 90px;
+}
+
+.footer-container *{
+    color: white !important;
+    opacity: 1 !important;
+}
+.footer-container p{
+    line-height: 20px;
+    font-size: 14px !important;
 }
 
 .info{
@@ -24,34 +34,40 @@
     text-align: center;
     /* margin-top: 100px; */
     padding: 10px;
-    color: #fff; 
+    color: #fff !important; 
     /* height: 30rem !important; */
     background-color: #000000;
-    position: relative;
-    top: 7.5rem;
     width: 100%;
     display: flex;
     justify-content: center;
     padding-top: 1.5rem;
 }
 
-@media (max-width: 1500px){
+@media (max-width: 800px){
     .footer-container{
-        height: 40rem;
+        /* height: 50rem; */
     }
     .m-f{
-        position: relative;
+        /* position: relative;
         top: -3.5rem;
         margin-left: 0 !important;
-        padding-left: 0 !important;
+        padding-left: 0 !important; */
     }
   }
 
   @media (max-width: 600px){
     .footer-container{
-        height: 60rem;
+        /* height: 60rem; */
     }
     .m-f{
-        top: -6rem;
+        top: -4.5rem;
     }
+  }
+
+  .footer-container *{
+    font-size: 1rem;
+  }
+
+  .tandom p{
+    cursor: pointer;
   }

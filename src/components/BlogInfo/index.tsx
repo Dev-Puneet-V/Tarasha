@@ -11,6 +11,7 @@ interface BlogProps{
   datePublished: string;
   imageUrl: string;
   content: string;
+  index?: number;
 }
 
 const BlogInfo: React.FC<BlogProps> = (props) => {
@@ -20,19 +21,20 @@ const BlogInfo: React.FC<BlogProps> = (props) => {
     title,
     datePublished,
     imageUrl,
-    content
+    content,
+    index = 0
   } = props;
   const screenSize = useScreenSize();
   const navigate = useNavigate();
 
   return (
-    <div className='blog-item-container'>
-      <div className='bc-ch'>
+    <div className='blog-item-container max-width-1300'>
+      <div className={`bc-ch ${index % 2 === 0 ? 'flex-reverse': ''}`}>
         <div className={`left-mini-blog ${screenSize === 'lg' ? '' : 'w-100'}`}>
           <div className="blog-info flex flex-col gap-2">
-        <div className='info-blog-tags flex gap-1'>
-          {tags.map((tag: string) => <p>{tag}</p>)}
-        </div>
+      {tags.length > 0 &&  <div className='info-blog-tags flex gap-1'>
+          {/* {tags.map((tag: string) => <p>{tag}</p>)} */}
+        </div>}
         <p className='text-styled'>{title}</p>
         <div className='flex items-center gap-1 blog-little-info'>
           <div className='flex gap-1 items-center'>

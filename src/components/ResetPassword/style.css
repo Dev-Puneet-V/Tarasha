@@ -11,7 +11,7 @@
     font-size: 32px;
     color: black;
     position: relative;
-    top: -0.1rem;
+    top: -1.7rem !important;
   }
   
 
@@ -105,7 +105,7 @@ input:focus{
 
 .reset-pass{
     position: relative;
-    top: 7.5rem;
+    top: 5.5rem;
     height: 83vh;
     display: flex;
     align-items: center;

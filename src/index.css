@@ -1,6 +1,6 @@
 @font-face {
   font-family: 'BlackMango';
-  src: url('./assets//black_mango_font//index.ttf') format('truetype');
+  src: url('./assets/OTF/BlackMango-Bold.otf') format('truetype');
   font-weight: 1500;
   text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
 }
@@ -8,28 +8,30 @@
 *{
   margin: 0px;
   padding: 0px;
-  font-family: Montserrat;
+  font-family: 'Montserrat';
   overflow-x: hidden;
   transition: all .2s ease;
   -webkit-transition: all 0.2s ease;
 }
 
 p{
-  font-size: min(3vw, 1.3rem);
+  font-size: 16px;
   /* text-align: left; */
     font-weight: 400;
-    font-size: 17px;
-    line-height: 26px;
-    letter-spacing: .01em
+    /* font-size: 22px; */
+    line-height: 24px;
+    letter-spacing: .02em;
+    opacity: 0.8;
 }
 
 *::-webkit-scrollbar { 
   display: none; 
 }
 
-html, body {
+html, body, #root {
   /* scroll-behavior: smooth; */
-  width: 100vw;
+  width:100vw ;
+  margin: auto;
 }
 
 *{
@@ -43,7 +45,13 @@ button{
 }
 
 button:hover{
-  opacity: 0.8;
+  opacity: 0.8 !important;
+  background-color: transparent;
+  border-radius: none !important;
+  /* width: 220px;
+  height: 63px; */
+  /* border: 2px; */
+
 }
 
 .link{
@@ -95,8 +103,20 @@ button:hover{
   gap: 30px
 }
 
+.gap-4{
+  gap: 40px;
+}
+
 .gap-5{
   gap: 50px;
+}
+
+.gap-6{
+  gap: 60px;
+}
+
+.gap-25px{
+  gap:25px;
 }
 
 .left{
@@ -159,6 +179,7 @@ button:hover{
   display: flex;
   justify-content: center;
   align-items: center;
+  border-radius: 0px !important;
 }
 
 .button-dark{
@@ -166,15 +187,27 @@ button:hover{
   color: #000;
 }
 
+
 .text-styled{
   font-family: 'BlackMango';
-  font-size: 2rem;
+  font-size:3vw;
   font-weight: bolder !important;
-  line-height: 40px;
+  line-height: 3.7vw;
   letter-spacing: 0.02em;
   background: linear-gradient(90deg, #B87E1B 12.98%, #F0C660 95.64%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+
+}
+
+.text-styled-3{
+  font-family: 'BlackMango';
+  font-size:3vw;
+  font-weight: bolder !important;
+  line-height: 3.7vw;
+  letter-spacing: 0.02em;
+  color: #B87E1B;
+
 }
 
 .text-styled-2{
@@ -183,9 +216,16 @@ button:hover{
   font-weight: bolder !important;
   line-height: 60px;
   letter-spacing: 0.02em;
-  background: linear-gradient(90deg, #000000 12.98%, #B87E1B 95.64%);
+  /* background: linear-gradient(90deg, #000000 12.98%, #B87E1B 95.64%);
   -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+  
+  -webkit-text-fill-color: transparent; */
+  background: #000000;
+ 
+   color: #000000; background-image: -webkit-linear-gradient(0deg, #000000 0%, #B87E1B 33%); background-clip: text; -webkit-background-clip: text; text-fill-color: transparent; -webkit-text-fill-color: transparent;
+          
+        
+
 }
 
 /* padding */
@@ -281,7 +321,10 @@ button:hover{
 }
 
 .text-image-background{
-  background: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.4) 45.35%, #000000 100%);
+  align-items: flex-end;
+  justify-content: space-between;
+  height: 100%;
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, rgb(0 0 0 / 40%) 45.35%, #000000 100%);    
 }
 
 .center{
@@ -462,7 +505,7 @@ button:hover{
 
 .loader{
   height: 80vh;
-  width: 100vw;
+  width: 100%;
 }
 
 @media (max-width: 700px){
@@ -471,9 +514,9 @@ button:hover{
     text-align: justify !important;
     line-height: 1rem;
   }
-  .text-styled{
+  .text-styled, .text-styled-3{
     font-size: 1.5rem;
-    font-family: 'Times New Roman', Times, serif;
+    /* font-family: 'Times New Roman', Times, serif; */
     line-height: 40px;
     /* text-shadow: 2px 2px 100px #ffffff; */
     text-align: center !important;
@@ -485,9 +528,9 @@ button:hover{
 
 
 @media (max-width: 300px) and  (orientation: landscape){
-  .text-styled{
+  .text-styled, .text-styled-3{
     font-size: 2rem;
-    font-family: 'Times New Roman', Times, serif;
+    /* font-family: 'Times New Roman', Times, serif; */
     line-height: 40px;
     text-shadow: 2px 2px 100px #ffffff;
   }
@@ -498,14 +541,14 @@ button:hover{
 }
 
 *{
-  font-family: -apple-system,BlinkMacSystemFont,Segoe UI,PingFang SC,Hiragino Sans GB,Microsoft YaHei,Helvetica Neue,Helvetica,Arial,sans-serif !important;
+  /* font-family: -apple-system,BlinkMacSystemFont,Segoe UI,PingFang SC,Hiragino Sans GB,Microsoft YaHei,Helvetica Neue,Helvetica,Arial,sans-serif !important; */
 }
 .space-between{
   justify-content: space-between;
 }
 
 .justify{
-  text-align: justify;
+  text-align: justify !important;
 }
 
 .client-img{
@@ -513,11 +556,32 @@ button:hover{
   width: 5rem !important;
 }
 
+.normal-button-text{
+  font-family: 'Montserrat' !important;
+}
 
+
+
+@media (max-width: 1000px) {
+  /* .text-styled{
+        font-size: 28px;
+        font-weight: normal !important;
+        line-height: 35px;
+    } */
+}
 
 @media (max-width: 768px) {
   .text-image-background{
     background: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.4) 10.35%, rgba(0, 0, 0, 0.6) 30.35%, #000000 100%);
   }
-  
+}
+
+
+.container{
+  max-width: 1200px !important;
+  margin: auto !important;
+}
+
+.light-white{
+  color: white !important;
 }

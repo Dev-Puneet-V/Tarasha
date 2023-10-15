@@ -202,7 +202,7 @@
 
 .t-b-r-l-joiner{
     transform: rotateY(180deg) rotateZ(270deg) ;
-    width: 8rem;
+    width: 4rem;
     position: relative;
     left: -4rem;
     perspective: 10px;
@@ -219,19 +219,19 @@
 
 .row-12-joiner{
     justify-content: flex-end;
-    height:12rem;
+    height:5rem;
     overflow-y: scroll;
 }
 
 .row-23-joiner{
     justify-content: flex-start;
-    height:12rem;
+    height: 5rem;
     width: 90%;
 }
 
 .t-b-l-r-joiner{
     transform: rotateZ(270deg) ;
-    width: 8rem;
+    width: 4rem;
     position: relative;
     left: 0.1rem;
     perspective: 10px;
@@ -250,7 +250,7 @@
     width: 100%;
     /* max-width: 800px; */
     margin: 0 auto;
-    background-color: #B87E1B;
+    /* background-color: #B87E1B; */
   }
   
   /* Slider */
@@ -292,7 +292,7 @@
   }
 
   .slider-container-scope{
-    background-color: #fbeedb !important;
+    /* background-color: #fbeedb !important; */
   }
 
   .slider-container-scope *{

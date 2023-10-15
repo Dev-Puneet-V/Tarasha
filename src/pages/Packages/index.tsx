@@ -7,26 +7,30 @@ import CallConsultancy from '../../components/CallConsultancy';
 import Modal from '../../components/Modal';
 import ChoosePackagePlan from '../../components/ChoosePackagePlan';
 import './style.css';
+import useScreenSize from '../../hooks/useMediaQuery';
 
 const Packages: React.FC = () => {
   const {data} = useSiteData();
   const [isPlanVisible, setPlanVisibilty] = React.useState(false);
   const [selectedPackage, setSelectedPackage] = React.useState<number>(1);
   const packages = data?.packages || [];
+  const screenSize = useScreenSize();
   const packageSelectionHandler = (index: number) => {
     setSelectedPackage(index);
   }
   return (
     <div id='home-container' className='packages-container'>
         <Image src={'https://res.cloudinary.com/dfoggertn/image/upload/v1696688104/test-1_yxjd2q.jpg'} className='home-img first-image'>
-                <div className='text-image-background flex justify-between items-center absolute bottom pl-8 pr-8 right left sizing-border'>
+          <div className={`text-image-background flex justify-between items-center absolute bottom  right left sizing-border  flex wrap ${screenSize === 'sm' ? 'gap-1 p-4' : 'gap-3 p-8'}`}>
+            <div className={` flex justify-between items-center absolute bottom  right left sizing-border  flex wrap ${screenSize === 'sm' ? 'gap-1 p-4' : 'gap-3 p-8'}`} style={{maxWidth: '1500px', margin: 'auto'}}>
                     <div className='flex flex-col home-main-body-text'>
                         <p className='text-styled'>Our Packages</p>
                     </div>
-                </div>
+            </div>
+          </div>
         </Image>
-        <div className='flex flex-col m-2 pl-4 pr-4'>
-            <p className='text-styled'>Select A Package</p>
+        <div className='flex flex-col m-2 pl-4 pr-4 p-8 m-8' style={{maxWidth: '1450px', margin: 'auto'}}>
+            <p className='text-styled-3 mb-8 pb-8'>Select A Package</p>
             <div className='flex flex-row wrap justify-between'>
             {
                 packages?.map((currPackage: Packageinterface, index: number) => {

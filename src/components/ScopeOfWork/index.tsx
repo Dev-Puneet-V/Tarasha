@@ -19,8 +19,7 @@ const slides: Slide[] = [
         <p className='text-bold'>Initial Consultation</p>
         <p > During this meeting, the designer gathers
 information about the client's needs, preferences, budget, and goals for
-the project.
-.</p>
+the project.</p>
     </div>
 </div> },
     { id: 2, content: <div className='flex flex-wrap w-full justify-start'>
@@ -119,8 +118,8 @@ const ScopeOfWork: React.FC = () => {
  const screenSize = useScreenSize();
   return (
     <>
-       {screenSize === 'lg' && <div className='w-75 flex flex-col gap-3 items-center scope-of-work-lg' id='scope-of-work'>
-            <p className='text-styled pb-8'>Scope Of Work</p>
+       {screenSize === 'lg' && <div className='w-75 flex flex-col gap-3 items-center scope-of-work-lg' id='scope-of-work' style={{color: '#B87E1B !important'}}>
+            <p className='text-styled-3 pb-8'>Scope Of Work</p>
             <div className='flex wrap justify-center gap-3 scope-container relative w-100'>
                 <div className='flex flex-wrap'>
                     {
@@ -173,7 +172,7 @@ const ScopeOfWork: React.FC = () => {
                 </div>
             </div>
         </div>}
-        {screenSize === 'md' && <div className='pl-8 flex flex-col gap-1 items-center justify-center' id='scope-of-work'>
+        {screenSize === 'md' && <div className='pl-8 flex flex-col gap-1 items-center justify-center' id='scope-of-work' style={{color: '#B87E1B !important'}}>
             <p className='text-styled mb-8'>Scope Of Work</p>
             <div className='flex wrap justify-center gap-3 scope-container relative'>
                 <div className='flex flex-wrap'>
@@ -240,12 +239,16 @@ const ScopeOfWork: React.FC = () => {
         </div>}
         {screenSize === 'sm' &&
         <><p className='text-styled mb-2'>Scope Of Work</p>
-        <div className='flex flex-col items-center slider-container-scope pt-2 bt-2'>
+        <div className='flex flex-col items-center slider-container-scope pt-2 bt-2' >
             
             
-                <div className=" flex gap-1 items-center">
+                <div className=" flex gap-1 items-center" >
                     <FaChevronLeft onClick={prevSlide} color='#000000'/>
-                    <div className="scope-of-work" >
+                    <div className="scope-of-work" style={{
+    boxShadow: '0 0 2px 2px rgba(0, 0, 0, 0.2)',
+    padding: '0.3rem, 2rem !important',
+    margin: '1rem'
+                }}>
                         {slides[currentSlide].content}
                     </div>
                     <FaChevronRight onClick={nextSlide} color='#000000'/>

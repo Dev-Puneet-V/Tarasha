@@ -12,7 +12,7 @@ const FAQ: React.FC = () => {
                 faqs.map((faq: Faqinterface) => {
                     return (
                         <Accordion key={faq._id} title={faq.que}>
-                            <p className='ml-2 mt-2 mb-4'>{faq.ans}</p>
+                            <p className='ml-2 mt-2 mb-8'>{faq.ans}</p>
                         </Accordion>
                     )
                 })

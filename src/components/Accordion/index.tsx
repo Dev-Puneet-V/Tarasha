@@ -36,7 +36,7 @@ const Accordion: React.FC<AccordionProps> = (props) => {
         {isOpen && (
             <div className="font-small">{children}</div>
         )}
-        <div className='ml-2 mr-2 border-bottom'/>
+        <div className='ml-2 mr-2 mt-2 border-bottom'/>
         </div>
     )
 }

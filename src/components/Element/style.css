@@ -24,10 +24,10 @@
 
 .element-container p{
     text-align: center !important;
-    /* width: 6rem !important; */
+    max-width: 12rem !important;
     font-weight: bold !important;
     font-size: max(1.2rem, 1vw);
-    line-height: max(4vw, 1.4rem);
+    /* line-height: max(4vw, 1.4rem); */
 }
 
 .element-img {

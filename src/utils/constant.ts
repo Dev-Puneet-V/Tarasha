@@ -25,6 +25,15 @@ export const ACTIVE_LINK_STYLE = {
     'background': 'linear-gradient(90deg, #F0C660 20.75%, #FFFFFF 79.25%)',
     '-webkitBackgroundClip': 'text',
     '-webkitTextFillColor': 'transparent',
+    
+    'color': '#F0C660',
+'background-image': '-webkit-linear-gradient(45deg, #F0C660 20%, #FFFFFF 66%)',
+     ' background-clip': 'text',
+      '-webkit-background-clip': 'text',
+       'text-fill-color': 'transparent',
+        '-webkit-text-fill-color': 'transparent',
+        'font-weight': 'bold'
+        
 };
 
 export const GOOGLE_AUTH_CLIENT_ID='889450406403-hs3iqsnkds6k0oajrclnsva09i0jilil.apps.googleusercontent.com';

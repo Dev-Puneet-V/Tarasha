@@ -3,8 +3,8 @@
 #dashboard-user {
     display: flex;
     position: relative;
-    top: 7.5rem;
-    height: calc(100vh - 7.5rem) !important;
+    top: 5.5rem;
+    height: calc(100vh - 5.5rem) !important;
   }
   
   .dashboard-sidebar {

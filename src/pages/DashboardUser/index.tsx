@@ -14,7 +14,7 @@ const DashboardUser: React.FC = () => {
   const handleComponentChange = (component: string) => {
     setActiveComponent(component);
   };
-
+ 
   return (
     <div id="dashboard-user" className="flex">
       <div className={`dashboard-sidebar ${screenSize === 'sm' ? 'w-full' : ''}`}>
@@ -45,7 +45,7 @@ const DashboardUser: React.FC = () => {
           screenSize !== 'sm' && <div className="dashboard-main-content">
           {activeComponent === 'profile' && <UserProfile />}
           {activeComponent === 'bookingHistory' && <BookingHistory />}
-          {activeComponent === 'blogEditor' && <BlogWriting />}
+          {/* {activeComponent === 'blogEditor' && <BlogWriting />} */}
         </div>
       }
       {

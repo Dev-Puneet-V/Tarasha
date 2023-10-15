@@ -3,15 +3,9 @@ import './style.css'; // Import your CSS file
 
 const TermsAndConditions: React.FC = () => {
   return (
-    <div className="terms-container">
+    <div className="terms-container" style={{marginTop: '6rem'}}>
       <h1>Terms & Conditions</h1>
       <div className="terms-content">
-        <p>
-          <strong>For Private and Confidential Use</strong>
-        </p>
-        <p>
-          <strong>TERMS & CONDITIONS OF INTERIOR DESIGN SERVICE</strong>
-        </p>
         <p>
           PLEASE READ THIS TERMS OF SERVICE AGREEMENT CAREFULLY. BY USING THIS WEBSITE OR REQUESTING FOR SERVICE FROM THIS WEBSITE YOU AGREE TO BE BOUND BY ALL OF THE TERMS AND CONDITIONS OF THIS AGREEMENT.
         </p>
@@ -19,7 +13,7 @@ const TermsAndConditions: React.FC = () => {
           This Terms of Service Agreement governs your use of the website, www.tarashainteriors.com, Tarasha Interiors offer of services on this Website.
         </p>
         <p>
-          This Agreement incorporated by this reference, the policies and guidelines referenced below. Tarasha Interiors reserves the right to change or revise the terms and conditions of this Agreement at any time by posting any changes or a revised Agreement on this Website. Tarasha Interiors will alert you that changes or revisions have been made by indicating on the top of this Agreement, the date it was last revised. The changed or revised Agreement will be effective immediately after it is posted on this Website. Your use of the Website following any such changes or of a revised Agreement will constitute your acceptance of any such changes or revisions. Tarasha Interiors encourages you to review this Agreement whenever you visit the Website to make sure that you understand the terms and conditions governing the use of the Website. This Agreement does not alter in any way the terms or conditions of any other written agreement you may have with Tarasha Interiors for other products or services. If you do not agree to this Agreement (including any referenced policies or guidelines), please immediately terminate your use of the Website. If you would like to print this Agreement, please click the print button on your browser toolbar.
+          This Agreement incorporated by this reference, the policies and guidelines referenced below. Tarasha Interiors reserves the right to change or revise the terms and conditions of this Agreement at any time by posting any changes or a revised Agreement on this Website. Tarasha Interiors will alert you that changes or revisions have been made by indicating on the top of this Agreement, the date it was last revised. The changed or revised Agreement will be effective immediately after it is posted on this Website. Your use of the Website following any such changes or of a revised Agreement will constitute your acceptance of any such changes or revisions. Tarasha Interiors encourages you to review this Agreement whenever you visit the Website to make sure that you understand the terms and conditions governing the use of the Website. This Agreement does not alter in any way the terms or conditions of any other written agreement you may have with Tarasha Interiors for other products or services. If you do not agree to this Agreement (including any referenced policies or guidelines), please immediately terminate your use of the Website.
         </p>
         <ul>
           <li><strong>1.</strong> We will ensure that our Services are provided with reasonable care and skill and in accordance with best trade practice. Our Services, and any guidance we provide, will be from an interior design perspective only; you must gain specialist advice from architects, building control, structural engineers or other specialist contractors or trades where applicable.</li>

@@ -32,14 +32,14 @@ const Work: React.FC = () => {
     <>
         {   
             currWorkIndex >= 0 &&
-            <div id='work-container' className=''>
-                <p className='text-styled ml-8 work-name w-90'>{works[currWorkIndex]?.name}</p>
-                <div className='flex gap-2 ml-8 work-name'>
+            <div id='work-container' className='' style={{maxWidth: '1450px', margin: 'auto'}}>
+                <p className='text-styled ml-8 work-name w-90'  >{works[currWorkIndex]?.name}</p>
+                <div className='flex gap-2 ml-8 work-name'  >
                     <p className={`${currState === 0 ? 'active-nav' : ''}`} onClick={() => setCurrState(0)}>Before</p>
                     <p className={`${currState === 1 ? 'active-nav' : ''}`} onClick={() => setCurrState(1)}>After</p>
                 </div>
-                <div className="background-image relative" style={{ backgroundImage: `url(${currState === 0 ? works[currWorkIndex]?.prev : works[currWorkIndex]?.next})` }}>
-                <div className={`absolute ${currWorkIndex === 0 ? 'disabled' : ''} prev-button`} onClick={handlePrev}>
+                <div className="background-image relative" style={{ backgroundImage: `url(${currState === 0 ? works[currWorkIndex]?.prev : works[currWorkIndex]?.next})`, width: '100vw !important',maxWidth: '100vw !important' }}>
+                <div className={`absolute ${currWorkIndex === 0 ? 'disabled' : ''} prev-button`} onClick={handlePrev} >
                     <img src={PrevIcon} alt="Previous Icon" />
                 </div>
 
@@ -47,13 +47,13 @@ const Work: React.FC = () => {
                     <img src={NextIcon} alt="Next Icon" />
                 </div>
                 </div>
-                <div className='text-work flex justify-between p-2 ml-8 mr-8 pr-8 pl-8 wrap mb-4'>
-                    <div className='challenge'>
-                        <p className='text-bold text-styled'>Challenges</p>
+                <div className='text-work flex justify-between p-2 ml-8 mr-8 pr-8 pl-8 wrap mb-8 pt-8'>
+                    <div className='challenge mt-4'>
+                        <p className='text-bold text-styled mb-2'>Challenges</p>
                         <p>{works[currWorkIndex]?.challange}</p>
                     </div>
-                    <div className='solution'>
-                        <p className='text-bold text-styled'>Solution</p>
+                    <div className='solution mt-4'>
+                        <p className='text-bold text-styled mb-2'>Solution</p>
                         <p>{works[currWorkIndex]?.solution}</p>
                     </div>
                 </div>

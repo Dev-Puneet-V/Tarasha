@@ -14,14 +14,14 @@ const CallConsultancy: React.FC = () => {
   }
   return (
     <>
-    <div className='call-consultancy flex flex-col justify-center items-center gap-1'>
-      <section id='call-consultancy-container' className='flex flex-col justify-center items-center'>
-        <p className='text-styled'>Call Consultancy</p>
-        <p className='justify'>
+    <div className='call-consultancy flex flex-col justify-center items-center gap-1 pt-8 pb-8'>
+      <section id='call-consultancy-container' className='gap-5 flex flex-col justify-center items-center'>
+        <p className='text-styled-2'>Call Consultancy</p>
+        <p className='center'>
           {data?.callConsultancyTagLine}
         </p>
-        <div className={`flex items-center justify-between gap-2 pl-8 pr-8 ml-8 mr-8 mb-8 mt-4 ${screenSize === 'sm' ? 'book-now-button': 'wrap'}`}>
-          <p className={` pl-4 text-bolder ${screenSize === 'sm' ? 'rs-text ml-4' : 'font-large ml-8'}`}>Rs 699/- Onwards</p>
+        <div className={`price-book flex items-center justify-between gap-2 pl-8 pr-8 ml-8 mr-8 mb-2 mt-4 ${screenSize === 'sm' ? 'book-now-button': 'wrap'}`}>
+          <p className={` pl-4 text-bolder center ${screenSize === 'sm' ? 'rs-text ml-4' : 'font-large ml-8'}`}>Rs 699/- Onwards</p>
           <button className='button button-secondary mr-8' onClick={handleBookingVisibility}>Book Now</button>
         </div>
       </section>

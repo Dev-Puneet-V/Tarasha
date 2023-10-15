@@ -67,18 +67,20 @@ const Blog: React.FC = () => {
   return (
     <div id='home-container' className='blogss'>
         <div>
-            <Image src={'https://res.cloudinary.com/dfoggertn/image/upload/v1696688104/test-1_yxjd2q.jpg'} className='home-img'>
-                <div className='text-image-background flex justify-between items-center absolute bottom p-8 right left sizing-border'>
+        <Image src={'https://res.cloudinary.com/dfoggertn/image/upload/v1696688104/test-1_yxjd2q.jpg'} className='home-img first-image'>
+          <div className={`text-image-background flex justify-between items-center absolute bottom  right left sizing-border  flex wrap ${screenSize === 'sm' ? 'gap-1 p-4' : 'gap-3 p-8'}`}>
+            <div className={` flex justify-between items-center absolute bottom  right left sizing-border  flex wrap ${screenSize === 'sm' ? 'gap-1 p-4' : 'gap-3 p-8'}`} style={{maxWidth: '1500px', margin: 'auto'}}>
                     <div className='flex flex-col home-main-body-text'>
                         <p className='text-styled'>Our Blog</p>
                     </div>
-                </div>
-            </Image>
-            <div className={`flex gap-1 ${screenSize !== 'lg' ? 'flex-col mb-4 p-4 m-2' : 'mb-8 p-8 m-8'}`}>
+            </div>
+          </div>
+        </Image>
+            <div className={`flex gap-1 ${screenSize !== 'lg' ? 'flex-col mb-4 p-4 m-2' : 'mb-8 p-8 m-8'}`} style={{maxWidth: '1450px', margin: 'auto'}}>
                 <div className='flex flex-col gap-5'>
                   <div className='flex flex-col gap-3 blog-items-container'>
-                  { blogData?.blogs?.map((blog: any) => {
-                  return <BlogInfo {...blog} key={blog._id}/>
+                  { blogData?.blogs?.map((blog: any, index: number) => {
+                  return <BlogInfo {...blog} key={blog._id} index={index}/>
                 })
                 }
                 <div className={`flex gap-3 ${screenSize === 'sm' ? '' : ''}`}>
@@ -89,10 +91,10 @@ const Blog: React.FC = () => {
                 </div>
                 {blogData?.prevblogs?.length > 0 && <div className='blog-item-container flex flex-col gap-3 prev-posts-container'>
                   <p className='text-styled'>Previous Posts</p>
-                  { blogData?.prevblogs?.map((blog: any) => {
-                  return <div className='flex gap-1' key={blog._id}>
+                  { blogData?.prevblogs?.map((blog: any, index: number) => {
+                  return <div className={`flex gap-1 ${index % 2 === 0 ? 'flex-reverse': ''}`} key={blog._id} >
                     {/* blog.imageUrl || */}
-                   {blog?.imageUrl && <img   src={ blog.imageUrl}/>}
+                   {blog?.imageUrl && <img   src={ blog.imageUrl} style={{objectFit: 'cover'}}/> }
                     <div className='flex flex-col gap-1'>
                       <div className='info-blog-tags flex gap-1'>
                         {blog.tags?.map((tag: string) => <p>{tag}</p>)}

@@ -37,7 +37,11 @@ const imageUploader = (file : any) => {
         API_ENDPOINT.IMAGE_UPLOAD,
         {
           method: "POST",
-          body: formData
+          body: formData,
+          headers: {
+          // method: "POST",
+            'Authorization': `Bearer ${Cookies.get('token')}`
+        },
         }
       )
         .then((response) => response.json())
@@ -90,6 +94,7 @@ const BlogWriting: React.FC = () => {
         method: "POST",
         body: formData,
         headers: {
+          // method: "POST",
             'Authorization': `Bearer ${Cookies.get('token')}`
         },
   });

@@ -28,3 +28,12 @@
 .prev-posts-container{
     min-width: 300px;
 }
+
+.flex-reverse{
+    flex-direction: row-reverse;
+    justify-content: flex-start;
+}
+
+.max-width-1300{
+    max-width: 1300px;
+}

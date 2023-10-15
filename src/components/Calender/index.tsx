@@ -262,7 +262,7 @@ import { Waveform } from '@uiball/loaders';
     return (
       <div className='relative flex flex-col justify-center items-center gap-1 time-picker'>
         
-        {!isPaymentStep && <p className='text-styled heading-calender'>{!isTimeSelectionEnabled ? "Select A Consultation Date" : "Select Time Slot"}</p>
+        {!isPaymentStep && <p className='text-styled heading-calender pt-2'>{!isTimeSelectionEnabled ? "Select A Consultation Date" : "Select Time Slot"}</p>
         }  
         {(selectedTime && isPaymentStep) ?  <p className='text-styled heading-calender mt-2'>Click below for payment</p> : <></>}  
         {(selectedTime && isPaymentStep) ?  <p className='text-red-500 heading-calender'>Please do not refresh</p> : <></>
@@ -271,7 +271,7 @@ import { Waveform } from '@uiball/loaders';
           {renderCalendar()}
           </div>}
         {!isPaymentStep && <button onClick={handleTimeSelectionEnable}  className={`relative mt-4 flex button button-dark gap-1 items-center justify-center ${!selectedDate && 'disable'}`}>
-              <p className={`button-calender text-bold ${(!selectedDate || (selectedDate && !selectedTime)) ?  'disable' : ''}`}>Continue</p>
+              <p className={`button-calender text-bold ${(!selectedDate) ?  'disable' : 'active'}`}>Continue</p>
               <img  src={NextImage} className='black-next' />
         </button>}
         {isPaymentStep &&

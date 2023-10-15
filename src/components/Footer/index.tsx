@@ -6,43 +6,47 @@ import TwitterSocialIcon from '../../assets/twitter.png';
 import './style.css';
 import { useNavigate } from 'react-router-dom';
 import useAnalyticsEventTracker from '../../hooks/useAnalyticsEventTracker';
+import useScreenSize from '../../hooks/useMediaQuery';
 const Footer: React.FC = () => {
   const navigate = useNavigate();
   const gaEventTracker = useAnalyticsEventTracker('Initial Page');
+  const screenSize = useScreenSize();
   return (
-    <div className='flex gap-5 wrap  p-8 footer-container'>
+    <div className='footer-container justify-between'>
+      <div style={{maxWidth: '1570', margin: 'auto'}} className='flex wrap  p-8 justify-between'>
       <div className='flex flex-col gap-1'>
         <img  src={IconImage} alt='tarasha interiors' />
-        <p className='pl-4 mt-4'>Lorem ipsum dolor sit amet, consectetur adipiscing</p>
+        <p className='pl-4 mt-4'>Designs that reflect your style, brought to life by{screenSize === 'sm' ? '' :<br />} Tarasha Interiors</p>
         <div className='flex flex-row gap-2 pl-4 mt-4'>
             <img  src={FBSocialIcon} />
             <img  src={InstaSocialIcon} />
             <img  src={TwitterSocialIcon} />
         </div>
       </div>
-      <div className='flex gap-4 wrap  justify-between info ml-8 mr-8 pl-8 m-f'>
-      <div className='flex flex-col gap-3 pl-4 mt-4'>
-        <h2>About</h2>
-        <p onClick={() =>{ navigate('/'); gaEventTracker('Home', 'Navigating to home page')}}>Home page</p>
-        <p onClick={() => {navigate('/services'); gaEventTracker('Services', 'Navigating to services page')}}>Services</p>
-        <p onClick={() => {navigate('/our-works'); gaEventTracker('Works', 'Navigating to work page')}}>Before and After</p>
+      <div className={`flex wrap  justify-between info ml-8 mr-8 pl-8 tandom m-f ml-4 pl-4`}>
+      <div className='flex flex-col mt-4 pl-4'>
+        <h2 className={`pb-2 ${screenSize === 'sm' ? 'mt-8' : ''}`}>About</h2>
+        <p onClick={() =>{ navigate('/'); gaEventTracker('Home', 'Navigating to home page')}} style={{color: 'white !important', marginBottom: '1px'}}>Home page</p>
+        <p onClick={() => {navigate('/services'); gaEventTracker('Services', 'Navigating to services page')}} style={{color: 'white !important', marginBottom: '1px'}}>Services</p>
+        <p onClick={() => {navigate('/our-works'); gaEventTracker('Works', 'Navigating to work page')}} style={{color: 'white !important', marginBottom: '1px'}}>Before and After</p>
       </div>
-      <div className='flex flex-col gap-3 pl-4 mt-4'>
-        <h2>Customer Support</h2>
-        <p onClick={() => {navigate('/#faq'); gaEventTracker('FAQ', 'Checking frequently asked question')}}>FAQ</p>
-        <p onClick={() =>{ navigate('/questionare'); gaEventTracker('Questionare', 'Checking questionare page')}}>Contact us</p>
+      <div className='flex flex-col mt-4  pl-4'>
+        <h2 className={`pb-2 ${screenSize === 'sm' ? 'mt-2' : ''}`}>Customer Support</h2>
+        {/* <p onClick={() => {navigate('/#faq'); gaEventTracker('FAQ', 'Checking frequently asked question')}} style={{color: 'white !important', marginBottom: '1px'}}>FAQ</p> */}
+        <p onClick={() =>{ navigate('/questionare'); gaEventTracker('Questionare', 'Checking questionare page')}} style={{color: 'white !important', marginBottom: '1px'}}>Contact us</p>
       </div>
-      <div className='flex flex-col gap-3 pl-4 mt-4'>
-        <h2>Explore</h2>
-        <p onClick={() => {navigate('/packages'); gaEventTracker('Packages', 'Navigating to packages page')}}>Packages</p>
-        <p onClick={() => {navigate('/blogs'); gaEventTracker('Blogs', 'Navigating to blog page')}}>Interior Design Blogs</p>
+      <div className='flex flex-col mt-4  pl-4'>
+        <h2 className={`pb-2 ${screenSize === 'sm' ? 'mt-2' : ''}`}>Explore</h2>
+        <p onClick={() => {navigate('/packages'); gaEventTracker('Packages', 'Navigating to packages page')}} style={{color: 'white !important', marginBottom: '1px'}}>Packages</p>
+        <p onClick={() => {navigate('/blogs'); gaEventTracker('Blogs', 'Navigating to blog page')}} style={{color: 'white !important', marginBottom: '1px'}}>Interior Design Blogs</p>
       </div>
-      <div className='flex flex-col gap-3 pl-4 mt-4'>
-        <h2>Aggrements</h2>
-        <p onClick={() => {navigate('/terms-and-conditions'); gaEventTracker('Terms and Conditions', 'Navigating to terms and conditions page')}}>Terms and Condition</p>
-        <p>Privacy Policy</p>
+      <div className='flex flex-col mt-4  pl-4'>
+        <h2 className={`pb-2 ${screenSize === 'sm' ? 'mt-2' : ''}`}>Agreements</h2>
+        <p onClick={() => {navigate('/terms-and-conditions'); gaEventTracker('Terms and Conditions', 'Navigating to terms and conditions page')}} style={{color: 'white !important', marginBottom: '1px'}}>Terms and Condition</p>
+        {/* <p style={{color: 'white !important', marginBottom: '1px'}}>Privacy Policy</p> */}
       </div>
       </div>
+    </div>
     </div>
     // <div className="footer">
     //       <p>Tarasha Interiors &copy;&nbsp; All Rights Reserved</p>

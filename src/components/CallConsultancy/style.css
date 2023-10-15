@@ -5,8 +5,8 @@
 }
 
 #call-consultancy-container{
-    max-width: 90%;
-    width: 40rem;
+    /* max-width: 90%; */
+    max-width: min(60rem, 90%);
 }
 
 #call-consultancy-container div{
@@ -19,4 +19,16 @@
 
 .book-now-button .button{
     width: 8rem;
+}
+
+.price-book{
+    max-width: 40rem;
+}
+
+.call-consultancy .text-styled-2{
+    font-size:max(3vw, 1.8rem);
+  
+  font-weight: bolder !important;
+  line-height: max(4vw, 2.5rem) !important;
+  letter-spacing: 0.02em;
 }

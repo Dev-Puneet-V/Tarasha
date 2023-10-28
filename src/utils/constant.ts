@@ -1,6 +1,6 @@
 export const BASE_URL_DATA = "https://res.cloudinary.com/dfoggertn/raw/upload/v1696096778/TarashaWebsiteContent/Images/blogimages/data_eyhpqe.json";
 // export const BASE_URL_DATA = "../../"
-export const BASE_URL = "http://ec2-52-66-135-82.ap-south-1.compute.amazonaws.com/api"
+export const BASE_URL = "http://ec2-3-111-217-123.ap-south-1.compute.amazonaws.com/api"
 // export const BASE_URL = "https://tarashainteriors.onrender.com/api"
 export const API_ENDPOINT = {
     // "SITE_DATA" : BASE_URL_DATA + "/site-data",

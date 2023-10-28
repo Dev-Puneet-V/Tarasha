@@ -34,7 +34,7 @@ const ImageLoaderComponent: React.FC<ImageLoaderComponentProps> = ({ src, childr
   if (loading) {
     // Display a shimmer effect while loading
     return (
-      <div className="shimmer">
+      <div className={`skeleton ${rest.className || ''}`}>
         <div className="shimmer-line"></div>
       </div>
     );

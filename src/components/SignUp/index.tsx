@@ -47,7 +47,7 @@ const SignUpForm: React.FC<SignUpFormProps> = (props) => {
       confirmPassword: Yup.string()
         .matches(
           /^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[\W_])[A-Za-z\d\W_]{8,}$/,
-          'Password must meet the criteria'
+          'Password must meet following criteria, min-length = 8, with at least 1 digit, lowercase, uppercase, special character'
         )
         .required('Password is required'),
     }),

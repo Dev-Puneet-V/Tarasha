@@ -9,13 +9,21 @@ import Service from '../../components/Service';
 import ScopeOfWork from '../../components/ScopeOfWork';
 import { useNavigate } from 'react-router-dom';
 import useScreenSize from '../../hooks/useMediaQuery';
-
+import Banner from '../../assets/Images/service-banner.jpg'
+import Image1 from '../../assets/Images/service8/1.jpg'
+import Image2 from '../../assets/Images/service8/2.jpg'
+import Image3 from '../../assets/Images/service8/3.jpg'
+import Image4 from '../../assets/Images/service8/4.jpg'
+import Image5 from '../../assets/Images/service8/5.jpg'
+import Image6 from '../../assets/Images/service8/6.jpg'
+import Image7 from '../../assets/Images/service8/7.jpg'
+import Image8 from '../../assets/Images/service8/8.jpg'
 const Services: React.FC = () => {
     const navigate = useNavigate();
     const screenSize = useScreenSize();
   return (
     <div id='home-container'>
-        <Image src={'https://res.cloudinary.com/dfoggertn/image/upload/v1696688104/test-1_yxjd2q.jpg'} className='home-img first-image'>
+        <Image src={Banner} className='home-img first-image'>
           <div className={`text-image-background flex justify-between items-center absolute bottom  right left sizing-border  flex wrap ${screenSize === 'sm' ? 'gap-1 p-4' : 'gap-3 p-8'}`}>
             <div className={` flex justify-between items-center absolute bottom  right left sizing-border  flex wrap ${screenSize === 'sm' ? 'gap-1 p-4' : 'gap-3 p-8'}`} style={{maxWidth: '1500px', margin: 'auto'}}>
                     <div className='flex flex-col home-main-body-text'>
@@ -54,35 +62,35 @@ const Services: React.FC = () => {
                         [
                             {
                                 text: 'Interior Consultation',
-                                src: 'https://res.cloudinary.com/dfoggertn/image/upload/v1696075825/TarashaWebsiteContent/Images/blogimages/services/interior-consultation_pa2ajv.jpg'
+                                src: Image1
                             },
                             {
                                 text: '3D visualisation',
-                                src: 'https://res.cloudinary.com/dfoggertn/image/upload/v1696075831/TarashaWebsiteContent/Images/blogimages/services/3D-visualization_nnwiqg.avif'
+                                src: Image2
                             },
                             {
                                 text: 'Renovation & Remodelling',
-                                src: 'https://res.cloudinary.com/dfoggertn/image/upload/v1696075830/TarashaWebsiteContent/Images/blogimages/services/renovation-remodeling_zrrqtz.jpg'
+                                src: Image3
                             },
                             {
                                 text: 'Space Planning & Design',
-                                src: 'https://res.cloudinary.com/dfoggertn/image/upload/v1696075829/TarashaWebsiteContent/Images/blogimages/services/planning-design_wbnd25.jpg'
+                                src: Image4
                             },
                             {
                                 text: 'Execution & Project Management',
-                                src: 'https://res.cloudinary.com/dfoggertn/image/upload/v1696075827/TarashaWebsiteContent/Images/blogimages/services/execution-management_t0vk1f.webp'
+                                src: Image5
                             },
                             {
                                 text: 'Residential Interior Projects',
-                                src: 'https://res.cloudinary.com/dfoggertn/image/upload/v1696075826/TarashaWebsiteContent/Images/blogimages/services/residential_sbujxm.jpg'
+                                src:Image6
                             },
                             {
                                 text: 'Commercial Interiors Projects',
-                                src: 'https://res.cloudinary.com/dfoggertn/image/upload/v1696076081/TarashaWebsiteContent/Images/blogimages/services/commercial-interior-design_fjw8ox.webp'
+                                src: Image7
                             },
                             {
                                 text: 'Vaastu Compliant Layouts',
-                                src: 'https://res.cloudinary.com/dfoggertn/image/upload/v1696075826/TarashaWebsiteContent/Images/blogimages/services/vastu_ja9gv8.jpg'
+                                src: Image8
                             }
                         ].map((curr: {text: string, src: string}) => <Service key={curr.text} src={curr.src} text={curr.text} />)
                     }

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './style.css';
 
 interface ImageLoaderComponentProps extends React.HTMLAttributes<HTMLImageElement> {
@@ -8,50 +8,37 @@ interface ImageLoaderComponentProps extends React.HTMLAttributes<HTMLImageElemen
 
 const ImageLoaderComponent: React.FC<ImageLoaderComponentProps> = ({ src, children, ...rest }) => {
   const [loadedsrc, setLoadedsrc] = useState<string | null>(null);
-  const [error, setError] = useState<string | null>(null);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const workerBlob = new Blob([`
-      self.addEventListener('message', (event) => {
-        const { src } = event.data;
-        fetch(src)
-          .then((response) => response.blob())
-          .then((blob) => {
-            self.postMessage({ src, blob });
-          })
-          .catch((error) => {
-            console.error('Error loading image:', error);
-          });
-      });
-    `], { type: 'application/javascript' });
-
-    const workerBlobURL = URL.createObjectURL(workerBlob);
-
-    const imageLoaderWorker = new Worker(workerBlobURL);
-
-    const loadImageWithWorker = (src: string) => {
-      imageLoaderWorker.postMessage({ src });
+    const loadImage = async (src: string) => {
+      try {
+        const response = await fetch(src);
+        if (response.ok) {
+          const blob = await response.blob();
+          const objectURL = URL.createObjectURL(blob);
+          setLoadedsrc(objectURL);
+        } else {
+          console.error('Error loading image');
+        }
+      } catch (error) {
+        console.error(`Error loading image: ${error}`);
+      } finally {
+        setLoading(false);
+      }
     };
 
-    imageLoaderWorker.addEventListener('message', (event) => {
-      const { src, blob } = event.data;
-
-      const objectURL = URL.createObjectURL(blob);
-
-      setLoadedsrc(objectURL);
-    });
-
-    loadImageWithWorker(src);
-
-    return () => {
-      imageLoaderWorker.terminate();
-      URL.revokeObjectURL(workerBlobURL);
-    };
+    loadImage(src);
   }, [src]);
 
-//   if (error) {
-//     return <div>Error: {error}</div>;
-//   }
+  if (loading) {
+    // Display a shimmer effect while loading
+    return (
+      <div className="shimmer">
+        <div className="shimmer-line"></div>
+      </div>
+    );
+  }
 
   if (loadedsrc) {
     return (
@@ -62,14 +49,15 @@ const ImageLoaderComponent: React.FC<ImageLoaderComponentProps> = ({ src, childr
       />
     );
   }
-    return (
-        <div
-            {...rest}
-            className={`skeleton ${rest.className || ''}`}
-        >{
-            children
-        }</div>
-    );
+
+  return (
+    <div
+      {...rest}
+      className={`skeleton ${rest.className || ''}`}
+    >
+      {children}
+    </div>
+  );
 };
 
 export default ImageLoaderComponent;

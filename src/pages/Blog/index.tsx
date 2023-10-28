@@ -7,7 +7,7 @@ import useScreenSize from '../../hooks/useMediaQuery';
 import { useBlogContext } from '../../contexts/BlogContext';
 import './style.css';
 import { API_ENDPOINT } from '../../utils/constant';
-
+import Banner from '../../assets/Images/blog-banner.jpg';
 const Blog: React.FC = () => {
  const {blogData, setBlogData} = useBlogContext();
  const [currentPage, setCurrentPage] = React.useState<number>(1);
@@ -67,7 +67,7 @@ const Blog: React.FC = () => {
   return (
     <div id='home-container' className='blogss'>
         <div>
-        <Image src={'https://res.cloudinary.com/dfoggertn/image/upload/v1696688104/test-1_yxjd2q.jpg'} className='home-img first-image'>
+        <Image src={Banner} className='home-img first-image'>
           <div className={`text-image-background flex justify-between items-center absolute bottom  right left sizing-border  flex wrap ${screenSize === 'sm' ? 'gap-1 p-4' : 'gap-3 p-8'}`}>
             <div className={` flex justify-between items-center absolute bottom  right left sizing-border  flex wrap ${screenSize === 'sm' ? 'gap-1 p-4' : 'gap-3 p-8'}`} style={{maxWidth: '1500px', margin: 'auto'}}>
                     <div className='flex flex-col home-main-body-text'>

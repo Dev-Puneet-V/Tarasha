@@ -138,7 +138,7 @@ const ScopeOfWork: React.FC = () => {
             <div className='w-100 row-12-joiner flex items-center gap-3 flex justify-end items-center'>
                 <div className='joiner t-b-r-l-joiner '/>
             </div>
-            <div className='flex wrap justify-center gap-3 scope-container relative pl-4'>
+            <div className='flex wrap justify-center gap-3 scope-container relative w-100'>
                 <div className='flex flex-wrap'>
                     {
                         slides[3].content
@@ -156,7 +156,7 @@ const ScopeOfWork: React.FC = () => {
             <div className='w-100 row-23-joiner flex items-center gap-3 flex-start'>
                 <div className='joiner t-b-l-r-joiner '/>
             </div>
-            <div className='flex wrap justify-center gap-3 scope-container relative pl-8'>
+            <div className='flex wrap justify-center gap-3 scope-container relative w-100'>
                 <div className='flex flex-wrap'>
                     {
                         slides[6].content
@@ -172,7 +172,7 @@ const ScopeOfWork: React.FC = () => {
                 </div>
             </div>
         </div>}
-        {screenSize === 'md' && <div className='pl-8 flex flex-col gap-1 items-center justify-center' id='scope-of-work' style={{color: '#B87E1B !important'}}>
+        {screenSize === 'md' && <div className='flex flex-col gap-1 items-center justify-center' id='scope-of-work' style={{color: '#B87E1B !important'}}>
             <p className='text-styled mb-8'>Scope Of Work</p>
             <div className='flex wrap justify-center gap-3 scope-container relative'>
                 <div className='flex flex-wrap'>

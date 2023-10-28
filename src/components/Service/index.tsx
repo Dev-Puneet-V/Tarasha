@@ -9,7 +9,7 @@ const Service: React.FC<Serviceinterface> = (props) => {
   } = props;
   return (
     <div className='service relative mb-8'>
-      <img  src={src} />
+      <img  src={src} style={{objectFit: 'cover'}}/>
       <div className='absolute'></div>
       <p className='absolute'>{text}</p>
     </div>

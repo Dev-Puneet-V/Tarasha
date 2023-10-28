@@ -17,6 +17,7 @@ import ResetPassword from "./components/ResetPassword";
 import PrivateRoute from "./PrivateRoute";
 import NotFoundPage from "./pages/NotFoundPage";
 import TermsAndConditions from "./pages/Terms&Conditions";
+import PrivacyPolicy from './pages/PrivacyPolicy';
 
 export default function Navigation() {
   return (
@@ -48,6 +49,7 @@ export default function Navigation() {
           <Route path="blog/:id" element={<MainBlog />} />
           <Route path="reset-password/:token" element={<ResetPassword />} />
           <Route path="terms-and-conditions" element={<TermsAndConditions />} />
+          <Route path="privacy-policy" element={<PrivacyPolicy />} />
         </Route>
 
         {/* Define a route without layout for the "Not Found" page */}

@@ -18,9 +18,9 @@ const Footer: React.FC = () => {
         <img  src={IconImage} alt='tarasha interiors' />
         <p className='pl-4 mt-4'>Designs that reflect your style, brought to life by{screenSize === 'sm' ? '' :<br />} Tarasha Interiors</p>
         <div className='flex flex-row gap-2 pl-4 mt-4'>
-            <img  src={FBSocialIcon} />
-            <img  src={InstaSocialIcon} />
-            <img  src={TwitterSocialIcon} />
+            {/* <a href=''><img  src={FBSocialIcon} /></a> */}
+            <a href='https://instagram.com/tarasha_interiors' target="_blank"><img  src={InstaSocialIcon} /></a>
+            {/* <img  src={TwitterSocialIcon} /> */}
         </div>
       </div>
       <div className={`flex wrap  justify-between info ml-8 mr-8 pl-8 tandom m-f ml-4 pl-4`}>
@@ -33,7 +33,9 @@ const Footer: React.FC = () => {
       <div className='flex flex-col mt-4  pl-4'>
         <h2 className={`pb-2 ${screenSize === 'sm' ? 'mt-2' : ''}`}>Customer Support</h2>
         {/* <p onClick={() => {navigate('/#faq'); gaEventTracker('FAQ', 'Checking frequently asked question')}} style={{color: 'white !important', marginBottom: '1px'}}>FAQ</p> */}
-        <p onClick={() =>{ navigate('/questionare'); gaEventTracker('Questionare', 'Checking questionare page')}} style={{color: 'white !important', marginBottom: '1px'}}>Contact us</p>
+        <p onClick={() =>{  gaEventTracker('Questionare', 'Checking questionare page')}} style={{color: 'white !important', marginBottom: '1px'}}>Contact us :</p>
+        <p style={{fontSize: '10px !important'}}>info@tarashainteriors.com</p>
+        <p style={{fontSize: '10px !important'}}>tarashainterior@gmail.com</p>
       </div>
       <div className='flex flex-col mt-4  pl-4'>
         <h2 className={`pb-2 ${screenSize === 'sm' ? 'mt-2' : ''}`}>Explore</h2>
@@ -44,6 +46,7 @@ const Footer: React.FC = () => {
         <h2 className={`pb-2 ${screenSize === 'sm' ? 'mt-2' : ''}`}>Agreements</h2>
         <p onClick={() => {navigate('/terms-and-conditions'); gaEventTracker('Terms and Conditions', 'Navigating to terms and conditions page')}} style={{color: 'white !important', marginBottom: '1px'}}>Terms and Condition</p>
         {/* <p style={{color: 'white !important', marginBottom: '1px'}}>Privacy Policy</p> */}
+        <p onClick={() => {navigate('/privacy-policy'); gaEventTracker('Privacy and Policy', 'Navigating to privacy and policy')}} style={{color: 'white !important', marginBottom: '1px'}}>Privacy and Policy</p>
       </div>
       </div>
     </div>

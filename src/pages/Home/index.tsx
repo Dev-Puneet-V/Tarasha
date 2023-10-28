@@ -14,7 +14,11 @@ import Element2 from '../../assets/element-2.jpg'
 import Element3 from '../../assets/element-3.jpg'
 import Element4 from '../../assets/element-4.webp'
 import Element5 from '../../assets/element-5.avif'
-
+import HomeImage1 from '../../assets/Images/Home/1.jpg';
+import HomeImage2 from '../../assets/Images/Home/2.jpg';
+import HomeImage3 from '../../assets/Images/Home/3.jpg';
+import HomeImage4 from '../../assets/Images/Home/4.jpg';
+import FounderImage from '../../assets/founder.jpeg';
 const Home: React.FC = () => {
   const screenSize = useScreenSize();
   const navigate = useNavigate();
@@ -23,7 +27,7 @@ const Home: React.FC = () => {
     <div id='home-container'>
       <div >
       
-        <Image src={'https://res.cloudinary.com/dfoggertn/image/upload/v1696688104/test-1_yxjd2q.jpg'} className='home-img first-image'>
+        <Image src={HomeImage1} className='home-img first-image'>
           <div className={`text-image-background flex justify-between items-center absolute bottom  right left sizing-border  flex wrap ${screenSize === 'sm' ? 'gap-1 p-4' : 'gap-3 p-8'}`}>
             <div className={` flex justify-between items-center absolute bottom  right left sizing-border  flex wrap ${screenSize === 'sm' ? 'gap-1 p-4' : 'gap-3 p-8'}`} style={{maxWidth: '1500px', margin: 'auto'}}>
             <div className={`flex flex-col home-main-body-text ${screenSize === 'sm' ? 'gap-1' : 'gap-25px'}`}>
@@ -56,7 +60,7 @@ const Home: React.FC = () => {
           of works. 
         </p>
       </div>
-      <Image src={'https://res.cloudinary.com/dfoggertn/image/upload/v1696689018/test-4_rocqww.jpg'} className='home-img'>
+      <Image src={HomeImage2} className='home-img'>
       </Image>
       <div className='flex flex-col items-center w-full mt-8 pt-4 gap-2 pb-8' style={{maxWidth: '1450px', margin: 'auto'}}>
         <p className={`text-styled-3 center ${screenSize === 'sm' ? 'gap-3 pb-4 mt-2' : 'pb-4 mt-8'}`}>Work Online With The Finest Interior Designers</p>
@@ -71,7 +75,7 @@ const Home: React.FC = () => {
               Get started
           </button>
       </div>
-      <Image src={'https://res.cloudinary.com/dfoggertn/image/upload/v1696688796/test-3_kn5imc.jpg'} className='home-img'>
+      <Image src={HomeImage3} className='home-img'>
         </Image>
       <div className='flex flex-col items-center w-100' style={{maxWidth: '1450px', margin: 'auto'}}>
         <p className={`text-styled-3 center ${screenSize === 'sm' ? 'mt-4 mb-4' : 'mt-4 pt-8 pb-8'}`}>Our Approach</p>
@@ -85,7 +89,7 @@ Your journey is a partnership and our shared goal is to craft a space that is
 uniquely and beautifully yours. 
         </p>
       </div>
-      <Image src={'https://res.cloudinary.com/dfoggertn/image/upload/v1696689110/test-5_thbba4.jpg'} className='home-img'>
+      <Image src={HomeImage4} className='home-img'>
         </Image>
       <div className='flex flex-col items-center w-100' style={{maxWidth: '1450px', margin: 'auto'}}>
       <p className={`text-styled-3 center ${screenSize === 'sm' ? 'mt-4 mb-4' : 'mt-4 pt-8 pb-8'}`}>Our Principles</p>
@@ -116,7 +120,7 @@ paint the masterpiece of your life upon it.
             
             </div>
             <div className='flex gap-2 items-center pl-4'>
-              <img  className='mt-4 mb-2 client-img ml-8' src={'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT_o8GvNHXndMoW1QhXq6o8kTb8fddzejVJ2g&usqp=CAU'}/>
+              <img  className='mt-4 mb-2 client-img ml-8' src={FounderImage} style={{objectFit: 'cover'}}/>
               <div>
                 <p className='text-bold mt-2'>Neha Gupta</p>
                 <p>Founder & CEO</p>

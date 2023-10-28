@@ -28,7 +28,7 @@ const questions: Question[] = [
   { que: 'Is it a renovation or revamp work?', _id: 11 },
   { que: 'Location of the site?', _id: 12 },
   { que: 'Vastu compliant or non-vastu compliant layouts & design?', _id: 13 },
-  { que: 'Which religin do you follow?', _id: 14 },
+  { que: 'Which religion do you follow?', _id: 14 },
   { que: 'Have you worked with an interior designer before? & who will be taking all the decisions during our design process?', _id: 15 },
 ];
 
@@ -39,7 +39,7 @@ const Questionare: React.FC = () => {
   const {user} = useAuth();
   React.useEffect(() => {
     if(!user?.number){
-      eventBus.emit("toast:error","Phone number required");
+      eventBus.emit("toast:error","Please update your phone number in user profile before filling the Questionaire Form");
       navigate('/dashboard', { state: {"s": 1} })
     }
   }, [])

@@ -1,16 +1,24 @@
 import React, {useEffect, useState} from 'react';
-import Image from '../Image';
 import PrevIcon from '../../assets/prev.png';
 import NextIcon from '../../assets/next.png';
 import { useSiteData } from '../../contexts/DataContext';
 import './style.css';
-
+import { Waveform } from '@uiball/loaders';
 const Work: React.FC = () => {
     const {data} = useSiteData();
     const works = data?.works || [];
     const [currWorkIndex, setCurrWorkIndex] = useState<number>(-1);
     const [currState, setCurrState] = useState<number>(0);
+    const [imageLoaded, setImageLoaded] = useState(false);
 
+    useEffect(() => {
+      const image = new Image();
+      const src = currState === 0 ? works[currWorkIndex]?.prev : works[currWorkIndex]?.next;
+      image.src = src + ''
+      image.onload = () => {
+        setImageLoaded(true);
+      };
+    }, [currWorkIndex, currState])
     useEffect(() => {
         if(data && !data?.works){
             data.works = [];
@@ -20,12 +28,17 @@ const Work: React.FC = () => {
         }
     }, [data]);
     const handleNext = () => {
-        setCurrWorkIndex(setCurrWorkIndex => setCurrWorkIndex + 1);
-        setCurrState(0);
+        if(currState === 1){
+            setCurrWorkIndex(setCurrWorkIndex => setCurrWorkIndex + 1);
+        }
+        setCurrState((currState + 1) % 2);
     }
     const handlePrev = () => {
-        setCurrWorkIndex(setCurrWorkIndex => setCurrWorkIndex - 1);
-        setCurrState(0);
+        
+        if(currState === 0){
+            setCurrWorkIndex(setCurrWorkIndex => setCurrWorkIndex - 1);
+        }
+        setCurrState((currState + 1) % 2);
     }
 
   return (
@@ -35,15 +48,19 @@ const Work: React.FC = () => {
             <div id='work-container' className='' style={{maxWidth: '1450px', margin: 'auto'}}>
                 <p className='text-styled ml-8 work-name w-90'  >{works[currWorkIndex]?.name}</p>
                 <div className='flex gap-2 ml-8 work-name'  >
-                    <p className={`${currState === 0 ? 'active-nav' : ''}`} onClick={() => setCurrState(0)}>Before</p>
-                    <p className={`${currState === 1 ? 'active-nav' : ''}`} onClick={() => setCurrState(1)}>After</p>
+                    <p className={`${currState === 0 ? 'active-nav' : ''}`} 
+                    // onClick={() => setCurrState(0)}
+                    >Before</p>
+                    <p className={`${currState === 1 ? 'active-nav' : ''}`} 
+                    // onClick={() => setCurrState(1)}
+                    >After</p>
                 </div>
-                <div className="background-image relative" style={{ backgroundImage: `url(${currState === 0 ? works[currWorkIndex]?.prev : works[currWorkIndex]?.next})`, width: '100vw !important',maxWidth: '100vw !important' }}>
-                <div className={`absolute ${currWorkIndex === 0 ? 'disabled' : ''} prev-button`} onClick={handlePrev} >
+                <div className="background-image relative" style={{ backgroundImage: imageLoaded ? `url(${currState === 0 ? works[currWorkIndex]?.prev : works[currWorkIndex]?.next})`: '', width: '100vw !important',maxWidth: '100vw !important', objectFit: 'cover' }}>
+                <div className={`absolute ${currWorkIndex === 0 && currState === 0? 'disabled' : ''} prev-button`} onClick={handlePrev} >
                     <img src={PrevIcon} alt="Previous Icon" />
                 </div>
-
-                <div className={`absolute ${currWorkIndex === works.length - 1 ? 'disabled' : ''} next-button`} onClick={handleNext}>
+                {!imageLoaded && <div className='flex justify-center items-center' style={{width: '100%', height: '100%'}}><Waveform /></div>}
+                <div className={`absolute ${currWorkIndex === works.length - 1 && currState === 1? 'disabled' : ''} next-button`} onClick={handleNext}>
                     <img src={NextIcon} alt="Next Icon" />
                 </div>
                 </div>

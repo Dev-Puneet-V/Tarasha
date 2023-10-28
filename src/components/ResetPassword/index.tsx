@@ -12,11 +12,11 @@ const ResetPassword: React.FC = () => {
   const navigate = useNavigate();
   const formik = useFormik({
     initialValues: {
-      password: '',
+      newPassword: '',
       confirmPassword: '',
     },
     validationSchema: Yup.object({
-      password: Yup.string()
+      newPassword: Yup.string()
         .matches(
           /^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[\W_])[A-Za-z\d\W_]{8,}$/,
           'Password must meet following criteria, min-length = 8, with at least 1 digit, lowercase, uppercase, special character'
@@ -26,7 +26,7 @@ const ResetPassword: React.FC = () => {
       confirmPassword: Yup.string()
         .matches(
           /^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[\W_])[A-Za-z\d\W_]{8,}$/,
-          'Password must meet the criteria'
+          'Password must meet following criteria, min-length = 8, with at least 1 digit, lowercase, uppercase, special character'
         )
         .required('Password is required'),
     }),
@@ -38,7 +38,7 @@ const ResetPassword: React.FC = () => {
           headers: {
             'Content-Type': 'application/json',
           },
-          body: JSON.stringify({ password: values?.password, token: token }),
+          body: JSON.stringify({ password: values?.newPassword, token: token }),
         });
         await response.json();
         if (response.ok) {
@@ -65,16 +65,16 @@ const ResetPassword: React.FC = () => {
 
         <input
           id='password'
-          name='password'
+          name='newPassword'
           type='password'
           onChange={formik.handleChange}
           onBlur={formik.handleBlur}
-          value={formik.values.password}
+          value={formik.values.newPassword}
           className='border-2 h-10 p-2 w-full'
           placeholder='Password'
         />
-        {formik.touched.password && formik.errors.password ? (
-          <div className='text-red-500 pb-2'>{formik.errors.password}</div>
+        {formik.touched.newPassword && formik.errors.newPassword ? (
+          <div className='text-red-500 pb-2'>{formik.errors.newPassword}</div>
         ) : null}
 
         <input
@@ -87,7 +87,7 @@ const ResetPassword: React.FC = () => {
           className='border-2 h-10 p-2 w-full'
           placeholder='Confirm Password'
         />
-        {formik.touched.password && formik.errors.confirmPassword ? (
+        {formik.touched.newPassword && formik.errors.confirmPassword ? (
           <div className='text-red-500 pb-2'>{formik.errors.confirmPassword}</div>
         ) : null}
 

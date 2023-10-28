@@ -37,7 +37,7 @@ const Services: React.FC = () => {
                 <p className='text-styled-3 mb-8'>Elements</p>
                 <div className='flex flex-row gap-3 wrap justify-center w-90 mb-8' style={{maxWidth: '700px', margin: 'auto'}}>
                         <Element key="Space" src={'https://img.freepik.com/premium-vector/black-white-round-frame-with-space-text-photo-leaves-frame-design-flyer-banner-postcard-vector-illustration_623474-228.jpg?w=2000'} text="Space" />
-                        <Element key="Color" src={'https://w7.pngwing.com/pngs/360/577/png-transparent-assorted-color-of-circles-illustration-circle-euclidean-computer-file-colorful-round-color-splash-color-pencil-fashion.png'} text="Color" />
+                        <Element key="Color" src={'https://w7.pngwing.com/pngs/360/577/png-transparent-assorted-color-of-circles-illustration-circle-euclidean-computer-file-colorful-round-color-splash-color-pencil-fashion.png'} text="Colour" />
                         <Element key="Texture" src={'https://previews.123rf.com/images/str33tcat/str33tcat1707/str33tcat170700043/82265251-grunge-circles-seamless-pattern-hand-drawn-round-shapes-background-black-white-brush-stroke-texture.jpg'} text="Texture" />
                         <Element key="Form" src={'https://img.freepik.com/premium-vector/doodle-circle-scalloped-frame-hand-drawn-scalloped-edge-ellipse-shape-simple-round-label-form-flower-silhouette-lace-frame-vector-illustration-isolated-white-background_192280-1475.jpg'} text="Form" />
                         <Element key="Light" src={'https://images.unsplash.com/photo-1601574117431-e5430fccfae9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8YmxhY2slMjBhbmQlMjB3aGl0ZSUyMGxpZ2h0fGVufDB8fDB8fHww&w=1000&q=80'} text="Light" />

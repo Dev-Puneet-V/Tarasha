@@ -8,7 +8,7 @@
 .home-main-body-text{
     min-width: 250px;
     width: 70%;
-    padding: 30px 50px 30px 30px;
+    /* padding: 30px 50px 30px 30px; */
 }
 
 #client-perspective{
@@ -81,9 +81,9 @@
     object-fit: cover;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 750px) {
     .home-main-body-text{
-        width: 100%;
+        width: 100% !important;
         height: auto;
     }
     #client-perspective{
@@ -111,13 +111,14 @@
         bottom: -15px;
         padding-left: -1px;
     }
-    .home-main-body-text{
-        padding: 0px;
-        padding-bottom: 1rem;
-    }
 }
 
+@media (max-width: 950px) {
+    .home-main-body-text{
+        width: 80% !important;
+        height: auto;
+    }
+}
 .space-around{
     justify-content: space-around;
 }
-
